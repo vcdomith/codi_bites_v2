@@ -1,0 +1,193 @@
+html, body {
+  font-family: "Roboto", sans-serif;
+  background-color: #051D3B;
+}
+
+textarea {
+  resize: none;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.1rem;
+}
+.cabecalho .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 1rem;
+}
+.editor .opcoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  background-color: #141414;
+}
+.editor .opcoes .botoes {
+  display: flex;
+}
+.editor .opcoes .botoes .linguagem {
+  color: #FFFFFF;
+  background: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #FFFFFF;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.editor .opcoes .botoes .linguagem option {
+  background-color: #141414;
+  border: 2px solid #FFFFFF;
+}
+.editor .opcoes .botoes .highlight {
+  color: #FFFFFF;
+  background: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #FFFFFF;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.editor .opcoes .botoes .highlight.active {
+  background-color: #FFFFFF;
+  color: #141414;
+}
+.editor textarea {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: #141414;
+  border: none;
+  padding: 1rem 1rem;
+  margin-bottom: 2rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  white-space: pre-line;
+}
+.editor textarea:focus-within {
+  outline: none;
+}
+.editor .botao-salvar {
+  align-self: flex-end;
+  text-align: center;
+  width: 30vw;
+  background-color: #051D3B;
+  color: #FFFFFF;
+  font-weight: bold;
+  border: 2px solid #FFFFFF;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.editor .botao-salvar:hover {
+  background-color: #FFFFFF;
+  color: #051D3B;
+}
+
+@media (max-width: 300px) {
+  .editor .opcoes {
+    justify-content: flex-end;
+  }
+  .editor .opcoes img {
+    display: none;
+  }
+}
+.detalhes {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.detalhes div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.detalhes div h3 {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem 0;
+}
+.detalhes div .nome-projeto {
+  background: none;
+  color: #FFFFFF;
+  border: 2px dashed rgba(255, 255, 255, 0.1960784314);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem 1rem 1rem;
+  line-height: 2.5rem;
+  font-size: 2rem;
+}
+.detalhes div .nome-projeto::-moz-placeholder {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.1960784314);
+}
+.detalhes div .nome-projeto::placeholder {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.1960784314);
+}
+.detalhes div .nome-projeto.filled {
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+.detalhes div .nome-projeto:focus-within {
+  border: 2px solid rgba(255, 255, 255, 0.1960784314);
+  outline: none;
+}
+.detalhes div .nome-projeto:hover {
+  border: 2px dashed rgba(255, 255, 255, 0.1960784314);
+}
+.detalhes div .descricao-projeto {
+  height: 7em;
+  background: none;
+  color: #FFFFFF;
+  border: 2px dashed rgba(255, 255, 255, 0.1960784314);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem 1rem 1rem;
+  line-height: 1.2rem;
+  font-size: 1rem;
+}
+.detalhes div .descricao-projeto::-moz-placeholder {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.1960784314);
+}
+.detalhes div .descricao-projeto::placeholder {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.1960784314);
+}
+.detalhes div .descricao-projeto.filled {
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+.detalhes div .descricao-projeto:focus-within {
+  border: 2px solid rgba(255, 255, 255, 0.1960784314);
+  outline: none;
+}
+.detalhes div .descricao-projeto:hover {
+  border: 2px dashed rgba(255, 255, 255, 0.1960784314);
+}
+
+@media (min-width: 768px) {
+  .detalhes {
+    flex-direction: row;
+    gap: 1rem;
+    margin: 1rem 1rem 0 1rem;
+  }
+  .detalhes div:first-child {
+    width: 45%;
+  }
+  .detalhes div .nome-projeto {
+    height: 5em;
+  }
+  .detalhes div .descricao-projeto {
+    height: 10em;
+  }
+}/*# sourceMappingURL=style.css.map */

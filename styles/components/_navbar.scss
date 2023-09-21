@@ -1,0 +1,17 @@
+@use '../abstract/variaveis' as *;
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 2.1rem;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 2rem;
+    }
+}

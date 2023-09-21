@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alura Dev</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <nav class="cabecalho">
+        <img src="./assets/logo.svg" alt="logo alura dev" class="logo">
+        <div class="container">
+            <input type="search" class="pesquisa" style="display: none;">
+            <a href="#" class="lupa">
+                <img src="./assets/lupa.svg" alt="lupa">
+            </a>
+            <a href="#" class="menu">
+                <img src="./assets/hamburguer.svg" alt="menu hamburguer">
+            </a>
+        </div>
+    </nav>
+    <sec class="principal">
+        <div class="detalhes">
+            <div>
+                <h3>Título</h3>
+                <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto" placeholder="Nome Projeto"></textarea>
+            </div>
+            <div>
+                <h3>Descrição</h3>
+                <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto" placeholder="Descrição Projeto"></textarea>
+            </div>
+        </div>
+        <div class="editor">
+            <div class="opcoes">
+                <img src="./assets/mac_buttons.svg" alt="botoes mac">
+                <div class="botoes">
+                    <!-- <h3 class="linguagem">Python</h3> -->
+                    <select name="" id="" class="linguagem">
+                        <option value="python">Python</option>
+                        <option value="javaScript">JavaScript</option>
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                    </select>
+                    <button type="menu" class="highlight">Highlight</button>
+                </div>
+            </div>
+            <textarea name="editor" id="textAreaEditor" rows="30" cols="30" spellcheck="False"></textarea>
+            <div class="botao-salvar">Salvar projeto</div>
+        </div>
+    </sec>
+</body>
+</html>

@@ -1,0 +1,122 @@
+@use '../abstract/variaveis' as *;
+
+.editor {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 1rem;
+
+    .opcoes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 1rem;
+
+        // width: 100%;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+
+        border-bottom: 1px solid transparentize($cor-texto, .3);
+
+        background-color: $cor-fundo-editor;
+
+        .botoes {
+            display: flex;
+            
+            .linguagem {
+                color: $cor-texto;
+                background: none;
+                font-size: 0.8rem;
+                font-weight: bold;
+
+                padding: 0.2rem 0.5rem;
+                border: 1px solid $cor-texto;
+                border-top-left-radius: .5rem;
+                border-bottom-left-radius: .5rem;
+
+                option {
+                    background-color: $cor-fundo-editor;
+                    border: 2px solid $cor-texto;
+                }
+            }
+
+            .highlight {
+                color: $cor-texto;
+                background: none;
+                font-size: 0.8rem;
+                font-weight: bold;
+
+                padding: 0.2rem 0.5rem;
+                border: 1px solid $cor-texto;
+                border-top-right-radius: .5rem;
+                border-bottom-right-radius: .5rem;
+
+                &.active {
+                    background-color: $cor-texto;
+                    color: $cor-fundo-editor;
+                }
+            }
+        }
+
+    }
+
+    textarea {
+        // width: 100%;
+
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        background-color: $cor-fundo-editor;
+        border: none;
+        // border-top: 2rem solid #c7fc0b;
+        // box-shadow: 2px 2px 2px 1px #ffffff33;
+
+        padding: 1rem 1rem;
+        margin-bottom: 2rem;
+
+        color: $cor-texto;
+        font-size: 1rem;
+        white-space: pre-line;
+        
+
+        &:focus-within {
+            outline: none;
+        }
+    }
+
+    .botao-salvar {
+        align-self: flex-end;
+        text-align: center;
+        width: 30vw;
+
+        background-color: $cor-fundo;
+        color: $cor-texto;
+
+        font-weight: bold;
+        
+        border: 2px solid $cor-texto;
+        border-radius: 1rem;
+        padding: 1rem;
+
+        &:hover {
+            background-color: $cor-texto;
+            color: $cor-fundo;
+        }
+    }
+}
+
+
+@media (max-width: 300px) {
+    .editor {
+        .opcoes {
+            justify-content: flex-end;
+            img {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    
+    
+}

@@ -1,0 +1,10 @@
+@use './variaveis' as *;
+
+html, body {
+    font-family: $fonte;
+    background-color: $cor-fundo;
+}
+
+textarea {
+    resize: none;
+}
