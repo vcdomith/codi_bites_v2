@@ -1,8 +1,9 @@
 @use './variaveis' as *;
 
 html, body {
-    font-family: $fonte;
+    font-family: $fonte-base;
     background-color: $cor-fundo;
+    max-width: 1920px;
 }
 
 textarea {

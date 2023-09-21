@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alura Dev</title>
-    <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
     <script src="./script.js" defer></script>
 </head>
 <body>
     <nav class="cabecalho">
         <img src="./assets/logo.svg" alt="logo alura dev" class="logo">
+        <input type="search" name="" id="" placeholder="Busque por algo" class="barra-pesquisa">
         <div class="container">
-            <input type="search" class="pesquisa" style="display: none;">
             <a href="#" class="lupa">
                 <img src="./assets/lupa.svg" alt="lupa">
             </a>
@@ -23,35 +22,49 @@
                 <img src="./assets/hamburguer.svg" alt="menu hamburguer">
             </a>
         </div>
+        <a href="#" class="perfil"><img src="./assets/Photo.svg" alt="foto do perfil do usuário">Nilvo</a>
     </nav>
     <sec class="principal">
-        <div class="detalhes">
-            <div>
-                <h3>Título</h3>
-                <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto" placeholder="Nome Projeto"></textarea>
-            </div>
-            <div>
-                <h3>Descrição</h3>
-                <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto" placeholder="Descrição Projeto"></textarea>
-            </div>
+        <div class="menu-lateral">
+            <ul class="lista">
+                <li class="item">
+                    <a href="#"><img src="./assets/Icon.svg" alt="icone editor de códigos">Editor de Códigos</a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="./assets/Icon (1).svg" alt="icone comunidade">Comunidade</a>
+                </li>
+            </ul>
         </div>
-        <div class="editor">
-            <div class="opcoes">
-                <img src="./assets/mac_buttons.svg" alt="botoes mac">
-                <div class="botoes">
-                    <!-- <h3 class="linguagem">Python</h3> -->
-                    <select name="" id="" class="linguagem">
-                        <option value="python">Python</option>
-                        <option value="javaScript">JavaScript</option>
-                        <option value="C">C</option>
-                        <option value="C++">C++</option>
-                    </select>
-                    <button type="menu" class="highlight active">Highlight</button>
+        <div class="container">
+            <div class="detalhes">
+                <div>
+                    <h3>Título</h3>
+                    <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto" placeholder="Nome Projeto"></textarea>
+                </div>
+                <div>
+                    <h3>Descrição</h3>
+                    <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto" placeholder="Descrição Projeto"></textarea>
                 </div>
             </div>
-            <textarea name="editor" id="textAreaEditor" rows="30" cols="30" spellcheck="False"></textarea>
-            <div class="botao-salvar">Salvar projeto</div>
+            <div class="editor">
+                <div class="opcoes">
+                    <img src="./assets/mac_buttons.svg" alt="botoes mac">
+                    <div class="botoes">
+                        <!-- <h3 class="linguagem">Python</h3> -->
+                        <select name="" id="" class="linguagem">
+                            <option value="python">Python</option>
+                            <option value="javaScript">JavaScript</option>
+                            <option value="C">C</option>
+                            <option value="C++">C++</option>
+                        </select>
+                        <button type="menu" class="highlight active">Highlight</button>
+                    </div>
+                </div>
+                <textarea name="editor" id="textAreaEditor" rows="30" cols="30" spellcheck="False"></textarea>
+                <div class="botao-salvar">Salvar projeto</div>
+            </div>
         </div>
+        <div class="expansao-futura"></div>
     </sec>
 </body>
 </html>

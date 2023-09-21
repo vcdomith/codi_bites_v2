@@ -7,11 +7,53 @@
 
     margin: 2.1rem;
 
+    .barra-pesquisa {
+        display: none;
+    }
+
     .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         gap: 2rem;
+    }
+
+    .perfil {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .cabecalho {
+        .container {
+            .lupa {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .cabecalho {
+
+        .barra-pesquisa {
+            display: block;
+
+            width: 45vw;
+        }
+
+        .container {
+            display: none;
+        }
+
+        .perfil {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            text-decoration: none;
+            color: $cor-texto;
+        }
     }
 }

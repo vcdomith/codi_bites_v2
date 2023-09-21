@@ -1,0 +1,11 @@
+
+@media (min-width: 1440px) {
+    .principal {
+        display: flex;
+        // flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 2rem;
+        
+    }
+    
+}

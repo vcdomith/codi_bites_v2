@@ -1,6 +1,6 @@
 @use '../abstract/variaveis' as *;
 
-@mixin text-area-style($line-height, $font-size) {
+@mixin text-area-style($line-height, $font-size, $font-weight) {
 
     background: none;
     color: $cor-texto;
@@ -11,6 +11,8 @@
 
     line-height: $line-height;
     font-size: $font-size;
+    font-family: $fonte-base;
+    font-weight: $font-weight;
 
     &::placeholder {
         font-size: $font-size;
@@ -51,14 +53,14 @@
         }
     
         .nome-projeto {
-            @include text-area-style(2.5rem, 2rem)
+            @include text-area-style(2.5rem, 2rem, 600)
             
         }
     
         .descricao-projeto {
             height: 7em;
 
-            @include text-area-style(1.2rem, 1rem)
+            @include text-area-style(1.2rem, 1rem, 400)
         }
         
     }
@@ -90,11 +92,11 @@
     }
 }
 
-@media (min-width:1100px) {
+@media (max-width:1100px) {
     .detalhes {
         div {
             &:first-child {
-                width: 80%;
+                width: 90%;
             }
         }
     }

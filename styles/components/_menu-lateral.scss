@@ -1,0 +1,52 @@
+@use '../abstract/variaveis' as *;
+
+
+.menu-lateral {
+    display: none;
+}
+
+.expansao-futura {
+    display: none;
+}
+
+@media (min-width: 1440px) {
+
+    .menu-lateral {
+        display: flex;
+        
+        width: 200px;
+        height: 100vh;
+
+        padding: 2rem;
+
+        .lista {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            
+            gap: 1rem;
+
+            .item {
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    text-decoration: none;
+                    color: $cor-texto;
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .expansao-futura {
+        display: flex;
+        width: calc(200px + 4rem);
+        height: 100vh;
+    }
+}
