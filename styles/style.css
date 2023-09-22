@@ -1,7 +1,7 @@
 html, body {
   font-family: "Inter", sans-serif;
   background-color: #051D3B;
-  max-width: 1920px;
+  margin: 0;
 }
 
 textarea {
@@ -19,7 +19,8 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2.1rem;
+  padding: 2.1rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .cabecalho .barra-pesquisa {
   display: none;
@@ -40,9 +41,24 @@ textarea {
   }
 }
 @media (min-width: 1440px) {
+  .cabecalho {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    place-items: self-start center;
+  }
+  .cabecalho .logo {
+    justify-self: start;
+  }
   .cabecalho .barra-pesquisa {
     display: block;
-    width: 45vw;
+    align-self: center;
+    justify-self: center;
+    width: calc(100vw - 2 * (200px + 4rem + 2rem + 1rem));
+    outline: none;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
   }
   .cabecalho .container {
     display: none;
@@ -51,6 +67,7 @@ textarea {
     display: flex;
     align-items: center;
     gap: 1rem;
+    justify-self: end;
     text-decoration: none;
     color: #FFFFFF;
   }
@@ -159,6 +176,9 @@ textarea {
 .detalhes div h3 {
   color: rgba(255, 255, 255, 0.3);
   font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+.detalhes div h3:first-child {
   margin: 1rem 0 0.5rem 0;
 }
 .detalhes div .nome-projeto {
@@ -256,6 +276,7 @@ textarea {
     width: 200px;
     height: 100vh;
     padding: 2rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }
   .menu-lateral .lista {
     display: flex;
@@ -264,6 +285,13 @@ textarea {
     padding: 0;
     list-style-type: none;
     gap: 1rem;
+  }
+  .menu-lateral .lista .item {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .menu-lateral .lista .item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
   }
   .menu-lateral .lista .item a {
     display: flex;

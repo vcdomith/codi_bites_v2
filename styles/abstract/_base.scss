@@ -3,7 +3,9 @@
 html, body {
     font-family: $fonte-base;
     background-color: $cor-fundo;
-    max-width: 1920px;
+    // max-width: 1920px;
+
+    margin: 0;
 }
 
 textarea {

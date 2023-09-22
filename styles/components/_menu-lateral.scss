@@ -19,6 +19,9 @@
 
         padding: 2rem;
 
+        // border-right: 2px solid transparentize($cor-texto, 0.9);
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
         .lista {
             display: flex;
             flex-direction: column;
@@ -29,6 +32,14 @@
             gap: 1rem;
 
             .item {
+                padding: 1rem;
+                // border: 1px solid transparent;
+                border-radius: 1rem;
+                
+                &:hover {
+                    // border: 1px solid $cor-texto;
+                    background-color: transparentize($color: $cor-texto, $amount: 0.85);
+                }
 
                 a {
                     display: flex;
