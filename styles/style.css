@@ -20,7 +20,7 @@ textarea {
   justify-content: space-between;
   align-items: center;
   padding: 2.1rem;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 .cabecalho .barra-pesquisa {
   display: none;
@@ -306,5 +306,6 @@ textarea {
     display: flex;
     width: calc(200px + 4rem);
     height: 100vh;
+    border-left: 2px solid rgba(12, 12, 12, 0.2745098039);
   }
 }/*# sourceMappingURL=style.css.map */
