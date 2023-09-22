@@ -20,7 +20,7 @@
         padding: 2rem;
 
         // border-right: 2px solid transparentize($cor-texto, 0.9);
-        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
         .lista {
             display: flex;
@@ -60,6 +60,6 @@
         width: calc(200px + 4rem);
         height: 100vh;
 
-        border-left: 2px solid #0c0c0c46;
+        // border-left: 2px solid #0c0c0c46;
     }
 }

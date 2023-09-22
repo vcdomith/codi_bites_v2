@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   font-family: "Inter", sans-serif;
   background-color: #051D3B;
   margin: 0;
@@ -6,6 +7,22 @@ html, body {
 
 textarea {
   resize: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+/* Track */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1960784314);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media (min-width: 1440px) {
@@ -45,6 +62,8 @@ textarea {
     display: grid;
     grid-template-columns: 1fr 6fr 1fr;
     place-items: self-start center;
+    align-items: center;
+    padding: 1.5rem;
   }
   .cabecalho .logo {
     justify-self: start;
@@ -58,7 +77,19 @@ textarea {
     background: none;
     border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 1rem 1.5rem;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+  }
+  .cabecalho .barra-pesquisa::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .cabecalho .barra-pesquisa::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .cabecalho .barra-pesquisa:focus-within {
+    border: 2px solid #1162c8;
   }
   .cabecalho .container {
     display: none;
@@ -133,22 +164,6 @@ textarea {
 .editor textarea:focus-within {
   outline: none;
 }
-.editor .botao-salvar {
-  align-self: flex-end;
-  text-align: center;
-  width: 30vw;
-  max-width: 300px;
-  background-color: #051D3B;
-  color: #FFFFFF;
-  font-weight: bold;
-  border: 2px solid #FFFFFF;
-  border-radius: 1rem;
-  padding: 1rem;
-}
-.editor .botao-salvar:hover {
-  background-color: #FFFFFF;
-  color: #051D3B;
-}
 
 @media (max-width: 320px) {
   .editor .opcoes {
@@ -159,8 +174,64 @@ textarea {
   }
 }
 @media (min-width: 1440px) {
-  .principal .container {
+  .container {
     flex: 1;
+  }
+}
+.personalizacao-salvar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.personalizacao-salvar .container-seletor {
+  display: flex;
+}
+.personalizacao-salvar .container-seletor .label-seletor-cor {
+  background-color: #fff;
+  width: 54px;
+  height: 100%;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-right: 2px solid #051D3B;
+  cursor: pointer;
+}
+.personalizacao-salvar .container-seletor .label-seletor-cor .seletor-cor {
+  visibility: hidden;
+}
+.personalizacao-salvar .container-seletor input {
+  height: 100%;
+  outline: none;
+  border: none;
+  padding: 0;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding-left: 1rem;
+}
+.personalizacao-salvar .botao-salvar {
+  align-self: flex-end;
+  text-align: center;
+  width: 30vw;
+  max-width: 300px;
+  background-color: #051D3B;
+  color: #FFFFFF;
+  font-weight: bold;
+  border: 2px solid #FFFFFF;
+  border-radius: 1rem;
+  padding: 0.6rem;
+}
+.personalizacao-salvar .botao-salvar:hover {
+  background-color: #FFFFFF;
+  color: #051D3B;
+}
+
+@media (min-width: 768px) {
+  .personalizacao-salvar .botao-salvar {
+    width: 20vw;
+  }
+}
+@media (min-width: 1440px) {
+  .personalizacao-salvar .botao-salvar {
+    width: 10vw;
   }
 }
 .detalhes {
@@ -257,7 +328,7 @@ textarea {
     height: 10em;
   }
 }
-@media (max-width: 1100px) {
+@media (min-width: 1100px) {
   .detalhes div:first-child {
     width: 90%;
   }
@@ -276,7 +347,6 @@ textarea {
     width: 200px;
     height: 100vh;
     padding: 2rem;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   }
   .menu-lateral .lista {
     display: flex;
@@ -306,6 +376,5 @@ textarea {
     display: flex;
     width: calc(200px + 4rem);
     height: 100vh;
-    border-left: 2px solid rgba(12, 12, 12, 0.2745098039);
   }
 }/*# sourceMappingURL=style.css.map */

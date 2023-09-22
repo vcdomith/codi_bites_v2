@@ -44,6 +44,9 @@ $tamanho-menu-lateral: calc(200px + 4rem);
         display: grid;
         grid-template-columns: 1fr 6fr 1fr;
         place-items: self-start center;
+        align-items: center;
+
+        padding: 1.5rem;
 
         .logo {
             justify-self: start;
@@ -61,7 +64,19 @@ $tamanho-menu-lateral: calc(200px + 4rem);
 
             border: 2px solid transparentize($cor-texto, .75);
             border-radius: 0.5rem;
-            padding: 0.5rem;
+            padding: 1rem 1.5rem;
+
+            color: $cor-texto;
+            font-size: 1rem;
+            font-family: $fonte-base;
+
+            &::placeholder {
+                color: transparentize($cor-texto, 0.5);
+            }
+
+            &:focus-within {
+                border: 2px solid lighten($cor-fundo, 30%);
+            }
         }
 
         .container {

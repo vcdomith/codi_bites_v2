@@ -1,0 +1,86 @@
+@use '../abstract/variaveis' as *;
+
+
+.personalizacao-salvar {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem;
+
+    .container-seletor {
+        display: flex;
+
+        .label-seletor-cor {
+    
+            background-color: #fff;
+            width: 54px;
+            height: 100%;
+    
+            border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem;
+            
+            border-right: 2px solid $cor-fundo;
+            
+            cursor: pointer;
+            
+            .seletor-cor {
+                visibility: hidden;
+            }
+        }
+        
+        input {
+            height: 100%;
+            
+            // reset
+            outline: none;
+            border: none;
+            padding: 0;
+
+            border-bottom-right-radius: 1rem;
+            border-top-right-radius: 1rem;
+
+            padding-left: 1rem;
+        }
+    }
+
+
+
+    .botao-salvar {
+        align-self: flex-end;
+        text-align: center;
+        width: 30vw;
+        max-width: 300px;
+    
+        background-color: $cor-fundo;
+        color: $cor-texto;
+    
+        font-weight: bold;
+        
+        border: 2px solid $cor-texto;
+        border-radius: 1rem;
+        padding: .6rem;
+    
+        &:hover {
+            background-color: $cor-texto;
+            color: $cor-fundo;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .personalizacao-salvar {
+
+        .botao-salvar {
+            width: 20vw;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .personalizacao-salvar {
+
+        .botao-salvar {
+            width: 10vw;
+        }
+    }
+}

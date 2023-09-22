@@ -83,27 +83,6 @@
             outline: none;
         }
     }
-
-    .botao-salvar {
-        align-self: flex-end;
-        text-align: center;
-        width: 30vw;
-        max-width: 300px;
-
-        background-color: $cor-fundo;
-        color: $cor-texto;
-
-        font-weight: bold;
-        
-        border: 2px solid $cor-texto;
-        border-radius: 1rem;
-        padding: 1rem;
-
-        &:hover {
-            background-color: $cor-texto;
-            color: $cor-fundo;
-        }
-    }
 }
 
 
@@ -124,10 +103,8 @@
 }
 
 @media (min-width: 1440px) {
-    .principal {
-        
-        .container {
-            flex: 1;
-        }
+    .container {
+        flex: 1;
     }
+    
 }
