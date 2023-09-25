@@ -3,9 +3,10 @@
 
 .personalizacao-salvar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     padding: 1rem;
+    gap: 1rem;
 
     .container-seletor {
         display: flex;
@@ -16,8 +17,10 @@
             width: 54px;
             height: 100%;
     
-            border-bottom-left-radius: 1rem;
-            border-top-left-radius: 1rem;
+            // border-bottom-left-radius: 1rem;
+            // border-top-left-radius: 1rem;
+
+            border-radius: 1rem;
             
             border-right: 2px solid $cor-fundo;
             
@@ -36,8 +39,10 @@
             border: none;
             padding: 0;
 
-            border-bottom-right-radius: 1rem;
-            border-top-right-radius: 1rem;
+            // border-bottom-right-radius: 1rem;
+            // border-top-right-radius: 1rem;
+
+            border-radius: 1rem;
 
             padding-left: 1rem;
         }
