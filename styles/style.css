@@ -201,7 +201,6 @@ textarea {
 .personalizacao-salvar .container-seletor {
   display: flex;
   flex-direction: row;
-  width: auto;
   flex: 1;
 }
 .personalizacao-salvar .container-seletor .label-seletor-cor {
@@ -219,6 +218,7 @@ textarea {
 .personalizacao-salvar .container-seletor .seletor-texto {
   height: 100%;
   flex: 1;
+  max-width: 300px;
   outline: none;
   border: none;
   padding: 0;

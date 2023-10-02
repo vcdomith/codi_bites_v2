@@ -12,7 +12,6 @@
     .container-seletor {
         display: flex;
         flex-direction: row;
-        width: auto;
         flex: 1;
 
         .label-seletor-cor {
@@ -38,6 +37,7 @@
         .seletor-texto {
             height: 100%;
             flex: 1;
+            max-width: 300px;
         
             // reset
             outline: none;
