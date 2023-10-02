@@ -3,16 +3,20 @@
 
 .personalizacao-salvar {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
 
-    padding: 1rem;
+    margin: 1rem;
     gap: 1rem;
 
     .container-seletor {
         display: flex;
+        flex-direction: row;
+        width: auto;
+        flex: 1;
 
         .label-seletor-cor {
-    
+            display: flex;
             background-color: #fff;
             width: 54px;
             height: 100%;
@@ -31,9 +35,10 @@
             }
         }
         
-        input {
+        .seletor-texto {
             height: 100%;
-            
+            flex: 1;
+        
             // reset
             outline: none;
             border: none;
@@ -45,6 +50,9 @@
             border-radius: 1rem;
 
             padding-left: 1rem;
+
+            font-weight: bold;
+            font-family: $fonte-base;
         }
     }
 

@@ -36,23 +36,23 @@
             </ul>
         </div>
         <div class="container">
-            <div>
+            <div class="wrapper">
                 <div class="detalhes">
                     <div>
                         <h3>Título</h3>
-                        <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto" placeholder="Nome Projeto"></textarea>
+                        <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto param-objeto" placeholder="Nome Projeto"></textarea>
                     </div>
                     <div>
                         <h3>Descrição</h3>
-                        <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto" placeholder="Descrição Projeto"></textarea>
+                        <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto param-objeto" placeholder="Descrição Projeto"></textarea>
                     </div>
                 </div>
                 <div class="personalizacao-salvar">
                     <div class="container-seletor">
                         <label for="input" class="label-seletor-cor">
-                            <input type="color" class="seletor-cor">
+                            <input type="color" class="seletor-cor param-objeto">
                         </label>
-                        <input type="text" id="seletor-cor-texto">
+                        <input type="text" class="seletor-texto param-objeto" id="seletor-cor-texto" >
                     </div>
                     <div class="botao-salvar">Salvar projeto</div>
                 </div>
@@ -71,7 +71,7 @@
                         <button type="menu" class="highlight active">Highlight</button>
                     </div>
                 </div>
-                <textarea name="editor" id="textAreaEditor" rows="30" cols="30" spellcheck="False"></textarea>
+                <textarea name="editor" class="param-objeto" id="textAreaEditor" rows="30" cols="30" spellcheck="False"></textarea>
             </div>
         </div>
         <div class="expansao-futura"></div>

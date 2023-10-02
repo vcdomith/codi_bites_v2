@@ -193,14 +193,19 @@ textarea {
 }
 .personalizacao-salvar {
   display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem;
   gap: 1rem;
 }
 .personalizacao-salvar .container-seletor {
   display: flex;
+  flex-direction: row;
+  width: auto;
+  flex: 1;
 }
 .personalizacao-salvar .container-seletor .label-seletor-cor {
+  display: flex;
   background-color: #fff;
   width: 54px;
   height: 100%;
@@ -211,13 +216,16 @@ textarea {
 .personalizacao-salvar .container-seletor .label-seletor-cor .seletor-cor {
   visibility: hidden;
 }
-.personalizacao-salvar .container-seletor input {
+.personalizacao-salvar .container-seletor .seletor-texto {
   height: 100%;
+  flex: 1;
   outline: none;
   border: none;
   padding: 0;
   border-radius: 1rem;
   padding-left: 1rem;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
 }
 .personalizacao-salvar .botao-salvar {
   align-self: flex-end;
