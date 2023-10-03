@@ -1,3 +1,4 @@
+
 // Usar com o onchange="textAreaChanged(this)" no html
 
 // function textAreaChanged(element) {
@@ -29,19 +30,6 @@ highlightButton.addEventListener('click', function() {
     }
 })
 
-const colorPickerColor = document.querySelector('.label-seletor-cor');
-const colorPicker = document.querySelector('.seletor-cor');
-const colorPickerText = document.getElementById('seletor-cor-texto');
-
-colorPickerColor.addEventListener('click', () => {
-    colorPicker.click();
-})
-
-colorPicker.addEventListener('input', () => {
-    colorPickerColor.style.backgroundColor = colorPicker.value;
-    colorPickerText.style.backgroundColor = colorPicker.value;
-})
-
 // colorPicker.on('change', 'input[type=color]', function() {
 //     this.parentNode.style.backgroundColor = this.value;
 //   });
@@ -55,6 +43,7 @@ colorPicker.addEventListener('input', () => {
 //const elementList = Array.from(document.querySelectorAll('.param-objeto'))
 
 //  const getElementListValues = (list) => list.map((element) => element.value);
+
 
 class ElementArray {
 

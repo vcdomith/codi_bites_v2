@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
     <script src="./script.js" defer></script>
+    <script src="./color.js" defer></script>
 </head>
 <body>
     <nav class="cabecalho">
@@ -54,12 +55,18 @@
                         </label>
                         <input type="text" size="1" class="seletor-texto param-objeto" id="seletor-cor-texto" >
                     </div>
-                    <div class="botao-salvar">Salvar projeto</div>
+                    <button type="button" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
+                    <!-- <div class="botao-salvar">Salvar projeto</div> -->
                 </div>
             </div>
             <div class="editor">
                 <div class="opcoes">
-                    <img src="./assets/mac_buttons.svg" alt="botoes mac">
+                    <!-- <img src="./assets/mac_buttons.svg" alt="botoes mac"> -->
+                    <div class="icone-wrapper">
+                        <div class="quadrado-icone"></div>
+                        <div class="quadrado-icone"></div>
+                        <div class="quadrado-icone"></div>
+                    </div>
                     <div class="botoes">
                         <!-- <h3 class="linguagem">Python</h3> -->
                         <select name="" id="" class="linguagem">

@@ -418,4 +418,157 @@ textarea {
     width: calc(200px + 4rem);
     height: 100vh;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.container .lista-posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+.container .lista-posts .post-novo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem;
+  height: 20vh;
+}
+.container .lista-posts .post-novo button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  width: 100%;
+  border-radius: 1rem;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  gap: 1rem;
+  cursor: pointer;
+}
+.container .lista-posts .post-novo button:hover {
+  border: 2px dashed #FFFFFF;
+}
+.container .lista-posts .post-novo button:hover img {
+  filter: brightness(0) saturate(100%) invert(97%) sepia(97%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%);
+  color: rgba(255, 255, 255, 0.5019607843);
+}
+.container .lista-posts .post-novo button:hover p {
+  color: #FFFFFF;
+}
+.container .lista-posts .post-novo button img {
+  filter: brightness(0) saturate(100%) invert(57%) sepia(33%) saturate(173%) hue-rotate(173deg) brightness(92%) contrast(82%);
+  width: 50px;
+}
+.container .lista-posts .post-novo button p {
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.container .lista-posts .post {
+  width: 100%;
+}
+.container .lista-posts .post .editor {
+  margin-top: 0;
+}
+.container .lista-posts .post .editor .opcoes {
+  display: flex;
+}
+.container .lista-posts .post .editor .opcoes h5 {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 1rem;
+}
+.container .lista-posts .post .editor .comunidade-codigo {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 40vh;
+  margin: 0;
+}
+.container .lista-posts .post .detalhes-post {
+  display: grid;
+  grid-template-areas: "titulo titulo" "descricao descricao" "linguagem x" "social autor";
+  margin: 0 1rem;
+  padding: 1.5rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: rgba(20, 20, 20, 0.7);
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+}
+.container .lista-posts .post .detalhes-post .comunidade-titulo {
+  grid-area: titulo;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  background: none;
+  outline: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 3rem;
+  font-weight: 600;
+}
+.container .lista-posts .post .detalhes-post .comunidade-descricao {
+  grid-area: descricao;
+  padding: 0;
+  padding-right: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: none;
+  outline: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+.container .lista-posts .post .detalhes-post h4 {
+  grid-area: linguagem;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+.container .lista-posts .post .detalhes-post .social {
+  grid-area: social;
+  display: flex;
+  gap: 1rem;
+  place-self: end start;
+}
+.container .lista-posts .post .detalhes-post .social div {
+  display: flex;
+  gap: 0.5rem;
+}
+.container .lista-posts .post .detalhes-post .social div p {
+  font-family: "Inter", sans-serif;
+}
+.container .lista-posts .post .detalhes-post .autor {
+  grid-area: autor;
+  display: flex;
+  place-self: end end;
+}
+.container .lista-posts .post .detalhes-post .autor p {
+  margin: 0;
+}
+
+@media (min-width: 1100px) {
+  .container .lista-posts {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .container .lista-posts .post-novo {
+    min-width: 550px;
+    min-height: 100px;
+  }
+  .container .lista-posts .post {
+    max-width: calc(550px + 2rem);
+    min-height: 500px;
+  }
+  .container .lista-posts .post .editor .comunidade-codigo {
+    height: 30vh;
+  }
+}/*# sourceMappingURL=style_comunidade.css.map */

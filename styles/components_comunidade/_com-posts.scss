@@ -1,5 +1,18 @@
 @use '../abstract/variaveis' as *;
 
+// @mixin icone-editor() {
+//     .icone-wrapper {
+//         display: flex;
+//         gap: 8px;
+
+//         .quadrado-icone {
+//             width: 12px;
+//             height: 12px;
+//             background-color: $cor-texto;
+//         }
+//     }
+// }
+
 .container {
     display: flex;
     justify-content: center;
@@ -22,29 +35,50 @@
             height: 20vh;
 
             
+            
             button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
+                
                 background: none;
                 width: 100%;
                 
                 border-radius: 1rem;
-                border: 2px dashed $cor-texto;
+                border: 2px dashed transparentize($cor-texto, 0.5);
                 
                 color: $cor-texto;
-
+                
                 gap: 1rem;
+                
+                cursor: pointer;
 
+                &:hover {
+                    
+                    border: 2px dashed $cor-texto;
+
+                    img {
+                        filter: brightness(0) saturate(100%) invert(97%) sepia(97%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%);
+
+                        color: #ffffff80;
+                    }
+
+                    p {
+                        color: $cor-texto;
+                    }
+
+                }
+                
                 img {
-                    filter: brightness(0) saturate(100%) invert(97%) sepia(97%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%);
+                    filter: brightness(0) saturate(100%) invert(57%) sepia(33%) saturate(173%) hue-rotate(173deg) brightness(92%) contrast(82%);
                     width: 50px;
                 }
 
                 p {
                     font-family: $fonte-base;
                     font-size: 2.5rem;
+
+                    color: transparentize($cor-texto, 0.5);
                 }
             }
         }
@@ -54,6 +88,20 @@
 
             .editor {
                 margin-top: 0;
+
+                .opcoes {
+                    display: flex;
+                    
+                    // @include icone-editor();
+
+                    h5 {
+                        margin: 0;
+
+                        font-family: $fonte-base;
+                        color: $cor-texto;
+                        font-size: 1rem;
+                    }
+                }
 
                 .comunidade-codigo {
 
@@ -75,7 +123,7 @@
                 grid-template-areas: 
                 'titulo titulo'
                 'descricao descricao'
-                'linguagem-tag x'
+                'linguagem x'
                 'social autor'
                 ;
 
@@ -97,7 +145,7 @@
                 .comunidade-titulo {
                     grid-area: titulo;
                     padding: 0;
-                    margin-bottom: 1rem;
+                    margin-bottom: 1.5rem;
 
                     background: none;
                     outline: none;
@@ -112,7 +160,8 @@
                 .comunidade-descricao {
                     grid-area: descricao;
                     padding: 0;
-                    margin-bottom: 1rem;
+                    padding-right: 0.5rem;
+                    margin-bottom: 1.5rem;
 
                     background: none;
                     outline: none;
@@ -121,34 +170,49 @@
                     font-family: $fonte-base;
                     color: $cor-texto;
                     font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5rem;
                 }
 
                 h4 {
-                    grid-area: linguagem-tag;
+                    grid-area: linguagem;
+
+                    margin: 0;
+                    margin-bottom: 2rem;
                 }
 
                 .social {
                     grid-area: social;
                     display: flex;
-                }
+                    gap: 1rem;
 
-                h5 {
-                    grid-area: linguagem-tag;
-                    margin: 0.5rem 0;
-                    place-self: center end;
+                    place-self: end start;
 
-                    font-size: 1rem;
+                    div {
+                        display: flex;
+                        gap: 0.5rem;
+                        
+                        p {
+                            font-family: $fonte-base;
+                        }
+                    }
+
                 }
 
                 .autor {
                     grid-area: autor;
                     display: flex;
-                    place-self: center end;
+                    place-self: end end;
+
+                    p{
+                        margin: 0;
+                    }
                 }
             }
         }
     }
 }
+
 
 @media (min-width: 1100px) {
     .container {
@@ -159,12 +223,12 @@
             // align-items: center;
     
             .post-novo {
-                min-width: 500px;
-                min-height: 780px;
+                min-width: 550px;
+                min-height: 100px;
             }
     
             .post {
-                max-width: calc(500px + 2*(1rem));
+                max-width: calc(550px + 2*(1rem));
                 min-height: 500px;
                 // height: 100%;
 

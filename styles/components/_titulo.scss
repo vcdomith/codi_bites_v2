@@ -60,15 +60,18 @@
     
         }
     
+        textarea {
+            max-height: 130px;
+        }
         .nome-projeto {
-            @include text-area-style(2.5rem, 2rem, 600)
+            @include text-area-style(3rem, 2.4rem, 600)
             
         }
     
         .descricao-projeto {
-            height: 7em;
+            height: 5rem;
 
-            @include text-area-style(1.2rem, 1rem, 400)
+            @include text-area-style(1.5rem, 1.2rem, 400)
         }
         
     }

@@ -4,15 +4,16 @@
 .personalizacao-salvar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
 
-    margin: 1rem;
+    margin: 2rem 1rem 1rem 1rem;
     gap: 1rem;
 
     .container-seletor {
         display: flex;
-        flex-direction: row;
+        justify-content: end;
         flex: 1;
+        
 
         .label-seletor-cor {
             display: flex;
@@ -20,10 +21,10 @@
             width: 54px;
             height: 100%;
     
-            // border-bottom-left-radius: 1rem;
-            // border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem;
 
-            border-radius: 1rem;
+            // border-radius: 1rem;
             
             border-right: 2px solid $cor-fundo;
             
@@ -37,22 +38,23 @@
         .seletor-texto {
             height: 100%;
             flex: 1;
-            max-width: 300px;
+            max-width: 200px;
         
             // reset
             outline: none;
             border: none;
             padding: 0;
 
-            // border-bottom-right-radius: 1rem;
-            // border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            border-top-right-radius: 1rem;
 
-            border-radius: 1rem;
+            // border-radius: 1rem;
 
             padding-left: 1rem;
 
             font-weight: bold;
             font-family: $fonte-base;
+            font-size: 1rem;
         }
     }
 
@@ -66,12 +68,16 @@
     
         background-color: $cor-fundo;
         color: $cor-texto;
-    
+        
+        font-family: $fonte-base;
         font-weight: bold;
+        font-size: 1rem;
         
         border: 2px solid $cor-texto;
         border-radius: 1rem;
         padding: .6rem;
+        
+        cursor: pointer;
     
         &:hover {
             background-color: $cor-texto;
