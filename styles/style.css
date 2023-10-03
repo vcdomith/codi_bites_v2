@@ -442,7 +442,7 @@ textarea {
 .container .lista-posts .post .editor {
   margin-top: 0;
 }
-.container .lista-posts .post .editor textarea {
+.container .lista-posts .post .editor .comunidade-codigo {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   height: 40vh;
@@ -515,7 +515,7 @@ textarea {
     max-width: calc(500px + 2rem);
     min-height: 500px;
   }
-  .container .lista-posts .post .editor textarea {
+  .container .lista-posts .post .editor .comunidade-codigo {
     height: 30vh;
   }
 }/*# sourceMappingURL=style.css.map */
