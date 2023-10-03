@@ -83,6 +83,12 @@
             background-color: $cor-texto;
             color: $cor-fundo;
         }
+
+        &:active {
+            background-color: lighten($cor-fundo, 5%);
+            border: 2px solid lighten($cor-fundo, 5%);
+            color: $cor-texto;
+        }
     }
 }
 

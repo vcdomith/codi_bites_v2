@@ -26,12 +26,12 @@ textarea {
 /* Handle */
 ::-webkit-scrollbar-thumb {
 //   background: lighten($cor-fundo, 10%);
-  background: transparentize($cor-texto, 0.9);
+  background: transparentize($cor-texto, 0.8);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: transparentize($cor-texto, 0.7);
+  background: transparentize($cor-texto, 0.6);
   cursor: pointer;
 }
 

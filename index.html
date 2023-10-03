@@ -41,21 +41,21 @@
                 <div class="detalhes">
                     <div>
                         <h3>Título</h3>
-                        <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto param-objeto" placeholder="Nome Projeto"></textarea>
+                        <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
                     </div>
                     <div>
                         <h3>Descrição</h3>
-                        <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto param-objeto" placeholder="Descrição Projeto"></textarea>
+                        <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
                     </div>
                 </div>
                 <div class="personalizacao-salvar">
                     <div class="container-seletor">
                         <label for="input" class="label-seletor-cor">
-                            <input type="color" class="seletor-cor param-objeto">
+                            <input type="color" class="seletor-cor param-objeto" required>
                         </label>
-                        <input type="text" size="1" class="seletor-texto param-objeto" id="seletor-cor-texto" >
+                        <input type="text" size="1" class="seletor-texto param-objeto" id="seletor-cor-texto" placeholder="Tag projeto" required>
                     </div>
-                    <button type="button" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
+                    <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
                     <!-- <div class="botao-salvar">Salvar projeto</div> -->
                 </div>
             </div>
@@ -78,7 +78,7 @@
                         <button type="menu" class="highlight active">Highlight</button>
                     </div>
                 </div>
-                <textarea name="editor" class="param-objeto" id="textAreaEditor" rows="30" cols="30" spellcheck="False"></textarea>
+                <textarea name="editor" class="param-objeto" id="textAreaEditor" rows="30" cols="30" spellcheck="False" required></textarea>
             </div>
         </div>
         <div class="expansao-futura"></div>
