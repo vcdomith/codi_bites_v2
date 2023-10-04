@@ -167,11 +167,12 @@ textarea {
   background-color: #FFFFFF;
   color: #141414;
 }
-.editor textarea {
+.editor code-input {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   background-color: #141414;
   border: none;
+  margin: 0;
   padding: 1rem 1rem;
   font-family: "Roboto Mono", monospace;
   color: #FFFFFF;
@@ -179,7 +180,7 @@ textarea {
   white-space: pre-line;
   height: 40vh;
 }
-.editor textarea:focus-within {
+.editor code-input:focus-within {
   outline: none;
 }
 

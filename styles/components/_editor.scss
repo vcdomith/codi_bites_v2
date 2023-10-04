@@ -62,7 +62,7 @@
 
     }
 
-    textarea {
+    code-input {
         // width: 100%;
 
         border-bottom-left-radius: 1rem;
@@ -72,6 +72,7 @@
         // border-top: 2rem solid #c7fc0b;
         // box-shadow: 2px 2px 2px 1px #ffffff33;
 
+        margin: 0;
         padding: 1rem 1rem;
         // margin-bottom: 1rem;
 
@@ -81,11 +82,12 @@
         white-space: pre-line;
 
         height: 40vh;
-        
 
         &:focus-within {
             outline: none;
         }
+
+        
     }
 }
 
