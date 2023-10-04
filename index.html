@@ -12,20 +12,19 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/prism.css">
 
     <!-- Syntax Highlight | Highlight.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 
-    <!-- code-input cdn -->
+    <!-- code-input local -->
     <script src="./code-input/code-input.min.js"></script>
     <link rel="stylesheet" href="./code-input/code-input.min.css">
 
     <!-- code-input plugins -->
     <script src="./code-input/plugins/indent.js"></script>
     <script>
-        codeInput.registerTemplate("theme-atom-one-dark", 
+        codeInput.registerTemplate("editor", 
           codeInput.templates.hljs(
             hljs, 
             [ 
@@ -118,6 +117,5 @@
         </div>
         <div class="expansao-futura"></div>
     </sec>
-    <!-- <script>hljs.highlightAll();</script> -->
 </body>
 </html>

@@ -9,13 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style_comunidade.css">
     <!-- <script src="./script.js" defer></script> -->
+
+     <!-- Syntax Highlight | Highlight.js -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+ 
+     <!-- code-input local -->
+     <script src="./code-input/code-input.min.js"></script>
+     <link rel="stylesheet" href="./code-input/code-input.min.css">
+ 
+     <!-- code-input plugins -->
+     <script src="./code-input/plugins/indent.js"></script>
+     <script>
+         codeInput.registerTemplate("comunidade", 
+           codeInput.templates.hljs(
+             hljs, 
+             [ 
+               new codeInput.plugins.Indent()
+             ]
+           )
+           );
+     </script>
+ 
+     <!-- JS -->
+     <!-- <script src="./script.js" defer></script>
+     <script src="./color.js" defer></script> -->
 </head>
 <body>
     <nav class="cabecalho">
         <img src="./assets/logo.svg" alt="logo alura dev" class="logo">
         <input type="search" name="" id="" placeholder="Busque por algo" class="barra-pesquisa">
         <div class="container">
-            <a href="./index.html" class="lupa">
+            <a href="#" class="lupa">
                 <img src="./assets/lupa.svg" alt="lupa">
             </a>
             <a href="#" class="menu">
@@ -28,10 +53,10 @@
         <div class="menu-lateral">
             <ul class="lista">
                 <li class="item">
-                    <a href="#"><img src="./assets/Icon.svg" alt="icone editor de códigos">Editor de Códigos</a>
+                    <a href="./index.html"><img src="./assets/Icon.svg" alt="icone editor de códigos">Editor de Códigos</a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="./assets/Icon (1).svg" alt="icone comunidade">Comunidade</a>
+                    <a href="./comunidade.html"><img src="./assets/Icon (1).svg" alt="icone comunidade">Comunidade</a>
                 </li>
             </ul>
         </div>
@@ -56,7 +81,8 @@
                             </div>
                             <h5>Tag</h5>
                         </div>
-                        <textarea name="editor" class="param-objeto comunidade-codigo" id="textAreaEditor" rows="30" cols="30" spellcheck="False" readonly></textarea>
+                        <code-input class="comunidade-codigo" lang="py" placeholder="Escreva seu código aqui"></code-input>
+                        <!-- <textarea name="editor" class="param-objeto comunidade-codigo" id="textAreaEditor" rows="30" cols="30" spellcheck="False" readonly></textarea> -->
                     </div>
                     <div class="detalhes-post">
                         <textarea name="" id="" class="comunidade-titulo"
