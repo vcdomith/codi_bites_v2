@@ -218,9 +218,9 @@
     .container {
 
         .lista-posts {
-            flex-direction: row;
-            flex-wrap: wrap;
-            // align-items: center;
+            flex-direction: column;
+            // flex-wrap: wrap;
+            align-items: center;
     
             .post-novo {
                 min-width: 550px;
