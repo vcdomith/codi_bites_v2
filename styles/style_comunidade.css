@@ -499,7 +499,7 @@ textarea {
 }
 .container .lista-posts .post .detalhes-post {
   display: grid;
-  grid-template-areas: "titulo titulo" "descricao descricao" "linguagem x" "social autor";
+  grid-template-areas: "titulo titulo" "descricao descricao" "linguagem x" "social-autor social-autor";
   margin: 0 1rem;
   padding: 1.5rem;
   border-top: 2px solid rgba(255, 255, 255, 0.1);
@@ -540,26 +540,27 @@ textarea {
   margin: 0;
   margin-bottom: 2rem;
 }
-.container .lista-posts .post .detalhes-post .social {
-  grid-area: social;
+.container .lista-posts .post .detalhes-post .social-autor {
+  grid-area: social-autor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .lista-posts .post .detalhes-post .social-autor .social {
   display: flex;
   gap: 1rem;
-  place-self: end start;
 }
-.container .lista-posts .post .detalhes-post .social div {
+.container .lista-posts .post .detalhes-post .social-autor .social div {
   display: flex;
   gap: 0.5rem;
 }
-.container .lista-posts .post .detalhes-post .social div p {
+.container .lista-posts .post .detalhes-post .social-autor .social div p {
   font-family: "Inter", sans-serif;
 }
-.container .lista-posts .post .detalhes-post .autor {
-  grid-area: autor;
+.container .lista-posts .post .detalhes-post .social-autor .autor div {
   display: flex;
-  place-self: end end;
-}
-.container .lista-posts .post .detalhes-post .autor p {
-  margin: 0;
+  align-items: center;
+  gap: 1rem;
 }
 
 @media (min-width: 1100px) {
@@ -576,6 +577,6 @@ textarea {
     min-height: 500px;
   }
   .container .lista-posts .post .editor .comunidade-codigo {
-    height: 30vh;
+    height: 40vh;
   }
 }/*# sourceMappingURL=style_comunidade.css.map */

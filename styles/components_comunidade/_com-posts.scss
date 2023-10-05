@@ -124,7 +124,7 @@
                 'titulo titulo'
                 'descricao descricao'
                 'linguagem x'
-                'social autor'
+                'social-autor social-autor'
                 ;
 
                 // justify-content: space-between;
@@ -181,31 +181,39 @@
                     margin-bottom: 2rem;
                 }
 
-                .social {
-                    grid-area: social;
+                .social-autor {
+                    grid-area: social-autor;
+
                     display: flex;
-                    gap: 1rem;
+                    justify-content: space-between;
+                    align-items: center;
 
-                    place-self: end start;
-
-                    div {
+                    .social {
                         display: flex;
-                        gap: 0.5rem;
-                        
-                        p {
-                            font-family: $fonte-base;
+                        gap: 1rem;
+    
+                        // place-self: end start;
+    
+                        div {
+                            display: flex;
+                            gap: 0.5rem;
+                            
+                            p {
+                                font-family: $fonte-base;
+                            }
                         }
+    
                     }
+    
+                    .autor {
+                        // place-self: end end;
+                        
+                        div {
 
-                }
-
-                .autor {
-                    grid-area: autor;
-                    display: flex;
-                    place-self: end end;
-
-                    p{
-                        margin: 0;
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                        }
                     }
                 }
             }
@@ -235,7 +243,7 @@
                 .editor {
 
                     .comunidade-codigo {
-                        height: 30vh;
+                        height: 40vh;
                     }
                 }
             }
