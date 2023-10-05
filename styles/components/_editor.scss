@@ -79,7 +79,7 @@
         font-family: $fonte-editor;
         color: $cor-texto;
         font-size: 1rem;
-        white-space: pre-line;
+        // white-space: pre-line;
 
         height: 40vh;
 
@@ -87,6 +87,12 @@
             outline: none;
         }
         
+        pre{
+
+            code {
+                background-color: $cor-fundo-editor !important;
+            }
+        }
     }
 }
 

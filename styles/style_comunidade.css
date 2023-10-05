@@ -177,11 +177,13 @@ textarea {
   font-family: "Roboto Mono", monospace;
   color: #FFFFFF;
   font-size: 1rem;
-  white-space: pre-line;
   height: 40vh;
 }
 .editor code-input:focus-within {
   outline: none;
+}
+.editor code-input pre code {
+  background-color: #141414 !important;
 }
 
 @media (max-width: 320px) {
