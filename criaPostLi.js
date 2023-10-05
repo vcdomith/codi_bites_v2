@@ -35,8 +35,10 @@
 
 const listaPosts = document.querySelector('.lista-posts')
 
-function criaPost() {
+function criaPost(projeto) {
 
     const liPost = document.createElement('li')
-    
+    liPost.classList.add('post')
+
+
 }
