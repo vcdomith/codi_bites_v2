@@ -71,19 +71,19 @@
                 <div class="detalhes">
                     <div>
                         <h3>Título</h3>
-                        <textarea type="text" name="nome-projeto" id="textAreaNome" class="nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
+                        <textarea type="text" name="nome-projeto" id="textAreaNome" class="titulo nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
                     </div>
                     <div>
                         <h3>Descrição</h3>
-                        <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
+                        <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
                     </div>
                 </div>
                 <div class="personalizacao-salvar">
                     <div class="container-seletor">
                         <label for="input" class="label-seletor-cor">
-                            <input type="color" class="seletor-cor param-objeto" required>
+                            <input type="color" class="cor seletor-cor param-objeto" required>
                         </label>
-                        <input type="text" size="1" class="seletor-texto param-objeto" id="seletor-cor-texto" placeholder="Tag projeto" required>
+                        <input type="text" size="1" class="tag seletor-texto param-objeto" id="seletor-cor-texto" placeholder="Tag projeto" required>
                     </div>
                     <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
                     <!-- <div class="botao-salvar">Salvar projeto</div> -->
@@ -99,7 +99,7 @@
                     </div>
                     <div class="botoes">
                         <!-- <h3 class="linguagem">Python</h3> -->
-                        <select name="" id="" class="linguagem">
+                        <select name="" id="" class="linguagem param-objeto">
                             <option value="python">Python</option>
                             <option value="javaScript">JavaScript</option>
                             <option value="C">C</option>
@@ -108,7 +108,7 @@
                         <button type="menu" class="highlight active">Highlight</button>
                     </div>
                 </div>
-                <code-input lang="py" placeholder="Escreva seu código aqui"></code-input>
+                <code-input lang="py" placeholder="Escreva seu código aqui" class="codigo param-objeto"></code-input>
                 <!-- <textarea name="editor" class="editor-codigo param-objeto" id="textAreaEditor" oninput="update(this.value)" rows="30" cols="30" spellcheck="False" required></textarea>
                 <div class="codigo-wrapper">
                     <pre>
