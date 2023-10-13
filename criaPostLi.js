@@ -219,9 +219,18 @@ function criaPost(projeto) {
 
 window.onload = function() {
     // Seleciona todos os elementos code-input
-    const listaProjetos = Object.keys(localStorage)
+    // const listaProjetos = Object.keys(localStorage)
+    // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
+
+    const rangeLocalStorage = range(localStorage.length).reverse()
+
+    if (localStorage.length > 0) {
+        
+        rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index])))
+    }
+
+
     
-    listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
 }
 
 

@@ -40,6 +40,7 @@
     <script src="./script.js" defer></script>
     <script src="./color.js" defer></script>
     <script src="./projetoObject.js" defer></script>
+    <script src="./codeInputLang.js" defer></script>
     
 </head>
 <body>
@@ -100,16 +101,19 @@
                     </div>
                     <div class="botoes">
                         <!-- <h3 class="linguagem">Python</h3> -->
-                        <select name="" id="" class="linguagem param-objeto">
+                        <select name="" id="lang-select" class="linguagem param-objeto">
                             <option value="python">Python</option>
                             <option value="javaScript">JavaScript</option>
+                            <option value="typeScript">TypeScript</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
                             <option value="C">C</option>
                             <option value="C++">C++</option>
                         </select>
                         <button type="menu" class="highlight active">Highlight</button>
                     </div>
                 </div>
-                <code-input lang="py" placeholder="Escreva seu código aqui" class="codigo param-objeto" required></code-input>
+                <code-input lang="python" placeholder="Escreva seu código aqui" class="codigo param-objeto" required></code-input>
                 <!-- <textarea name="editor" class="editor-codigo param-objeto" id="textAreaEditor" oninput="update(this.value)" rows="30" cols="30" spellcheck="False" required></textarea>
                 <div class="codigo-wrapper">
                     <pre>

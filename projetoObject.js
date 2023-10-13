@@ -57,14 +57,7 @@ function criaProjeto() {
     // NodeList com todos os elementos necessários para criar o projeto (marcados pela sua classe no HTML)
     const elementArray = document.querySelectorAll('.param-objeto');
 
-    // Bloco para assegurar que todos os campos estão preenchidos
-    // const elementEmpty = Array.from(elementArray).some(element => element.value === '')
-
-    // if (elementEmpty) {
-    //     alert('Todos campos devem ser preenchidos para salvar o projeto')
-    //     return
-    // }
-
+    // Bloco que guarda o nome de cada elemento vazio
     const camposVazios = []
 
     elementArray.forEach((element) => {
@@ -73,16 +66,17 @@ function criaProjeto() {
         }
     })
 
+    // Se a Array de campos vazio estiver vazia a função continua, caso contrário esse bloco intemrrompe o processo e avisa o usuário. 
     if (camposVazios.length > 0) {
         // alert(`Os campos ${camposVazios} devem ser preenchidos para criar o projeto.`)
         const eventoInvalid = new Event('invalid')
 
         camposVazios.forEach((element) => {
-            element.setCustomValidity(''); // Reset any custom validation message (if set)
-            element.setCustomValidity('Este campo não pode estar vazio.'); // Set a custom validation message
-            element.checkValidity();  // Check validity, which triggers the 'invalid' event
+            element.addEventListener('invalid', () => {
+                element.setAttribute('placeholder', 'Campo obrigatório, preencha para salvar o projeto')
+            })
         })
-        return
+        return false
     }
 
     // Captura elemento de tag com texto para atrelar sua cor a uma chave
@@ -112,15 +106,25 @@ function criaProjeto() {
     return projeto
 }
 
-function salvaProjeto(projeto) {
+function salvaProjeto() {
+    
+    const projeto = criaProjeto()
 
+    // criaProjeto() retorna o valor false caso exista um campo não preenchido na aplicação. Condicional que cancela a função antes de um exceção for chamada.
+    if (projeto === false) {
+        console.log('Função salvaProjeto() cancelada porque há campos não preenchidos')
+        return
+    }
+
+    // Valida o nome do projeto para assegurar que não tenha nenhuma duplicata ou overwrite no localStorage
     if (localStorage.getItem(`${projeto.titulo}`)) {
         alert(`Projeto "${projeto.titulo}" já existente no localStorage`)
     }
-    localStorage.setItem(`${projeto.titulo}`, JSON.stringify(projeto))
+    // localStorage.setItem(`${localStorage.length} - ${projeto.titulo}`, JSON.stringify(projeto))
+    localStorage.setItem(`${localStorage.length}`, JSON.stringify(projeto))
     console.log(`Projeto ${projeto.titulo} salvo no localStorage`)
 }
 
 const botaoSalvarProjeto = document.querySelector('#botao-salvar')
 
-botaoSalvarProjeto.addEventListener('click', () => salvaProjeto(criaProjeto()))
+botaoSalvarProjeto.addEventListener('click', () => salvaProjeto())

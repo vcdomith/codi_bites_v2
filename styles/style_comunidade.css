@@ -431,6 +431,10 @@ textarea {
     height: 100vh;
   }
 }
+:invalid {
+  border: 2px solid #141414;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -448,7 +452,7 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1rem;
+  margin: 0 1rem;
   height: 20vh;
 }
 .container .lista-posts .post-novo button {
@@ -571,15 +575,16 @@ textarea {
 
 @media (min-width: 1100px) {
   .container .lista-posts {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
   }
   .container .lista-posts .post-novo {
-    min-width: 550px;
+    min-width: 500px;
     min-height: 100px;
   }
   .container .lista-posts .post {
-    max-width: calc(550px + 2rem);
+    max-width: calc(400px + 2rem);
     min-height: 500px;
   }
   .container .lista-posts .post .editor .comunidade-codigo {
