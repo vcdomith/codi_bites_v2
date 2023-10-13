@@ -92,12 +92,16 @@ function criaPost(projeto) {
 
                     //*5_quadradoIcones      <div class="quadrado-icone"></div>
                     const divQuadradoIcone = createNewElement('div', 'quadrado-icone')
+                    // divQuadradoIcone.setAttribute('style', 'box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0,0,0,.12);')
+                    divQuadradoIcone.setAttribute('style', `background-color: ${projeto.corTexto}`)
                 
                 //4_wrapperIcones>    </div class="icone-wrapper">
                 appendMultipleChildren(3, divWrapperIcones, divQuadradoIcone)
             
                 //*4      <h5>Tag</h5>
                 const h5TagPost = createNewElement('h5', null, projeto.tag)
+                // h5TagPost.setAttribute('style', 'text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3), 0px 6px 15px rgba(0, 0, 0, 0.21), 0px 1px 22px rgba(0,0,0,.18);')
+                h5TagPost.setAttribute('style', `color: ${projeto.corTexto}`)
               
             //3_wrapperOpcoes>    <div class="opcoes">
             divWrapperOpcoes.appendChild(divWrapperIcones)
@@ -108,6 +112,7 @@ function criaPost(projeto) {
             codeInput.setAttribute('lang', projeto.linguagem)
             codeInput.setAttribute('placeholder', 'Escreva seu código aqui')
             codeInput.style.pointerEvents="none"
+            codeInput.style.textWrap="wrap"
 
         //2_wrapperEditor>  <div class="editor">
         divWrapperEditor.appendChild(divWrapperOpcoes)
@@ -211,6 +216,14 @@ function criaPost(projeto) {
 
     listaPosts.appendChild(liPost)
 }
+
+window.onload = function() {
+    // Seleciona todos os elementos code-input
+    const listaProjetos = Object.keys(localStorage)
+    
+    listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
+}
+
 
 /* 
 Guardado aqui caso o appendMultipleChildren() não funcione

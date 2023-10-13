@@ -45,6 +45,17 @@ highlightButton.addEventListener('click', function() {
 //  const getElementListValues = (list) => list.map((element) => element.value);
 
 
+/*___________________________________________________________________________
+
+Primeiramente, transferir todas essa lógica para um arquivo diferente, para organizar melhor o projeto
+
+Não é necessário instânciar uma classe para depois usá-la em uma função para salvar o projeto no localStorage.
+Devo pensar melhor em como organizar essa lógica de armazenamento melhor.
+
+
+
+*/
+
 class ElementArray {
 
     constructor(){
@@ -82,25 +93,31 @@ function criaProjeto(ElementArray) {
     return projeto
 }
 
-class Projeto {
-    nome
-    descricao
-    cor
-    tag
-    codigo
-    // fotoAutor
-    // nomeAutor
 
-    constructor(pNome, pDescricao, pCor, pTag, pCodigo, pFotoAutor, pNomeAutor) {
-        this.nome = pNome
-        this.descricao = pDescricao
-        this.cor = pCor
-        this.tag = pTag
-        this.codigo = pCodigo
-        // this.fotoAutor = pFotoAutor 
-        // this.nomeAutor = pNomeAutor
-    }
-}
+//___________________________________________________________________________
+
+
+
+
+// class Projeto {
+//     nome
+//     descricao
+//     cor
+//     tag
+//     codigo
+//     // fotoAutor
+//     // nomeAutor
+
+//     constructor(pNome, pDescricao, pCor, pTag, pCodigo, pFotoAutor, pNomeAutor) {
+//         this.nome = pNome
+//         this.descricao = pDescricao
+//         this.cor = pCor
+//         this.tag = pTag
+//         this.codigo = pCodigo
+//         // this.fotoAutor = pFotoAutor 
+//         // this.nomeAutor = pNomeAutor
+//     }
+// }
 
 // Ao dar submit
 

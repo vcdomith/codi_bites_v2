@@ -16,6 +16,7 @@ textarea {
 /* width */
 ::-webkit-scrollbar {
   width: 0.2rem;
+  height: 0;
 }
 
 /* Track */
@@ -33,6 +34,10 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
   background: transparentize($cor-texto, 0.6);
   cursor: pointer;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
 }
 
 .icone-wrapper {
