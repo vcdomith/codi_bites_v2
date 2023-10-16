@@ -26,17 +26,18 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 100%;
+        width: auto;
 
+        margin: 1rem;
         padding: 0;
-        gap: 3rem;
+        gap: 3rem 1rem;
 
         .post-novo {
             display: flex;
             flex-direction: row;
             justify-content: center;
 
-            margin: 0 1rem;
+            // margin: 0 1rem;
             height: 20vh;
 
             
@@ -92,7 +93,8 @@
             width: 100%;
 
             .editor {
-                margin-top: 0;
+                // margin-top: 0;
+                margin: 0;
 
                 .opcoes {
                     display: flex;
@@ -134,7 +136,7 @@
 
                 // justify-content: space-between;
 
-                margin: 0 1rem;
+                // margin: 0 1rem;
                 padding: 1.5rem;
                 // height: 100%;
 
@@ -227,30 +229,152 @@
 }
 
 
-@media (min-width: 1100px) {
+@media (min-width: 1280px) {
     .container {
 
         .lista-posts {
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
-            // justify-content: start;
             
             .post-novo {
-                min-width: 500px;
+                min-width: 600px;
                 min-height: 100px;
             }
     
             .post {
-                max-width: calc(400px + 2*(1rem));
+                max-width: 600px;
                 min-height: 500px;
                 // height: 100%;
 
                 .editor {
 
+                    margin: 0;
+
                     .comunidade-codigo {
                         height: 40vh;
                     }
+                }
+
+                .detalhes-post {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    
+}
+
+@media (min-width: 1280px) and (max-width: 1440px){
+    .container{
+
+        .lista-posts{
+
+            justify-content: space-between;
+            margin: 1rem;
+
+            .post{
+                max-width: calc((100vw)/2 - 2rem);
+            }
+            .post-novo{
+
+                width: 100%;
+            }
+        }
+    }
+
+    .expansao-futura {
+        display: none;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1705px) {
+    .container {
+
+        .lista-posts {
+
+            $tamanho-menu-lateral: calc(200px + 4rem);
+            $tamanho-barra-pesquisa: calc(100vw - 2*($tamanho-menu-lateral + 2rem + 1rem));
+
+            align-self: center;
+
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            // max-width: $tamanho-barra-pesquisa;
+            width: auto;
+            
+            margin: 1rem;
+            
+            .post-novo {
+                min-width: $tamanho-barra-pesquisa;
+                min-height: 100px;
+
+                margin: 0;
+            }
+    
+            .post {
+                max-width: $tamanho-barra-pesquisa;
+                min-height: 500px;
+                // height: 100%;
+
+                .editor {
+
+                    margin: 0;
+
+                    .comunidade-codigo {
+                        height: 40vh;
+                    }
+                }
+
+                .detalhes-post {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    
+}
+
+@media (min-width: 1705px) {
+    .container {
+
+        .lista-posts {
+
+            $tamanho-menu-lateral: calc(200px + 4rem);
+            $tamanho-barra-pesquisa: calc(100vw - 2*($tamanho-menu-lateral + 2rem + 1rem));
+
+            align-self: center;
+
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            max-width: $tamanho-barra-pesquisa;
+            
+            
+            .post-novo {
+                min-width: $tamanho-barra-pesquisa;
+                min-height: 100px;
+
+                margin: 0;
+            }
+    
+            .post {
+                max-width: calc(($tamanho-barra-pesquisa)/2 - 1.5rem);
+                min-height: 500px;
+                // height: 100%;
+
+                .editor {
+
+                    margin: 0;
+
+                    .comunidade-codigo {
+                        height: 40vh;
+                    }
+                }
+
+                .detalhes-post {
+                    margin: 0;
                 }
             }
         }
