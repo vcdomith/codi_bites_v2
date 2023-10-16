@@ -1,5 +1,9 @@
 @use '../abstract/variaveis' as *;
 
+.invalid {
+    border: 2px solid goldenrod !important;
+}
+
 .editor {
     display: flex;
     flex-direction: column;
