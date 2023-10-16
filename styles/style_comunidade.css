@@ -64,7 +64,7 @@ textarea {
 .cabecalho .barra-pesquisa {
   display: none;
 }
-.cabecalho .container {
+.cabecalho .container-icones {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,7 +75,7 @@ textarea {
 }
 
 @media (max-width: 320px) {
-  .cabecalho .container .lupa {
+  .cabecalho .container-icones .lupa {
     display: none;
   }
 }
@@ -113,7 +113,7 @@ textarea {
   .cabecalho .barra-pesquisa:focus-within {
     border: 2px solid #1162c8;
   }
-  .cabecalho .container {
+  .cabecalho .container-icones {
     display: none;
   }
   .cabecalho .perfil {
@@ -431,10 +431,6 @@ textarea {
     height: 100vh;
   }
 }
-:invalid {
-  border: 2px solid #141414;
-}
-
 .container {
   display: flex;
   justify-content: center;

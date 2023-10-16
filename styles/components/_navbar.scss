@@ -16,7 +16,7 @@ $tamanho-menu-lateral: calc(200px + 4rem);
         display: none;
     }
 
-    .container {
+    .container-icones {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -31,7 +31,7 @@ $tamanho-menu-lateral: calc(200px + 4rem);
 
 @media (max-width: 320px) {
     .cabecalho {
-        .container {
+        .container-icones {
             .lupa {
                 display: none;
             }
@@ -79,7 +79,7 @@ $tamanho-menu-lateral: calc(200px + 4rem);
             }
         }
 
-        .container {
+        .container-icones {
             display: none;
         }
 

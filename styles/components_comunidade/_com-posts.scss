@@ -1,22 +1,5 @@
 @use '../abstract/variaveis' as *;
 
-// @mixin icone-editor() {
-//     .icone-wrapper {
-//         display: flex;
-//         gap: 8px;
-
-//         .quadrado-icone {
-//             width: 12px;
-//             height: 12px;
-//             background-color: $cor-texto;
-//         }
-//     }
-// }
-
-:invalid{
-    border: 2px solid $cor-fundo-editor;
-}
-
 .container {
     display: flex;
     justify-content: center;
