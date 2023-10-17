@@ -1,56 +1,84 @@
 
+// Lógica para criar e mostrar notificações
 
-
-// class ElementArray {
-
-//     constructor(){
-//         this.elements = Array.from(document.querySelectorAll('.param-objeto'))
-//     }
-
-//     getValues(){
-//         return this.elements.map((element) => element.value)
-//     }
-
-//     getKeys(){
-//         return this.elements.map((element) => element.classList[0])
-//     }
-// }
-
-// function criaProjeto(ElementArray) {
-
-//     const elementArray = Array.from(document.querySelectorAll('.param-objeto'))
+function createNewElement(elementTag, elementClass, elementContent = '') {
     
-//     const project = {
-//         fotoAutor: './assets/Photo.svg',
-//         nomeAutor: 'Nilvo',
-//         comentarios: 0,
-//         likes: 0,
-//         corTexto: tagText.style.color
-//     }
+    const element = document.createElement(elementTag)
+    if (elementClass) {
+        element.classList.add(elementClass)
+    }
+    
+    if (elementContent !== undefined) {
+        element.textContent = elementContent;
+    }
+    // element.innerText = elementContent
+    
+    return element
+}
 
-//     elementArray.forEach((element) => {
-//         project[element.classList[0]] = element.value
-//     })
+const listaNotificacoes = document.getElementById('notificacoes')
 
-//     const tagText = document.querySelector('.tag')
 
-//     const keys = ElementArray.getKeys()
-//     const values = ElementArray.getValues()
+function criaNotificacao(tipoNotificacao, elemento = '') {
 
-//     const projeto = {
-//         fotoAutor: './assets/Photo.svg',
-//         nomeAutor: 'Nilvo',
-//         comentarios: 0,
-//         likes: 0,
-//         corTexto: tagText.style.color
-//     }
+    const tiposNotificacoes = {
 
-//     keys.forEach((element, index) => {
-//         projeto[element] = values[index]
-//     })
+        salvar: {
+    
+            tipo: 'salvar',
+            svg: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M5 16.577l2.194-2.195 5.486 5.484L24.804 7.743 27 9.937l-14.32 14.32z"/></svg>',
+            texto: 'Projeto salvo com sucesso!',
+    
+        },
+    
+        erro: {
+            
+            tipo: 'erro',
+            svg: '<svg fill="#000000" width="100%" height="100%" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M7.004 23.087l7.08-7.081-7.07-7.071L8.929 7.02l7.067 7.069L23.084 7l1.912 1.913-7.089 7.093 7.075 7.077-1.912 1.913-7.074-7.073L8.917 25z"/></svg>',    
+            texto: 'Não foi possível salvar o projeto. Você precisa preencher os seguintes campos:',
+    
+        },
+        
+        extra: {
 
-//     return projeto
-// }
+            tipo: 'extra',
+            svg: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"/></svg>',
+            texto: elemento,
+
+        }
+    }
+
+    const notificacao = tiposNotificacoes[tipoNotificacao]
+
+    const notificacaoSalvar = createNewElement('li', 'notificacao')
+    notificacaoSalvar.classList.add(`notificacao-${notificacao.tipo}`)
+    notificacaoSalvar.setAttribute('id', `notificacao-${notificacao.tipo}`)
+
+        const wrapperInfo = createNewElement('div', 'wrapper-informacao')
+        
+            const svgInfo = notificacao.svg
+
+            const h3Info = createNewElement('h3', 'informacao-h3')
+            h3Info.textContent = notificacao.texto
+        
+        wrapperInfo.innerHTML = svgInfo
+        wrapperInfo.appendChild(h3Info)
+
+        const botaoDispensar = createNewElement('button', 'botao-dispensar', 'Dispensar')
+        botaoDispensar.setAttribute('id', 'botao-dispensar')
+        botaoDispensar.setAttribute('type', 'button')
+
+    notificacaoSalvar.appendChild(wrapperInfo)
+
+    if (!(tipoNotificacao === 'extra')) {
+
+        notificacaoSalvar.appendChild(botaoDispensar)
+    }
+
+    listaNotificacoes.appendChild(notificacaoSalvar)
+}
+
+// Lógica para criar e salvar projeto
 
 function criaProjeto() {
 
@@ -68,13 +96,10 @@ function criaProjeto() {
 
     // Se a Array de campos vazio estiver vazia a função continua, caso contrário esse bloco intemrrompe o processo e avisa o usuário. 
     if (camposVazios.length > 0) {
-        // alert(`Os campos ${camposVazios} devem ser preenchidos para criar o projeto.`)
-        const eventoInvalid = new Event('invalid')
+        criaNotificacao('erro')
 
         camposVazios.forEach((element) => {
-            element.addEventListener('invalid', () => {
-                element.setAttribute('placeholder', 'Campo obrigatório, preencha para salvar o projeto')
-            })
+            criaNotificacao('extra', element.classList[0])
         })
         return false
     }
@@ -119,10 +144,12 @@ function salvaProjeto() {
     // Valida o nome do projeto para assegurar que não tenha nenhuma duplicata ou overwrite no localStorage
     if (localStorage.getItem(`${projeto.titulo}`)) {
         alert(`Projeto "${projeto.titulo}" já existente no localStorage`)
+        return
     }
     // localStorage.setItem(`${localStorage.length} - ${projeto.titulo}`, JSON.stringify(projeto))
     localStorage.setItem(`${localStorage.length}`, JSON.stringify(projeto))
-    console.log(`Projeto ${projeto.titulo} salvo no localStorage`)
+    // console.log(`Projeto ${projeto.titulo} salvo no localStorage`)
+    criaNotificacao('salvar')
 }
 
 const botaoSalvarProjeto = document.querySelector('#botao-salvar')
