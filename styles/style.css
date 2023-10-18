@@ -460,64 +460,17 @@ textarea {
   border-radius: 1rem;
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
   width: calc(264px - 1rem);
-  transition: opacity 1s;
+  transition: opacity 500ms;
 }
-.notificacoes .notificacao .notificacao-extra {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  padding-right: 0;
-  gap: 0;
-  width: calc(264px - 1rem);
-  height: 30px;
-  background-color: transparent;
-  box-shadow: none;
-}
-.notificacoes .notificacao .notificacao-extra .wrapper-informacao {
-  display: flex;
-  align-items: flex-start;
-}
-.notificacoes .notificacao .notificacao-extra .wrapper-informacao .informacao-svg {
-  width: 30px;
-  overflow: visible;
-  padding-right: 0.5rem;
-  fill: #762727;
-}
-.notificacoes .notificacao .notificacao-extra .wrapper-informacao .informacao-h3 {
-  display: flex;
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.2rem;
-  color: #762727;
-  margin: 0;
-  border-left: 2px solid rgba(118, 39, 39, 0.5);
-  padding-left: 1rem;
-  padding-right: 0.75rem;
-  min-height: 30px;
-  width: 160px;
-  align-items: center;
-}
-.notificacoes .notificacao .notificacao-extra .botao-dispensar {
-  width: auto;
-  outline: none;
-  background: none;
-  border: none;
-  padding-right: 0.5rem;
-  cursor: pointer;
-  text-align: start;
-  font-family: "Inter", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: rgba(118, 39, 39, 0.3);
-}
-.notificacoes .notificacao .notificacao-extra .botao-dispensar:hover {
-  color: rgba(118, 39, 39, 0.6);
-}
-.notificacoes .notificacao .notificacao-extra:first-child .informacao-h3 {
-  padding-top: 1rem;
+.notificacoes .notificacao:only-child {
+  padding-bottom: 0;
 }
 .notificacoes .notificacao-sucesso {
   background-color: #f4ffea;
+  padding-right: 0;
+}
+.notificacoes .notificacao-sucesso .lista-notificacao-extra:has(.notificacao) .informacao-h3-sucesso {
+  padding-bottom: 1.5rem;
 }
 .notificacoes .notificacao-sucesso .wrapper-informacao {
   display: flex;
@@ -560,9 +513,63 @@ textarea {
 .notificacoes .notificacao-sucesso .botao-dispensar:hover {
   color: rgba(77, 118, 39, 0.6);
 }
+.notificacoes .notificacao-sucesso .notificacao-extra {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: 0;
+  gap: 0;
+  width: calc(264px - 1rem);
+  height: 30px;
+  background-color: transparent;
+  box-shadow: none;
+}
+.notificacoes .notificacao-sucesso .notificacao-extra .wrapper-informacao {
+  display: flex;
+  align-items: flex-start;
+}
+.notificacoes .notificacao-sucesso .notificacao-extra .wrapper-informacao .informacao-svg {
+  width: 30px;
+  overflow: visible;
+  padding-right: 0.5rem;
+  fill: #4d7627;
+}
+.notificacoes .notificacao-sucesso .notificacao-extra .wrapper-informacao .informacao-h3 {
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2rem;
+  color: #4d7627;
+  margin: 0;
+  border-left: 2px solid rgba(77, 118, 39, 0.5);
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+  min-height: 30px;
+  width: 160px;
+  align-items: center;
+}
+.notificacoes .notificacao-sucesso .notificacao-extra .botao-dispensar {
+  width: auto;
+  outline: none;
+  background: none;
+  border: none;
+  padding-right: 0.5rem;
+  cursor: pointer;
+  text-align: start;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(77, 118, 39, 0.3);
+}
+.notificacoes .notificacao-sucesso .notificacao-extra .botao-dispensar:hover {
+  color: rgba(77, 118, 39, 0.6);
+}
 .notificacoes .notificacao-erro {
   background-color: #ffeaea;
   padding-right: 0;
+}
+.notificacoes .notificacao-erro .informacao-h3-erro {
+  padding-bottom: 1.5rem;
 }
 .notificacoes .notificacao-erro .wrapper-informacao {
   display: flex;
@@ -605,8 +612,56 @@ textarea {
 .notificacoes .notificacao-erro .botao-dispensar:hover {
   color: rgba(118, 39, 39, 0.6);
 }
-.notificacoes .notificacao-erro .informacao-h3-erro {
-  padding-bottom: 1.5rem;
+.notificacoes .notificacao-erro .notificacao-extra {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: 0;
+  gap: 0;
+  width: calc(264px - 1rem);
+  height: 30px;
+  background-color: transparent;
+  box-shadow: none;
+}
+.notificacoes .notificacao-erro .notificacao-extra .wrapper-informacao {
+  display: flex;
+  align-items: flex-start;
+}
+.notificacoes .notificacao-erro .notificacao-extra .wrapper-informacao .informacao-svg {
+  width: 30px;
+  overflow: visible;
+  padding-right: 0.5rem;
+  fill: #762727;
+}
+.notificacoes .notificacao-erro .notificacao-extra .wrapper-informacao .informacao-h3 {
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2rem;
+  color: #762727;
+  margin: 0;
+  border-left: 2px solid rgba(118, 39, 39, 0.5);
+  padding-left: 1rem;
+  padding-right: 0.75rem;
+  min-height: 30px;
+  width: 160px;
+  align-items: center;
+}
+.notificacoes .notificacao-erro .notificacao-extra .botao-dispensar {
+  width: auto;
+  outline: none;
+  background: none;
+  border: none;
+  padding-right: 0.5rem;
+  cursor: pointer;
+  text-align: start;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(118, 39, 39, 0.3);
+}
+.notificacoes .notificacao-erro .notificacao-extra .botao-dispensar:hover {
+  color: rgba(118, 39, 39, 0.6);
 }
 .notificacoes .notificacao-extra {
   padding-top: 0.5rem;

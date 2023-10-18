@@ -69,6 +69,24 @@
     }
 }
 
+@mixin props-notificacao-extra-inner($cor-fundo) {
+
+    .notificacao-extra {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+        padding-right: 0;
+        gap: 0;
+        
+        width: calc(264px - 1*(1rem));
+        height: 30px;
+        
+        background-color: transparent;
+        box-shadow: none;
+        
+        @include props-notificacao($cor-fundo, 30px);
+    }
+}
+
 .hidden {
     display: none;
 }
@@ -110,28 +128,10 @@
 
         width: calc(264px - 1*(1rem));
 
-        transition: opacity 1s;
+        transition: opacity 500ms;
 
-        .notificacao-extra {
-            padding-top: 0rem;
-            padding-bottom: 0rem;
-            padding-right: 0;
-            gap: 0;
-            
-            width: calc(264px - 1*(1rem));
-            height: 30px;
-            
-            background-color: transparent;
-            box-shadow: none;
-            
-            @include props-notificacao(#ffeaea, 30px);
-
-            &:first-child {
-                .informacao-h3 {
-
-                    padding-top: 1rem;
-                }
-            }
+        &:only-child {
+            padding-bottom: 0;
         }
 
     }
@@ -139,23 +139,36 @@
     .notificacao-sucesso {
         $cor-fundo-notificacao: #f4ffea;
 
-        background-color: #f4ffea;
+        background-color: $cor-fundo-notificacao;
 
-        @include props-notificacao(#f4ffea, 50px)
+        padding-right: 0;
+
+        .lista-notificacao-extra:has(.notificacao) {
+
+            .informacao-h3-sucesso {
+                padding-bottom: 1.5rem;
+            }
+        }
+
+        @include props-notificacao($cor-fundo-notificacao, 50px);
+        @include props-notificacao-extra-inner($cor-fundo-notificacao)
+
     }
     
     .notificacao-erro {
         $cor-fundo-notificacao: #ffeaea;
 
-        background-color: #ffeaea;
+        background-color: $cor-fundo-notificacao;
 
         padding-right: 0;
-
-        @include props-notificacao(#ffeaea, 50px);
 
         .informacao-h3-erro {
             padding-bottom: 1.5rem;
         }
+
+
+        @include props-notificacao($cor-fundo-notificacao, 50px);
+        @include props-notificacao-extra-inner($cor-fundo-notificacao);
         
     }
     

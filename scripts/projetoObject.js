@@ -4,6 +4,7 @@
 function createNewElement(elementTag, elementClass, elementContent = '') {
     
     const element = document.createElement(elementTag)
+
     if (elementClass) {
         element.classList.add(elementClass)
     }
@@ -18,16 +19,15 @@ function createNewElement(elementTag, elementClass, elementContent = '') {
 
 const listaNotificacoes = document.getElementById('notificacoes')
 
-function criaNotificacao(tipoNotificacao, elemento = '', parent) {
+function criaNotificacao(tipo, conteudo, elementoPai = '') {
 
-    // Instancia um objeto com a base de elementos para cada tipo de notificação('sucesso', 'erro' e 'extra') para ser acessado na função se comporte diferente dependendo de qual input
-    const tiposNotificacoes = {
-        
+    const notificacoes = {
+
         sucesso: {
     
             tipo: 'sucesso',
             svg: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M5 16.577l2.194-2.195 5.486 5.484L24.804 7.743 27 9.937l-14.32 14.32z"/></svg>',
-            texto: elemento,
+            texto: conteudo,
     
         },
         
@@ -35,7 +35,7 @@ function criaNotificacao(tipoNotificacao, elemento = '', parent) {
             
             tipo: 'erro',
             svg: '<svg fill="#000000" width="100%" height="100%" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M7.004 23.087l7.08-7.081-7.07-7.071L8.929 7.02l7.067 7.069L23.084 7l1.912 1.913-7.089 7.093 7.075 7.077-1.912 1.913-7.074-7.073L8.917 25z"/></svg>',    
-            texto: elemento,
+            texto: conteudo,
             
         },
         
@@ -43,21 +43,44 @@ function criaNotificacao(tipoNotificacao, elemento = '', parent) {
             
             tipo: 'extra',
             svg: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"/></svg>',
-            texto: elemento,
-            
+            texto: conteudo,
         }
     }
 
-    // Acessa o objeto com os templates e seleciona um dos objetos internos para criar o elemento baseado na chave acessada
-    const notificacao = tiposNotificacoes[tipoNotificacao]
-    
-    // Bloco que assegura que só tenha uma notificação de cada tipo ativa por vez. Menos as 'extra's que são lidadas no escopo da função criaProjeto() porque lá é onde está o Array de elementos vazios.
-    const notificacaoExiste = document.getElementById(`notificacao-${notificacao.tipo}`)
-    if (notificacaoExiste && notificacaoExiste.id !== 'notificacao-extra') {
-        return
+    const notificacaoSelecionada = notificacoes[tipo]
+
+    if (document.getElementById(`notificacao-${tipo}`)) {
+
+        if (notificacaoSelecionada.tipo !== 'extra') {
+
+            return
+        }
+
     }
 
-    // Elemento em si é criado nesse bloco a seguir. Cada campo que modifica por tipo acessa o objeto notificacao e consegue o valor necessário
+    const notificacaoElemento = criaElementoNotificacao(notificacaoSelecionada)
+
+    const tempoNotificacaoVisivel = 10000
+
+    setTimeout(() => {
+        
+        if (notificacaoElemento) {
+            notificacaoElemento.style.opacity = '0'
+            notificacaoElemento.addEventListener('transitionend', () => notificacaoElemento.remove())
+        }
+    }, tempoNotificacaoVisivel)
+
+    if (elementoPai !== '') {
+        
+        elementoPai.appendChild(notificacaoElemento)
+        
+    }
+    
+    return notificacaoElemento
+}
+
+function criaElementoNotificacao(notificacao) {
+
     const notificacaoCriada = createNewElement('li', 'notificacao')
     notificacaoCriada.classList.add(`notificacao-${notificacao.tipo}`)
     notificacaoCriada.setAttribute('id', `notificacao-${notificacao.tipo}`)
@@ -72,30 +95,29 @@ function criaNotificacao(tipoNotificacao, elemento = '', parent) {
         wrapperInfo.innerHTML = svgInfo
         wrapperInfo.appendChild(h3Info)
 
+        const listaNotificacoesExtras = createNewElement('ul', 'lista-notificacao-extra')
+        listaNotificacoesExtras.setAttribute('style', 'list-style: none;')
+
         const botaoDispensar = createNewElement('button', 'botao-dispensar', 'Dispensar')
         botaoDispensar.setAttribute('id', `botao-dispensar-${notificacao.tipo}`)
         botaoDispensar.setAttribute('type', 'button')
 
     notificacaoCriada.appendChild(wrapperInfo)
+    notificacaoCriada.appendChild(listaNotificacoesExtras)
 
-    tipoNotificacao === 'sucesso' ? notificacaoCriada.appendChild(botaoDispensar) : null
+    if (notificacao.tipo !== 'extra') {
 
-    parent.appendChild(notificacaoCriada)
+        notificacaoCriada.appendChild(botaoDispensar)
+        
+    }
 
     botaoDispensar.addEventListener('click', () => {
 
         notificacaoCriada.style.opacity = '0'
-        notificacaoCriada.remove()
+        notificacaoCriada.addEventListener('transitionend', () => notificacaoCriada.remove())
     })
 
-    const tempoNotificacaoVisivel = 100000
-
-    setTimeout(() => {
-        if (notificacaoCriada) {
-            notificacaoCriada.style.opacity = '0'
-            notificacaoCriada.addEventListener('transitionend', () => notificacaoCriada.remove())
-        }
-    }, tempoNotificacaoVisivel)
+    return notificacaoCriada
 }
 
 // Lógica para criar e salvar projeto
@@ -116,30 +138,24 @@ function criaProjeto() {
 
     // Se a Array de campos vazio estiver vazia a função continua, caso contrário esse bloco intemrrompe o processo e avisa o usuário. 
     if (camposVazios.length > 0) {
-        criaNotificacao('erro', 'Não foi possível salvar o projeto. Você precisa preencher os seguintes campos:', listaNotificacoes)
 
-        const notificacaoErro = document.querySelector('.notificacao-erro')
+        const tipoNotificacaoEmitido = 'erro'
 
-        // Condição para que notificações-extras não sejam chamadas mais de uma vez enquanto estiver na tela
-        if (notificacaoErro.querySelector('#notificacao-extra')) {
-            console.log('Notificação já está sendo msotrada, espere para poder chama-lá denovo')
+        const notificacaoErro = criaNotificacao(tipoNotificacaoEmitido, 'Não foi possível salvar o projeto. Você precisa preencher os seguintes campos:', listaNotificacoes)
+
+        if (!notificacaoErro) {
+            console.log('Notificação já está sendo mostrada, espere para poder chama-lá denovo')
             return false
         }
+        
+        const notificacaoErroLista = notificacaoErro.querySelector('ul')
 
         camposVazios.forEach((element) => {
-            criaNotificacao('extra', element.classList[0], notificacaoErro)
+
+            const nomeCampoVazio = element.classList[0]
+
+            criaNotificacao('extra', nomeCampoVazio, notificacaoErroLista)
         })
-
-        const botaoDispensar = createNewElement('button', 'botao-dispensar', 'Dispensar')
-        botaoDispensar.setAttribute('id', `botao-dispensar-erro`)
-        botaoDispensar.setAttribute('type', 'button')
-        botaoDispensar.addEventListener('click', () => {
-
-            notificacaoErro.style.opacity = '0'
-            notificacaoErro.remove()
-        })
-
-        notificacaoErro.appendChild(botaoDispensar)
 
         return false
     }
@@ -190,6 +206,7 @@ function salvaProjeto() {
     }
     // localStorage.setItem(`${localStorage.length} - ${projeto.titulo}`, JSON.stringify(projeto))
     localStorage.setItem(`${localStorage.length}`, JSON.stringify(projeto))
+
     // console.log(`Projeto ${projeto.titulo} salvo no localStorage`)
     criaNotificacao('sucesso', 'Projeto salvo com sucesso!', listaNotificacoes)
 }
