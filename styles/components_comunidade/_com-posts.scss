@@ -113,8 +113,8 @@
                 grid-template-areas: 
                 'titulo titulo'
                 'descricao descricao'
-                'linguagem x'
-                'social-autor social-autor'
+                'linguagem-data x'
+                'social-autor social-autor '
                 ;
 
                 // justify-content: space-between;
@@ -164,13 +164,36 @@
                     line-height: 1.5rem;
                 }
 
-                h4 {
-                    grid-area: linguagem;
+                .linguagem-data {
+                    grid-area: linguagem-data;
 
-                    margin: 0;
+                    display: flex;
+                    align-items: center;
+
+                    min-width: 52px;
+
+                    gap: 1rem;
                     margin-bottom: 2rem;
-                }
 
+                    h4 {
+                        margin: 0;
+                        // margin-bottom: 2rem;
+
+                        line-height: 0.2rem;
+
+                    }
+
+                    h5 {
+                        margin: 0;
+                        // margin-bottom: 2rem;
+
+                        font-style: italic;
+                        font-weight: 300;
+
+                        line-height: 0.2rem;
+                    }
+
+                }
                 .social-autor {
                     grid-area: social-autor;
 

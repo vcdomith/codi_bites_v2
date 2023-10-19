@@ -1,4 +1,29 @@
 
+function palavraCorreta(palavra) {
+
+    const palavraTratada = capitalize(palavra)
+
+    const palavrasTarget = [
+        'Título',
+        'Descrição',
+        'Código',
+    ]
+
+    for (const palavra of palavrasTarget) {
+
+        if (palavra[0] === palavraTratada[0]) {
+
+            return palavra
+
+        }
+
+    }
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 // Lógica para criar e mostrar notificações
 
 function createNewElement(elementTag, elementClass, elementContent = '') {
@@ -152,7 +177,7 @@ function criaProjeto() {
 
         camposVazios.forEach((element) => {
 
-            const nomeCampoVazio = element.classList[0]
+            const nomeCampoVazio = palavraCorreta(element.classList[0])
 
             criaNotificacao('extra', nomeCampoVazio, notificacaoErroLista)
         })
@@ -163,13 +188,16 @@ function criaProjeto() {
     // Captura elemento de tag com texto para atrelar sua cor a uma chave
     const tagText = document.querySelector('.tag')
 
+    const data = new Date().toDateString().split(' ')
+
     // Cria um objeto com algumas chaves padrão
     const projeto = {
         fotoAutor: './assets/Photo.svg',
         nomeAutor: 'Nilvo',
         comentarios: 0,
         likes: 0,
-        corTexto: tagText.style.color
+        corTexto: tagText.style.color,
+        data: `${data[2]} ${data[1]} ${data[3]}`
     }
 
     // O objeto projeto é alimentado ao iterar a NodeList com todos elementos, para cada elemento:

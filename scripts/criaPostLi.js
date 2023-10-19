@@ -133,8 +133,17 @@ function criaPost(projeto) {
             textareaDescricao.setAttribute('readonly', 'true')
             textareaDescricao.style.pointerEvents="none"
 
-            //*3_linguagem   <h4>Linguagem</h4>
-            const h4Linguagem = createNewElement('h4', null, capitalize(projeto.linguagem))
+            //<3_wrapperLinguagemData   <div class="linaguagem-data"> 
+            const divWrapperLinguagemData = createNewElement('div', 'linguagem-data')
+
+                //*4_linguagem   <h4>Linguagem</h4>
+                const h4Linguagem = createNewElement('h4', null, capitalize(projeto.linguagem))
+                //*4_data        <h5>Data</h5>
+                const h5Data = createNewElement('h5', null, `${projeto.data}`)
+            
+            //>3_wrapperLinguagemData
+            divWrapperLinguagemData.appendChild(h4Linguagem)
+            divWrapperLinguagemData.appendChild(h5Data)
 
             //<3_wrapperSocialAutor   <div class="social-autor">
             const divWrapperSocialAutor = createNewElement('div', 'social-autor')
@@ -207,7 +216,9 @@ function criaPost(projeto) {
         //2_wrapperDetalhes>  <div class="detalhes-post">
         divWrapperDetalhes.appendChild(textareaTitulo)
         divWrapperDetalhes.appendChild(textareaDescricao)
-        divWrapperDetalhes.appendChild(h4Linguagem)
+        // divWrapperDetalhes.appendChild(h4Linguagem)
+        // divWrapperDetalhes.appendChild(h5Data)
+        divWrapperDetalhes.appendChild(divWrapperLinguagemData)
         divWrapperDetalhes.appendChild(divWrapperSocialAutor)
   
     //1_liPost> <li class="post">
