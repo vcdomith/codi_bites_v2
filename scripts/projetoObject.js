@@ -11,9 +11,13 @@ function palavraCorreta(palavra) {
 
     for (const palavra of palavrasTarget) {
 
-        if (palavra[0] === palavraTratada[0]) {
+        if (palavra[0] === palavraTratada[0] && palavra[palavra.length - 1] === palavraTratada[palavraTratada.length - 1]) {
 
             return palavra
+
+        } else {
+
+            return palavraTratada
 
         }
 

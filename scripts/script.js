@@ -20,15 +20,15 @@ textAreasIds.forEach(textArea => {
 
 });
 
-const highlightButton = document.querySelector('.highlight');
+// const highlightButton = document.querySelector('.highlight');
 
-highlightButton.addEventListener('click', function() {
-    if (highlightButton.classList.contains('active')) {
-        highlightButton.classList.remove('active')
-    } else {
-        highlightButton.classList.add('active')
-    }
-})
+// highlightButton.addEventListener('click', function() {
+//     if (highlightButton.classList.contains('active')) {
+//         highlightButton.classList.remove('active')
+//     } else {
+//         highlightButton.classList.add('active')
+//     }
+// })
 
 // colorPicker.on('change', 'input[type=color]', function() {
 //     this.parentNode.style.backgroundColor = this.value;

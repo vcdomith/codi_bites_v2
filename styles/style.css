@@ -43,7 +43,7 @@ textarea {
 
 .principal .container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: start;
 }
 
@@ -150,31 +150,17 @@ textarea {
 .editor .opcoes .botoes .linguagem {
   color: #FFFFFF;
   background: none;
-  font-size: 0.8rem;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-style: italic;
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
   border: 1px solid #FFFFFF;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 .editor .opcoes .botoes .linguagem option {
   background-color: #141414;
   border: 2px solid #FFFFFF;
-}
-.editor .opcoes .botoes .highlight {
-  color: #FFFFFF;
-  background: none;
-  font-size: 0.8rem;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border: 1px solid #FFFFFF;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-}
-.editor .opcoes .botoes .highlight.active {
-  background-color: #FFFFFF;
-  color: #141414;
 }
 .editor code-input {
   border-bottom-left-radius: 1rem;
@@ -414,7 +400,6 @@ textarea {
     gap: 1rem;
   }
   .menu-lateral .lista .item {
-    padding: 1rem;
     border-radius: 1rem;
   }
   .menu-lateral .lista .item:hover {
@@ -424,6 +409,7 @@ textarea {
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 1rem;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1rem;
@@ -460,7 +446,7 @@ textarea {
   border-radius: 1rem;
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
   width: calc(264px - 1rem);
-  transition: opacity 500ms;
+  transition: opacity 300ms;
 }
 .notificacoes .notificacao:only-child {
   padding-bottom: 0;

@@ -2,7 +2,7 @@
 .principal {
     .container {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         justify-content: start;
     }
 }
@@ -13,8 +13,5 @@
         // flex-direction: row-reverse;
         justify-content: flex-end;
         gap: 2rem;
-        
     }
-
-    
 }

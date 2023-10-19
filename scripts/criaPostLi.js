@@ -75,10 +75,7 @@ function criaPost(projeto) {
     */
 
     //<1 <li class="post">
-    const liPost = createNewElement('a','post')
-    liPost.setAttribute('style', 'cursor: pointer;')
-    liPost.setAttribute('style', 'text-decoration: none;')
-    liPost.setAttribute('href', './index.html')
+    const liPost = createNewElement('button','post')
 
         //<2  <div class="editor">
         const divWrapperEditor = createNewElement('div', 'editor')
@@ -138,8 +135,11 @@ function criaPost(projeto) {
 
                 //*4_linguagem   <h4>Linguagem</h4>
                 const h4Linguagem = createNewElement('h4', null, capitalize(projeto.linguagem))
+
                 //*4_data        <h5>Data</h5>
-                const h5Data = createNewElement('h5', null, `${projeto.data}`)
+                    // Condição que trata projetos antigos que não tinham data ainda
+                const data = projeto.data === undefined ? 's/ data' : projeto.data
+                const h5Data = createNewElement('h5', null, data)
             
             //>3_wrapperLinguagemData
             divWrapperLinguagemData.appendChild(h4Linguagem)
@@ -239,39 +239,4 @@ window.onload = function() {
         
         rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index])))
     }
-
-
-    
 }
-
-
-/* 
-Guardado aqui caso o appendMultipleChildren() não funcione
-*/
-
-// for (const i in range(3)){
-
-//     //     5|<div class="quadrado-icone"></div>
-//     const divQuadradoIcone = document.createElement('div')
-//     divQuadradoIcone.classList.add('quadrado-icone')
-
-//     //    /4|<div class="icone-wrapper">
-//     divWrapperIcones.appendChild(divQuadradoIcone)
-// }
-
-/*
-
-projeto.tag
-projeto.codigo
-projeto.linguagem --> string minusculas
-projeto.titulo
-projeto.descricao
-projeto.linguagem --> função que capitaliza
-projeto.comentarios
-projeto.likes
-projeto.fotoAutor
-projeto.nomeAutor
-
--------| Falta |----------
-
-*/

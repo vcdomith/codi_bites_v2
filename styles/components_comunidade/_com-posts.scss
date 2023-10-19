@@ -75,6 +75,31 @@
         .post {
             width: 100%;
 
+            padding: 0;
+            border: none;
+            border-radius: 1rem;
+            background: none;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition: 
+                        filter 500ms,
+                        background-color 500ms,
+                        box-shadow 500ms;
+
+            &:hover {
+                // background-color: transparentize($cor-texto, 0.95);
+                // filter: brightness(125%);
+
+                filter: brightness(110%);
+                background-color: transparentize($cor-texto, 0.95);
+                box-shadow: 2px 2px 5px -2px darken($cor-fundo, 3%),
+                            2px 2px 10px -2px darken($cor-fundo, 6%),
+                            2px 2px 15px -2px darken($cor-fundo, 9%);
+            }
+
             .editor {
                 // margin-top: 0;
                 margin: 0;

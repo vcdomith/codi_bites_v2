@@ -30,13 +30,13 @@
             .linguagem {
                 color: $cor-texto;
                 background: none;
-                font-size: 0.8rem;
-                font-weight: bold;
+                font-size: 0.9rem;
+                font-weight: 500;
+                font-style: italic;
 
-                padding: 0.2rem 0.5rem;
+                padding: 0.25rem 0.5rem 0.25rem 0.25rem;
                 border: 1px solid $cor-texto;
-                border-top-left-radius: .5rem;
-                border-bottom-left-radius: .5rem;
+                border-radius: 0.5rem;
 
                 cursor: pointer;
 
@@ -46,22 +46,22 @@
                 }
             }
 
-            .highlight {
-                color: $cor-texto;
-                background: none;
-                font-size: 0.8rem;
-                font-weight: bold;
+            // .highlight {
+            //     color: $cor-texto;
+            //     background: none;
+            //     font-size: 0.8rem;
+            //     font-weight: bold;
 
-                padding: 0.2rem 0.5rem;
-                border: 1px solid $cor-texto;
-                border-top-right-radius: .5rem;
-                border-bottom-right-radius: .5rem;
+            //     padding: 0.2rem 0.5rem;
+            //     border: 1px solid $cor-texto;
+            //     border-top-right-radius: .5rem;
+            //     border-bottom-right-radius: .5rem;
 
-                &.active {
-                    background-color: $cor-texto;
-                    color: $cor-fundo-editor;
-                }
-            }
+            //     &.active {
+            //         background-color: $cor-texto;
+            //         color: $cor-fundo-editor;
+            //     }
+            // }
         }
 
     }

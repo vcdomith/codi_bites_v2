@@ -69,6 +69,30 @@
             </ul>
         </div>
         <div class="container">
+            <div class="editor">
+                <div class="opcoes">
+                    <!-- <img src="./assets/mac_buttons.svg" alt="botoes mac"> -->
+                    <div class="icone-wrapper">
+                        <div class="quadrado-icone"></div>
+                        <div class="quadrado-icone"></div>
+                        <div class="quadrado-icone"></div>
+                    </div>
+                    <div class="botoes">
+                        <!-- <h3 class="linguagem">Python</h3> -->
+                        <select name="" id="lang-select" class="linguagem param-objeto">
+                            <option value="python">Python</option>
+                            <option value="javaScript">JavaScript</option>
+                            <option value="typeScript">TypeScript</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="C">C</option>
+                            <option value="C++">C++</option>
+                        </select>
+                        <!-- <button type="menu" class="highlight active">Highlight</button> -->
+                    </div>
+                </div>
+                <code-input lang="python" placeholder="Escreva seu código aqui" class="codigo param-objeto" required></code-input>
+            </div>
             <div class="wrapper">
                 <div class="detalhes">
                     <div>
@@ -90,36 +114,6 @@
                     <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
                     <!-- <div class="botao-salvar">Salvar projeto</div> -->
                 </div>
-            </div>
-            <div class="editor">
-                <div class="opcoes">
-                    <!-- <img src="./assets/mac_buttons.svg" alt="botoes mac"> -->
-                    <div class="icone-wrapper">
-                        <div class="quadrado-icone"></div>
-                        <div class="quadrado-icone"></div>
-                        <div class="quadrado-icone"></div>
-                    </div>
-                    <div class="botoes">
-                        <!-- <h3 class="linguagem">Python</h3> -->
-                        <select name="" id="lang-select" class="linguagem param-objeto">
-                            <option value="python">Python</option>
-                            <option value="javaScript">JavaScript</option>
-                            <option value="typeScript">TypeScript</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSS">CSS</option>
-                            <option value="C">C</option>
-                            <option value="C++">C++</option>
-                        </select>
-                        <button type="menu" class="highlight active">Highlight</button>
-                    </div>
-                </div>
-                <code-input lang="python" placeholder="Escreva seu código aqui" class="codigo param-objeto" required></code-input>
-                <!-- <textarea name="editor" class="editor-codigo param-objeto" id="textAreaEditor" oninput="update(this.value)" rows="30" cols="30" spellcheck="False" required></textarea>
-                <div class="codigo-wrapper">
-                    <pre>
-                        <code id="elemento-resultado" class="language-javascript" contenteditable="true" aria-hidden="true"></code>
-                    </pre>
-                </div> -->
             </div>
         </div>
         <div class="expansao-futura"></div>
