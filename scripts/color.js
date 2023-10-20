@@ -3,6 +3,9 @@
 const colorPickerColor = document.querySelector('.label-seletor-cor');
 const colorPicker = document.querySelector('.seletor-cor');
 const colorPickerText = document.getElementById('seletor-cor-texto');
+const codeHeader = document.querySelector('.opcoes');
+const quadradosIcone = document.querySelectorAll('.quadrado-icone');
+const seletorLinguagem = document.querySelector('.linguagem')
 
 // Função que calcula contraste da cor de fundo e escolhe branco ou preto dependendo do valor dessa cor
 function getContrastYIQ(hexcolor){
@@ -22,8 +25,14 @@ colorPickerColor.addEventListener('click', () => {
 colorPicker.addEventListener('input', () => {
     colorPickerColor.style.backgroundColor = colorPicker.value;
     colorPickerText.style.backgroundColor = colorPicker.value;
+    codeHeader.style.backgroundColor = colorPicker.value;
 
     // É necessário fatiar o valor hex(sem o #) do colorPicker.value
     colorPickerText.style.color = getContrastYIQ(colorPicker.value.slice(1))
+    seletorLinguagem.style.color = getContrastYIQ(colorPicker.value.slice(1))
+    seletorLinguagem.style.borderColor = getContrastYIQ(colorPicker.value.slice(1))
+    quadradosIcone.forEach((quadradoIcone) => {
+        quadradoIcone.style.backgroundColor = getContrastYIQ(colorPicker.value.slice(1))
+    })
 
 })

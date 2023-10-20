@@ -66,7 +66,7 @@ function createNewElement(elementTag, elementClass, elementContent = '') {
 
 const listaPosts = document.querySelector('.lista-posts')
 
-function criaPost(projeto) {
+function criaPost(projeto, parent) {
 
     /* LEGENDA:
         <#_nomeElemento: Abre/Cria o elemento pai
@@ -225,7 +225,54 @@ function criaPost(projeto) {
     liPost.appendChild(divWrapperEditor)
     liPost.appendChild(divWrapperDetalhes)
 
-    listaPosts.appendChild(liPost)
+    parent.appendChild(liPost)
+}
+
+function criaPostNovo(parent) {
+
+    // <li class="post-novo">
+//                     <button>
+//                         <img src="./assets/plus-circle.png" alt="simbolo de mais">
+//                         <p>
+//                             Novo post
+//                         </p>
+//                     </button>
+//                 </li>
+
+    //<1_liWrapperNovoPost  <li class="post-novo">
+    const liWrapperNovoPost = createNewElement('li', 'post-novo')
+
+        //<2_botaoWrapperPost  <button>
+        const botaoWrapperPost = createNewElement('button')
+
+            //3*imgNovoPost <img src="./assets/plus-circle.png" alt="simbolo de mais">
+            const imgNovoPost = createNewElement('img')
+            imgNovoPost.setAttribute('src', './assets/plus-circle.png')
+            imgNovoPost.setAttribute('alt', 'símbolo de mais')
+
+            //3*pNovoPost  <p>Novo post</p>
+            const pNovoPost = createNewElement('p', null, 'Novo post')
+
+        //2_botaoWrapperPost>  
+        botaoWrapperPost.appendChild(imgNovoPost)
+        botaoWrapperPost.appendChild(pNovoPost)
+
+    //1_liWrapperNovoPost> 
+    liWrapperNovoPost.appendChild(botaoWrapperPost)
+
+    parent.appendChild(liWrapperNovoPost)
+}
+
+function limpaPosts() {
+
+    while (listaPosts.firstChild) {
+        listaPosts.removeChild(listaPosts.firstChild);
+    }
+
+}
+
+function mostraPostDetalhado() {
+    
 }
 
 window.onload = function() {
@@ -233,10 +280,12 @@ window.onload = function() {
     // const listaProjetos = Object.keys(localStorage)
     // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
 
+    criaPostNovo(listaPosts)
+
     const rangeLocalStorage = range(localStorage.length).reverse()
 
     if (localStorage.length > 0) {
         
-        rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index])))
+        rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
     }
 }

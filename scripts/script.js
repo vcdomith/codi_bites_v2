@@ -151,3 +151,18 @@ const listaProjetos = Object.keys(localStorage)
 listaProjetos.forEach((key) => criaPost(JSON.parse(localStorage[key])))
 
 */
+
+// window.onload = function() {
+//     // Seleciona todos os elementos code-input
+//     // const listaProjetos = Object.keys(localStorage)
+//     // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
+
+//     criaPostNovo(listaPosts)
+
+//     const rangeLocalStorage = range(localStorage.length).reverse()
+
+//     if (localStorage.length > 0) {
+        
+//         rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
+//     }
+// }
