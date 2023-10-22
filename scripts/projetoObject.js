@@ -1,27 +1,51 @@
 
 function palavraCorreta(palavra) {
 
-    const palavraTratada = capitalize(palavra)
+    // const palavraTratada = capitalize(palavra)
 
-    const palavrasTarget = [
-        'Título',
-        'Descrição',
-        'Código',
-    ]
+    const palavrasMap = {
 
-    for (const palavra of palavrasTarget) {
 
-        if (palavra[0] === palavraTratada[0] && palavra[palavra.length - 1] === palavraTratada[palavraTratada.length - 1]) {
-
-            return palavra
-
-        } else {
-
-            return palavraTratada
-
-        }
+        'titulo': 'Título',
+        'descricao': 'Descrição',
+        'codigo': 'Código',
+        'tag': 'Tag'
 
     }
+    
+    if (palavra in palavrasMap) {
+        
+        return palavrasMap[palavra]
+
+    } else {
+
+        console.log(`Dev: Palavra ${palavra} não encontrada no palavrasMap, atualizar o objeto!`)
+        return palavra
+
+    }
+
+}
+
+function mesBrasil(data) {
+
+    const mesesMap = {
+        'Jan': 'Jan',
+        'Feb': 'Fev',
+        'Mar': 'Mar',
+        'Apr': 'Abr',
+        'May': 'Mai',
+        'Jun': 'Jun',
+        'Jul': 'Jul',
+        'Aug': 'Ago',
+        'Sep': 'Set',
+        'Oct': 'Out',
+        'Nov': 'Nov',
+        'Dez': 'Dez',
+
+    }   
+
+    return mesesMap[data[1]]
+
 }
 
 function capitalize(string) {
@@ -182,6 +206,7 @@ function criaProjeto() {
         camposVazios.forEach((element) => {
 
             const nomeCampoVazio = palavraCorreta(element.classList[0])
+            console.log(nomeCampoVazio)
 
             criaNotificacao('extra', nomeCampoVazio, notificacaoErroLista)
         })
@@ -201,7 +226,7 @@ function criaProjeto() {
         comentarios: 0,
         likes: 0,
         corTexto: tagText.style.color,
-        data: `${data[2]} ${data[1]} ${data[3]}`
+        data: `${data[2]} ${mesBrasil(data)} ${data[3]}`
     }
 
     // O objeto projeto é alimentado ao iterar a NodeList com todos elementos, para cada elemento:

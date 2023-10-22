@@ -14,7 +14,9 @@
         justify-content: space-between;
         align-items: center;
 
-        padding: 1rem;
+        padding: 1rem  1rem 1rem calc(1rem + 9.5px);
+        // padding: 0 11.5px 0 21px;
+        max-height: 54px;
 
         // width: 100%;
         border-top-left-radius: 1rem;
@@ -26,17 +28,23 @@
 
         .botoes {
             display: flex;
-            
+            gap: 1rem;
+
+
             .linguagem {
                 color: $cor-texto;
                 background: none;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
                 font-weight: 550;
                 font-style: italic;
+                font-family: $fonte-base;
 
-                padding: 0.25rem 0.5rem 0.25rem 0.25rem;
-                border: 0.1rem solid $cor-texto;
+                padding-left: 0.5rem;
+
+                border: 0.125rem solid $cor-texto;
                 border-radius: 0.5rem;
+
+                width: 150px;
 
                 cursor: pointer;
 
@@ -46,22 +54,73 @@
                 }
             }
 
-            // .highlight {
-            //     color: $cor-texto;
-            //     background: none;
-            //     font-size: 0.8rem;
-            //     font-weight: bold;
+            .container-seletor {
+                display: flex;
+                justify-content: end;
+                flex: 1;
 
-            //     padding: 0.2rem 0.5rem;
-            //     border: 1px solid $cor-texto;
-            //     border-top-right-radius: .5rem;
-            //     border-bottom-right-radius: .5rem;
+                width: 200px;
 
-            //     &.active {
-            //         background-color: $cor-texto;
-            //         color: $cor-fundo-editor;
-            //     }
-            // }
+                border: 0.125rem solid $cor-texto;
+                border-radius: 0.5rem;
+
+
+                // padding-left: 0.5rem;
+
+                .seletor-texto {
+
+                    --cor-placeholder: #ffffff85;
+
+                    height: 100%;
+                    flex: 1;
+                    max-width: 200px;
+                
+                    // reset
+                    outline: none;
+                    border: none;
+                    padding: 0;
+                    padding-left: 0.75rem;
+        
+                    // padding-left: 1rem;
+        
+                    font-family: $fonte-base;
+                    font-size: 0.8rem;
+                    font-weight: 550;
+
+                    // border: 0.1rem solid $cor-texto;
+                    border-top-left-radius: 0.5rem;
+                    border-bottom-left-radius: 0.5rem;
+
+                    background-color: $cor-fundo-editor;
+                    color: $cor-texto;
+                    overflow: hidden;
+                    
+
+                    &::placeholder {
+                        color: var(--cor-placeholder);
+                    }
+                }
+        
+                .label-seletor-cor {
+                    display: flex;
+                    // background-color: #fff;
+                    width: 27px;
+                    height: 100%;
+
+                    outline: none;
+
+                    border-left: 0.125rem solid $cor-texto;
+                    border-top-right-radius: 0.5rem;
+                    border-bottom-right-radius: 0.5rem;
+                                        
+                    cursor: pointer;
+                    
+                    .seletor-cor {
+                        visibility: hidden;
+                    }
+                }
+                
+            }
         }
 
     }
@@ -101,19 +160,47 @@
 }
 
 
-@media (max-width: 320px) {
+// @media (max-width: 320px) {
+//     .editor {
+//         .opcoes {
+//             justify-content: flex-end;
+//             .icone-wrapper {
+//                 display: none;
+//             }
+//         }
+//     }
+// }
+
+@media (max-width: 420px) {
+
+    
+
+}
+
+@media (max-width: 500px) {
+    
     .editor {
         .opcoes {
-            justify-content: flex-end;
+            justify-content: space-between;
+
+            padding: 1rem;
+
             .icone-wrapper {
                 display: none;
             }
+
+            .botoes {
+
+                width: 100%;
+                justify-content: space-between;
+    
+                .container-seletor {
+                    flex: 1
+                    ;
+                }
+            }
         }
     }
-}
-
-@media (min-width: 768px) {
-    
     
 }
 
