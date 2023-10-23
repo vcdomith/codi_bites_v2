@@ -1,7 +1,8 @@
 
 // Captura cada elemento que terá a funcionalidade da cor dinâmica
-const containerSeletor = document.querySelector('.container-seletor')
+const containerSeletor = document.querySelector('.container-seletor');
 const colorPickerColor = document.querySelector('.label-seletor-cor');
+const iconeSeletor = document.getElementById('icone-seletor');
 const colorPicker = document.querySelector('.seletor-cor');
 const colorPickerText = document.getElementById('seletor-cor-texto');
 const codeHeader = document.querySelector('.opcoes');
@@ -31,6 +32,7 @@ colorPicker.addEventListener('input', () => {
 
     colorPickerColor.style.backgroundColor = colorPicker.value;
     colorPickerColor.style.borderColor = getContrastYIQ(colorPicker.value.slice(1));
+    iconeSeletor.setAttribute('style', `fill: ${getContrastYIQ(colorPicker.value.slice(1))}`)
 
     colorPickerText.style.backgroundColor = colorPicker.value;
     colorPickerText.style.setProperty('--cor-placeholder', `${getContrastYIQ(colorPicker.value.slice(1))}85`);

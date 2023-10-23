@@ -34,12 +34,14 @@
 
             .item {
                 // padding: 1rem;
-                // border: 1px solid transparent;
+                border: 2px solid transparent;
                 border-radius: 1rem;
+
+                transition: border 250ms ease-in;
                 
                 &:hover {
-                    // border: 1px solid $cor-texto;
-                    background-color: transparentize($color: $cor-texto, $amount: 0.85);
+                    border: 2px solid $cor-texto;
+                    // background-color: transparentize($color: $cor-texto, $amount: 0.85);
                 }
 
                 a {
@@ -53,6 +55,27 @@
                     color: $cor-texto;
                     font-size: 1rem;
                     font-weight: 400;
+
+                    .icone-code {
+                        max-width: 35px;
+                        g {
+                            g {
+    
+                                fill: $cor-texto;
+                            }
+                        }
+
+                        
+                    }
+
+                    .icone-projetos {
+                        overflow: visible;
+    
+                        max-width: 35px;
+                        fill: $cor-texto;
+    
+                        
+                    }    
                 }
             }
         }

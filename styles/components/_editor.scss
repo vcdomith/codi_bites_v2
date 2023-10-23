@@ -114,6 +114,23 @@
                     border-bottom-right-radius: 0.5rem;
                                         
                     cursor: pointer;
+
+                    // background-image: url('../../assets/color-picker.svg');
+                    // fill: $cor-texto;
+                    // background-size: 90%;
+                    // background-position: center;
+                    // background-repeat: no-repeat;
+                    
+                    .icone-seletor {
+                        position: relative;
+                        left: 0.1rem;
+
+                        min-width: 23px;
+                        
+                        path:nth-child(2) {
+                            fill: $cor-texto;
+                        }
+                    }
                     
                     .seletor-cor {
                         visibility: hidden;
