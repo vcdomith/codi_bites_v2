@@ -48,6 +48,28 @@ function mesBrasil(data) {
 
 }
 
+function rgbStringToHex(rgbString) {
+    // Use a regular expression to extract the RGB values from the string.
+    const match = rgbString.match(/(\d+), (\d+), (\d+)/);
+  
+    if (match) {
+      const r = parseInt(match[1], 10);
+      const g = parseInt(match[2], 10);
+      const b = parseInt(match[3], 10);
+  
+      // Convert the RGB values to hexadecimal and pad with 0 if needed.
+      const hexR = r.toString(16).padStart(2, '0');
+      const hexG = g.toString(16).padStart(2, '0');
+      const hexB = b.toString(16).padStart(2, '0');
+  
+      // Combine the hexadecimal values with a '#' symbol and return the result.
+      return `#${hexR}${hexG}${hexB}`;
+    } else {
+      // Return an error message or handle the invalid input as needed.
+      return "Invalid RGB string";
+    }
+}
+
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -225,7 +247,7 @@ function criaProjeto() {
         nomeAutor: 'Nilvo',
         comentarios: 0,
         likes: 0,
-        corTexto: tagText.style.color,
+        corTexto: rgbStringToHex(tagText.style.color),
         data: `${data[2]} ${mesBrasil(data)} ${data[3]}`
     }
 

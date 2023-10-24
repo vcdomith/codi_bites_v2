@@ -94,15 +94,28 @@ function criaPost(projeto, parent) {
                 
                 //4_wrapperIcones>    </div class="icone-wrapper">
                 appendMultipleChildren(3, divWrapperIcones, divQuadradoIcone)
+
+                //<4_wrapperTexto
+                const divWrapperTextoHeader = createNewElement('div', 'wrapper-texto')
+                divWrapperTextoHeader.setAttribute('style', `border: 2px solid ${projeto.corTexto}`)
+                // divWrapperTextoHeader.setAttribute('style', `background-color: ${projeto.corTexto}`)
             
-                //*4      <h5>Tag</h5>
-                const h5TagPost = createNewElement('h5', null, projeto.tag)
-                // h5TagPost.setAttribute('style', 'text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3), 0px 6px 15px rgba(0, 0, 0, 0.21), 0px 1px 22px rgba(0,0,0,.18);')
-                h5TagPost.setAttribute('style', `color: ${projeto.corTexto}`)
+                    //*4_linguagem   <h4>Linguagem</h4>
+                    const h5Linguagem = createNewElement('h5', null, capitalize(projeto.linguagem))
+                    h5Linguagem.setAttribute('style', `color: ${projeto.corTexto}; border-right: 2px solid ${projeto.corTexto}`)
+                    // h5Linguagem.setAttribute('style', `color: ${projeto.cor}; border-right: 2px solid ${projeto.cor}`)
+
+                    //*4      <h5>Tag</h5>
+                    const h5TagPost = createNewElement('h5', null, projeto.tag)
+                    h5TagPost.setAttribute('style', 'text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3), 0px 6px 15px rgba(0, 0, 0, 0.21), 0px 1px 22px rgba(0,0,0,.18);')
+                    h5TagPost.setAttribute('style', `color: ${projeto.corTexto}`)
+
+                divWrapperTextoHeader.appendChild(h5Linguagem)
+                divWrapperTextoHeader.appendChild(h5TagPost)
               
             //3_wrapperOpcoes>    <div class="opcoes">
             divWrapperOpcoes.appendChild(divWrapperIcones)
-            divWrapperOpcoes.appendChild(h5TagPost)
+            divWrapperOpcoes.appendChild(divWrapperTextoHeader)
         
             //*3_codeInput   <code-input class="comunidade-codigo" lang="py" placeholder="Escreva seu código aqui"></code-input>
             const codeInput = createNewElement('code-input','comunidade-codigo', projeto.codigo)
@@ -131,10 +144,7 @@ function criaPost(projeto, parent) {
             textareaDescricao.style.pointerEvents="none"
 
             //<3_wrapperLinguagemData   <div class="linaguagem-data"> 
-            const divWrapperLinguagemData = createNewElement('div', 'linguagem-data')
-
-                //*4_linguagem   <h4>Linguagem</h4>
-                const h4Linguagem = createNewElement('h4', null, capitalize(projeto.linguagem))
+            const divWrapperData = createNewElement('div', 'linguagem-data')
 
                 //*4_data        <h5>Data</h5>
                     // Condição que trata projetos antigos que não tinham data ainda
@@ -142,8 +152,7 @@ function criaPost(projeto, parent) {
                 const h5Data = createNewElement('h5', null, data)
             
             //>3_wrapperLinguagemData
-            divWrapperLinguagemData.appendChild(h4Linguagem)
-            divWrapperLinguagemData.appendChild(h5Data)
+            divWrapperData.appendChild(h5Data)
 
             //<3_wrapperSocialAutor   <div class="social-autor">
             const divWrapperSocialAutor = createNewElement('div', 'social-autor')
@@ -218,7 +227,7 @@ function criaPost(projeto, parent) {
         divWrapperDetalhes.appendChild(textareaDescricao)
         // divWrapperDetalhes.appendChild(h4Linguagem)
         // divWrapperDetalhes.appendChild(h5Data)
-        divWrapperDetalhes.appendChild(divWrapperLinguagemData)
+        divWrapperDetalhes.appendChild(divWrapperData)
         divWrapperDetalhes.appendChild(divWrapperSocialAutor)
   
     //1_liPost> <li class="post">
