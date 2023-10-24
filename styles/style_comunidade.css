@@ -125,10 +125,6 @@ textarea {
     color: #FFFFFF;
   }
 }
-.invalid {
-  border: 2px solid goldenrod !important;
-}
-
 .editor {
   display: flex;
   flex-direction: column;
@@ -148,23 +144,63 @@ textarea {
 .editor .opcoes .botoes {
   display: flex;
   gap: 1rem;
+  min-height: 31px;
 }
-.editor .opcoes .botoes .linguagem {
+.editor .opcoes .botoes .container-linguagem {
+  z-index: 5;
   color: #FFFFFF;
   background: none;
   font-size: 0.8rem;
   font-weight: 550;
   font-style: italic;
   font-family: "Inter", sans-serif;
-  padding-left: 0.5rem;
+  margin: 0;
   border: 0.125rem solid #FFFFFF;
   border-radius: 0.5rem;
-  width: 150px;
+  width: 225px;
+  height: 31px;
+  line-height: 2rem;
   cursor: pointer;
+  transition: border-radius 200ms;
 }
-.editor .opcoes .botoes .linguagem option {
+.editor .opcoes .botoes .container-linguagem:focus {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.editor .opcoes .botoes .container-linguagem .linguagem-placeholder {
+  padding-left: 1rem;
+}
+.editor .opcoes .botoes .container-linguagem .linguagem {
+  --cor-fundo: #141414;
+  --cor-texto: #fff;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  position: relative;
+  top: 1px;
+  right: 2px;
+  width: 100%;
+  height: 1px;
+  border: 0.125rem solid #FFFFFF;
+  border-width: 0 0.125rem 0.125rem 0.125rem;
+  border-top: 0;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 0;
+  margin: 0;
   background-color: #141414;
-  border: 2px solid #FFFFFF;
+  transition: all 500ms;
+}
+.editor .opcoes .botoes .container-linguagem .linguagem .linguagem-opcao {
+  padding-left: 1rem;
+}
+.editor .opcoes .botoes .container-linguagem .linguagem .linguagem-opcao:hover {
+  background-color: var(--cor-texto);
+  color: var(--cor-fundo);
+}
+.editor .opcoes .botoes .container-linguagem .linguagem .linguagem-opcao:last-child:hover {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 .editor .opcoes .botoes .container-seletor {
   display: flex;
@@ -186,8 +222,7 @@ textarea {
   font-family: "Inter", sans-serif;
   font-size: 0.8rem;
   font-weight: 550;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+  border-radius: inherit;
   background-color: #141414;
   color: #FFFFFF;
   overflow: hidden;
@@ -509,7 +544,7 @@ textarea {
   flex-direction: column;
   justify-content: center;
   width: auto;
-  margin: 1rem;
+  margin: 3rem 1rem;
   padding: 0;
   gap: 3rem 1rem;
 }

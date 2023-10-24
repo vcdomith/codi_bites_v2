@@ -64,8 +64,6 @@ function createNewElement(elementTag, elementClass, elementContent = '') {
     return element
 }
 
-const listaPosts = document.querySelector('.lista-posts')
-
 function criaPost(projeto, parent) {
 
     /* LEGENDA:
@@ -272,14 +270,6 @@ function criaPostNovo(parent) {
     parent.appendChild(liWrapperNovoPost)
 }
 
-function limpaPosts() {
-
-    while (listaPosts.firstChild) {
-        listaPosts.removeChild(listaPosts.firstChild);
-    }
-
-}
-
 function mostraPostDetalhado() {
     
 }
@@ -289,6 +279,13 @@ window.onload = function() {
     // const listaProjetos = Object.keys(localStorage)
     // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
 
+    //{ Cria a ul para ser alimentada de posts para elemento dentro do localStorage
+    const container = document.querySelector('.container')
+    const listaPosts = createNewElement('ul', 'lista-posts')
+    listaPosts.style.listStyle = 'none'
+    container.appendChild(listaPosts)
+    //}
+
     criaPostNovo(listaPosts)
 
     const rangeLocalStorage = range(localStorage.length).reverse()
@@ -297,4 +294,12 @@ window.onload = function() {
         
         rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
     }
+}
+
+function limpaPosts() {
+
+    const listaPosts = document.querySelector('.lista-posts')
+
+    listaPosts.remove()
+
 }

@@ -166,3 +166,69 @@ listaProjetos.forEach((key) => criaPost(JSON.parse(localStorage[key])))
 //         rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
 //     }
 // }
+
+
+const botaoLinguagem = document.querySelector('.container-linguagem')
+const linguagemSelecionada = document.querySelector('.linguagem-placeholder')
+const listaLinguagens = document.querySelector('.linguagem')
+const linguagemOpcoes = Array.from(document.querySelectorAll('.linguagem-opcao'))
+
+botaoLinguagem.addEventListener('click', () => {
+
+    if (listaLinguagens.style.display === "flex") {
+
+        listaLinguagens.style.display = "none";
+        listaLinguagens.style.height = "0";
+        botaoLinguagem.style.borderBottomRightRadius = '0.5rem'
+        botaoLinguagem.style.borderBottomLeftRadius = '0.5rem'
+
+        } else {
+        
+        listaLinguagens.style.display = "flex";
+        listaLinguagens.style.height = "auto";
+        botaoLinguagem.style.borderBottomRightRadius = '0'
+        botaoLinguagem.style.borderBottomLeftRadius = '0'
+
+        }
+})
+
+linguagemOpcoes.forEach((item) => {
+
+    item.addEventListener('click', (e) => {
+
+        linguagemSelecionada.textContent = item.textContent
+
+        listaLinguagens.setAttribute('data-value', item.textContent)
+        
+
+    })
+
+})
+
+document.addEventListener("click", (event) => {
+
+    if (!selectContainer.contains(event.target)) {
+        optionsList.style.display = "none";
+    }
+
+});
+
+// document.addEventListener("click", (event) => {
+
+//     if (selectContainer.contains(event.target) && ) {
+//         optionsList.style.display = "none";
+//     }
+
+// });
+  
+selectContainer.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+});
+
+function valorSeletor(seletor) {
+
+    return seletor.getAttribute('data-value')
+
+}

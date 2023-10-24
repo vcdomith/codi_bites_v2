@@ -7,7 +7,8 @@ const colorPicker = document.querySelector('.seletor-cor');
 const colorPickerText = document.getElementById('seletor-cor-texto');
 const codeHeader = document.querySelector('.opcoes');
 const quadradosIcone = document.querySelectorAll('.quadrado-icone');
-const seletorLinguagem = document.querySelector('.linguagem')
+const containerLinguagem = document.querySelector('.container-linguagem')
+const listaLinguagem = document.querySelector('.linguagem')
 
 // Função que calcula contraste da cor de fundo e escolhe branco ou preto dependendo do valor dessa cor
 function getContrastYIQ(hexcolor){
@@ -29,7 +30,6 @@ colorPicker.addEventListener('input', () => {
     // Cor da border do container do inputColor e inputText
     containerSeletor.style.borderColor = getContrastYIQ(colorPicker.value.slice(1))
 
-
     colorPickerColor.style.backgroundColor = colorPicker.value;
     colorPickerColor.style.borderColor = getContrastYIQ(colorPicker.value.slice(1));
     iconeSeletor.setAttribute('style', `fill: ${getContrastYIQ(colorPicker.value.slice(1))}`)
@@ -39,10 +39,15 @@ colorPicker.addEventListener('input', () => {
 
     codeHeader.style.backgroundColor = colorPicker.value;
 
+    listaLinguagem.style.backgroundColor = colorPicker.value;
+    listaLinguagem.style.borderColor = getContrastYIQ(colorPicker.value.slice(1));
+    listaLinguagem.style.setProperty('--cor-fundo', colorPicker.value);
+    listaLinguagem.style.setProperty('--cor-texto', getContrastYIQ(colorPicker.value.slice(1)));
+
     // É necessário fatiar o valor hex(sem o #) do colorPicker.value
     colorPickerText.style.color = getContrastYIQ(colorPicker.value.slice(1))
-    seletorLinguagem.style.color = getContrastYIQ(colorPicker.value.slice(1))
-    seletorLinguagem.style.borderColor = getContrastYIQ(colorPicker.value.slice(1))
+    containerLinguagem.style.color = getContrastYIQ(colorPicker.value.slice(1))
+    containerLinguagem.style.borderColor = getContrastYIQ(colorPicker.value.slice(1))
     quadradosIcone.forEach((quadradoIcone) => {
         quadradoIcone.style.backgroundColor = getContrastYIQ(colorPicker.value.slice(1))
     })
