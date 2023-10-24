@@ -172,6 +172,8 @@ const botaoLinguagem = document.querySelector('.container-linguagem')
 const linguagemSelecionada = document.querySelector('.linguagem-placeholder')
 const listaLinguagens = document.querySelector('.linguagem')
 const linguagemOpcoes = Array.from(document.querySelectorAll('.linguagem-opcao'))
+const codeInputElement = document.querySelector('code-input')
+
 
 botaoLinguagem.addEventListener('click', () => {
 
@@ -198,20 +200,22 @@ linguagemOpcoes.forEach((item) => {
 
         linguagemSelecionada.textContent = item.textContent
 
-        listaLinguagens.setAttribute('data-value', item.textContent)
-        
+        listaLinguagens.setAttribute('value', item.textContent)
+
+
+        codeInputElement.setAttribute('lang', listaLinguagens.getAttribute('data-value'))
 
     })
 
 })
 
-document.addEventListener("click", (event) => {
+// document.addEventListener("click", (event) => {
 
-    if (!selectContainer.contains(event.target)) {
-        optionsList.style.display = "none";
-    }
+//     if (!selectContainer.contains(event.target)) {
+//         optionsList.style.display = "none";
+//     }
 
-});
+// });
 
 // document.addEventListener("click", (event) => {
 
@@ -221,14 +225,8 @@ document.addEventListener("click", (event) => {
 
 // });
   
-selectContainer.addEventListener("click", (event) => {
+// selectContainer.addEventListener("click", (event) => {
 
-    event.stopPropagation();
+//     event.stopPropagation();
 
-});
-
-function valorSeletor(seletor) {
-
-    return seletor.getAttribute('data-value')
-
-}
+// });

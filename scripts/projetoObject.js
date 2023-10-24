@@ -9,7 +9,8 @@ function palavraCorreta(palavra) {
         'titulo': 'Título',
         'descricao': 'Descrição',
         'codigo': 'Código',
-        'tag': 'Tag'
+        'tag': 'Tag',
+        'linguagem': 'Linguagem'
 
     }
     
@@ -206,7 +207,7 @@ function criaProjeto() {
     const camposVazios = []
 
     elementArray.forEach((element) => {
-        if (element.value === '' || element.value === null) {
+        if (element.value === '' || element.value === null || element.value === undefined ) {
             camposVazios.push(element)
         }
     })

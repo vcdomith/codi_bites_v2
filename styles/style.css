@@ -169,6 +169,7 @@ textarea {
 }
 .editor .opcoes .botoes .container-linguagem .linguagem-placeholder {
   padding-left: 1rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 .editor .opcoes .botoes .container-linguagem .linguagem {
   --cor-fundo: #141414;
