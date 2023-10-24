@@ -53,7 +53,19 @@ function createNewElement(elementTag, elementClass, elementContent = '') {
 
     const element = document.createElement(elementTag)
     if (elementClass) {
+
+        const stringArr = elementClass.split(' ')
+
+        if (stringArr.length > 1) { 
+
+          stringArr.forEach((classe) => { element.classList.add(classe) })
+
+        } else {
+
         element.classList.add(elementClass)
+
+        }
+
     }
 
     if (elementContent !== undefined) {
