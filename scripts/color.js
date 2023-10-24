@@ -8,6 +8,8 @@ const colorPickerText = document.getElementById('seletor-cor-texto');
 const codeHeader = document.querySelector('.opcoes');
 const quadradosIcone = document.querySelectorAll('.quadrado-icone');
 const containerLinguagem = document.querySelector('.container-linguagem')
+const linguagemPlaceholder = document.querySelector('.linguagem-placeholder > p')
+const iconePlaceholder = document.querySelector('.linguagem-placeholder > svg')
 const listaLinguagem = document.querySelector('.linguagem')
 
 // Função que calcula contraste da cor de fundo e escolhe branco ou preto dependendo do valor dessa cor
@@ -37,7 +39,20 @@ colorPicker.addEventListener('input', () => {
     colorPickerText.style.backgroundColor = colorPicker.value;
     colorPickerText.style.setProperty('--cor-placeholder', `${getContrastYIQ(colorPicker.value.slice(1))}85`);
 
+    
+    if (linguagemPlaceholder.textContent === 'Selecione uma linguagem') {
+        
+        linguagemPlaceholder.style.color = `${getContrastYIQ(colorPicker.value.slice(1))}85`
+        
+    } else {
+        
+        linguagemPlaceholder.style.color = getContrastYIQ(colorPicker.value.slice(1));
+        
+    }
+    iconePlaceholder.setAttribute('style', `fill: ${getContrastYIQ(colorPicker.value.slice(1))}`)
+    
     codeHeader.style.backgroundColor = colorPicker.value;
+
 
     listaLinguagem.style.backgroundColor = colorPicker.value;
     listaLinguagem.style.borderColor = getContrastYIQ(colorPicker.value.slice(1));

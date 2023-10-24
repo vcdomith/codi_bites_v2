@@ -169,45 +169,64 @@ listaProjetos.forEach((key) => criaPost(JSON.parse(localStorage[key])))
 
 
 const botaoLinguagem = document.querySelector('.container-linguagem')
-const linguagemSelecionada = document.querySelector('.linguagem-placeholder')
+const linguagemSelecionada = document.querySelector('.linguagem-placeholder > p')
 const listaLinguagens = document.querySelector('.linguagem')
 const linguagemOpcoes = Array.from(document.querySelectorAll('.linguagem-opcao'))
 const codeInputElement = document.querySelector('code-input')
 
 
-botaoLinguagem.addEventListener('click', () => {
+botaoLinguagem.addEventListener('click', (event) => {
 
-    if (listaLinguagens.style.display === "flex") {
-
-        listaLinguagens.style.display = "none";
-        listaLinguagens.style.height = "0";
-        botaoLinguagem.style.borderBottomRightRadius = '0.5rem'
-        botaoLinguagem.style.borderBottomLeftRadius = '0.5rem'
-
-        } else {
+    event.stopPropagation()
         
-        listaLinguagens.style.display = "flex";
-        listaLinguagens.style.height = "auto";
+    if (window.getComputedStyle(listaLinguagens).display === 'none') {
+        listaLinguagens.style.display = 'flex';
+        listaLinguagens.style.height = listaLinguagens.scrollHeight + 'px'; // Set the height to the actual content's height
         botaoLinguagem.style.borderBottomRightRadius = '0'
         botaoLinguagem.style.borderBottomLeftRadius = '0'
-
-        }
+        setTimeout(() => {
+            // listaLinguagens.style.height = contentHeight; // Set the height to the content height
+        }, 0);
+    } else {
+        listaLinguagens.style.height = '0';
+        setTimeout(() => {
+            listaLinguagens.style.display = 'none';
+            botaoLinguagem.style.borderBottomRightRadius = '0.5rem'
+            botaoLinguagem.style.borderBottomLeftRadius = '0.5rem'
+        }, 400); // Delay hiding the list until the transition is complete (300ms)
+    }
 })
+
+document.addEventListener('click', (event) => {
+    const isClickInside = botaoLinguagem.contains(event.target) || listaLinguagens.contains(event.target);
+    if (!isClickInside) {
+
+        listaLinguagens.style.height = '0';
+        setTimeout(() => {
+            listaLinguagens.style.display = 'none';
+            botaoLinguagem.style.borderBottomRightRadius = '0.5rem'
+            botaoLinguagem.style.borderBottomLeftRadius = '0.5rem'
+        }, 400); // Delay hiding the list until the transition is complete (300ms)
+    }
+});
 
 linguagemOpcoes.forEach((item) => {
 
     item.addEventListener('click', (e) => {
 
+        const colorPicker = document.querySelector('.seletor-cor');
+
         linguagemSelecionada.textContent = item.textContent
+        linguagemSelecionada.style.color = getContrastYIQ(colorPicker.value.slice(1))
 
-        listaLinguagens.setAttribute('value', item.textContent)
-
+        listaLinguagens.setAttribute('data-value', item.textContent)
 
         codeInputElement.setAttribute('lang', listaLinguagens.getAttribute('data-value'))
 
     })
 
 })
+
 
 // document.addEventListener("click", (event) => {
 

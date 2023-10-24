@@ -207,7 +207,12 @@ function criaProjeto() {
     const camposVazios = []
 
     elementArray.forEach((element) => {
-        if (element.value === '' || element.value === null || element.value === undefined ) {
+        
+        if (element.value === '' || element.value === null || (element.value === undefined && element.getAttribute('data-value') === null)) {
+
+            if (element.value === undefined && element.getAttribute('data-value')) {
+                
+            }
             camposVazios.push(element)
         }
     })
