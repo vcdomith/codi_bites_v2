@@ -94,7 +94,7 @@ function createNewElement(elementTag, elementClass, elementContent = '') {
     return element
 }
 
-function criaEditor() {
+function criaEditor(parent = null) {
 
     const linguagens = [
         'python', 'javaScript', 'typeScript', 'HTML',
@@ -219,46 +219,70 @@ function criaEditor() {
         //<2_divWrapperDetalhes  <div class="detalhes">
         const divWrapperDetalhes = createNewElement('div', 'detalhes')
 
-                //<3_divWrapperTitulo  <div>
-                const divWrapperTitulo = createNewElement('div', null)
+            //<3_divWrapperTitulo  <div>
+            const divWrapperTitulo = createNewElement('div', null)
 
-                    //*4_h3LabelTitulo  <h3>Título</h3>
-                    const h3LabelTitulo = createNewElement('h3', null, 'Título')
+                //*4_h3LabelTitulo  <h3>Título</h3>
+                const h3LabelTitulo = createNewElement('h3', null, 'Título')
 
-                    //*4_textareaTitulo  <textarea type="text" name="nome-projeto" id="textAreaNome" class="titulo nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
-                    const textareaTitulo = createNewElement('textarea', 'titulo nome-projeto param-objeto')
-                    textareaTitulo.setAttribute('type', 'text')
-                    textareaTitulo.setAttribute('name', 'nome-projeto')
-                    textareaTitulo.setAttribute('id', 'textAreaNome')
-                    textareaTitulo.setAttribute('placeholder', 'Nome Projeto')
-                    textareaTitulo.setAttribute('required', 'true')
+                //*4_textareaTitulo  <textarea type="text" name="nome-projeto" id="textAreaNome" class="titulo nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
+                const textareaTitulo = createNewElement('textarea', 'titulo nome-projeto param-objeto')
+                textareaTitulo.setAttribute('type', 'text')
+                textareaTitulo.setAttribute('name', 'nome-projeto')
+                textareaTitulo.setAttribute('id', 'textAreaNome')
+                textareaTitulo.setAttribute('placeholder', 'Nome Projeto')
+                textareaTitulo.setAttribute('required', 'true')
 
-                //3_divWrapperTitulo>
-                divWrapperTitulo.appendChild(h3LabelTitulo)
-                divWrapperTitulo.appendChild(textareaTitulo)
+            //3_divWrapperTitulo>
+            divWrapperTitulo.appendChild(h3LabelTitulo)
+            divWrapperTitulo.appendChild(textareaTitulo)
 
-                //<3_divWrapperDescricao  <div>
-                const divWrapperDescricao = createNewElement('div', null)
+            //<3_divWrapperDescricao  <div>
+            const divWrapperDescricao = createNewElement('div', null)
 
-                    //*4_h3LabelDescricao  <h3>Descrição</h3>
-                    const h3LabelDescricao = createNewElement('h3', null, 'Descrição')
+                //*4_h3LabelDescricao  <h3>Descrição</h3>
+                const h3LabelDescricao = createNewElement('h3', null, 'Descrição')
 
-                    //*4_textareaDescricao  <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
-                    const textareaDescricao = createNewElement('textarea', 'descricao descricao-projeto param-objeto')
-                    textareaTitulo.setAttribute('type', 'text')
-                    textareaTitulo.setAttribute('name', 'descricao-projeto')
-                    textareaTitulo.setAttribute('id', 'textAreaDescricao')
-                    textareaTitulo.setAttribute('placeholder', 'Descrição Projeto')
-                    textareaTitulo.setAttribute('required', 'true')
+                //*4_textareaDescricao  <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
+                const textareaDescricao = createNewElement('textarea', 'descricao descricao-projeto param-objeto')
+                textareaTitulo.setAttribute('type', 'text')
+                textareaTitulo.setAttribute('name', 'descricao-projeto')
+                textareaTitulo.setAttribute('id', 'textAreaDescricao')
+                textareaTitulo.setAttribute('placeholder', 'Descrição Projeto')
+                textareaTitulo.setAttribute('required', 'true')
 
-                //3_divWrapperDescricao>    
-                divWrapperDescricao.appendChild(h3LabelDescricao)
-                divWrapperDescricao.appendChild(textareaDescricao)
+            //3_divWrapperDescricao>    
+            divWrapperDescricao.appendChild(h3LabelDescricao)
+            divWrapperDescricao.appendChild(textareaDescricao)
 
-            
+        //2_divWrapperDetalhes>  
+        divWrapperDetalhes.appendChild(divWrapperTitulo)
+        divWrapperDetalhes.appendChild(divWrapperDescricao)
 
+        //<2_divWrapperSalvar <div class="personalizacao-salvar">
+        const divWrapperSalvar = createNewElement('div', 'personalizacao-salvar')
 
+            //*3_buttonSalvar <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
+            const buttonSalvar = createNewElement('button', 'botao-salvar', 'Salvar projeto')
+            buttonSalvar.setAttribute('type', 'submit')
+            buttonSalvar.setAttribute('id', 'botao-salvar')
 
+        //2_divWrapperSalvar> 
+        divWrapperSalvar.appendChild(buttonSalvar)
 
+    //1_divWrapperInformacoes 
+    divWrapperInformacoes.appendChild(divWrapperDetalhes)
+    divWrapperInformacoes.appendChild(divWrapperSalvar)
+
+    const elementosCriados = [divWrapperEditor, divWrapperInformacoes]
+        
+    if (parent !== null) {
+        
+        return elementosCriados
+        
+    }
+
+    parent.appendChild(divWrapperEditor)
+    parent.appendChild(divWrapperInformacoes)
 
 }

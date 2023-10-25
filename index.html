@@ -60,9 +60,8 @@
     <sec class="principal">
         <div class="menu-lateral">
             <ul class="lista">
-                <li class="item">
+                <!-- <li class="item">
                     <a href="./index.html">
-                        <!-- <img src="./assets/Icon.svg" alt="icone editor de códigos"> -->
                         <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="icone-code">
                             <title>code</title>
                             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -77,14 +76,33 @@
                 </li>
                 <li class="item">
                     <a href="./comunidade.html">
-                        <!-- <img src="./assets/Icon (1).svg" alt="icone comunidade"> -->
                         <svg viewBox="0 0 1024 1024" class="icone-projetos"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M553.89 875.24c0.15-0.02 0.29-0.05 0.44-0.07l-0.19-0.19-0.25 0.26z" fill="#fff"/><path d="M877.72 658.29V109.71H292.58v109.71h-146.3v438.86H73.14v256h877.71v-256h-73.13z m-73.14-475.43v475.43H637.99c-25.34 43.54-71.99 73.14-126 73.14s-100.66-29.6-126-73.14h-20.28V182.86h438.87zM219.43 292.57h73.14v365.71h-73.14V292.57z m658.28 548.57H146.28V731.43h202.97c41.2 45.9 100.38 73.14 162.75 73.14 62.36 0 121.55-27.24 162.75-73.14h202.97v109.71z" fill="#fff" /><path d="M402.28 292.57h365.71v73.14H402.28zM402.28 438.86h365.71V512H402.28z" fill="#fff" /></svg>
                         Projetos
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="container">
+            <div class="header-editor">
+                <div class="header-wrapper">
+                    <!-- <img src="./assets/Icon.svg" alt="icone editor de códigos"> -->
+                    <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="icone-header">
+                        <title>code</title>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="icon" fill="#000000" transform="translate(37.333333, 128.141872)">
+                                <path d="M111.084954,16.7215774 L141.254831,46.8914721 L60.356556,127.806522 L141.254831,208.721577 L111.084954,238.891472 L7.10542736e-15,127.806522 L111.084954,16.7215774 Z M326.063211,16.758697 L295.893333,46.9285921 L376.791607,127.843642 L295.893333,208.758697 L326.063211,238.928592 L437.148163,127.843642 L326.063211,16.758697 Z M231.145356,3.69482223e-12 L272.358192,11.0429459 L206.100516,258.319957 L164.887681,247.277012 L231.145356,3.69482223e-12 Z" id="Combined-Shape">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <p>Editor de Códigos</p>
+                    <p>Post Detalhado</p>
+                </div>
+                <button type="button" class="retornar">
+                    <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z"/></svg>
+                    <p>Retornar para o feed</p>
+                </button>
+            </div>
             <div class="editor">
                 <div class="opcoes">
                     <!-- <img src="./assets/mac_buttons.svg" alt="botoes mac"> -->
@@ -96,7 +114,9 @@
                     <div class="botoes">
                         <div class="container-linguagem">
                             <span class="linguagem-placeholder">
-                                <p>Selecione uma linguagem</p>
+                                <span class="texto-container">
+                                    <p>Selecione uma linguagem</p>
+                                </span>
                                 <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>
                             </span>
                             <ul class="linguagem param-objeto" style="list-style-type: none;">
@@ -145,7 +165,21 @@
                     </div>
                 </div>
                 <div class="personalizacao-salvar">
-                    <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
+                    <!-- <button type="button" class="retornar">
+                        <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z"/></svg>
+                        <p>Retornar para o feed</p>
+                    </button> -->
+                    <button type="submit" id="botao-salvar" class="botao-salvar">
+                        <svg viewBox="0 -35 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>disk</title>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="work-case" fill="#000000" transform="translate(85.333333, 85.333333)">
+                                    <path d="M243.498667,1.42108547e-14 L341.333333,97.8346667 L341.333333,341.333333 L1.42108547e-14,341.333333 L1.42108547e-14,1.42108547e-14 L243.498667,1.42108547e-14 Z M213.333333,234.666667 L128,234.666667 L128,298.688 L213.333333,298.688 L213.333333,234.666667 Z M85.3333333,42.6666667 L42.6666667,42.6666667 L42.6666667,298.666667 L85.3333333,298.666667 L85.3333333,192 L256,192 L256,298.666667 L298.666667,298.666667 L298.666667,115.498667 L256,72.8533333 L256,149.333333 L85.3333333,149.333333 L85.3333333,42.6666667 Z M213.333333,42.6666667 L128,42.6666667 L128,106.688 L213.333333,106.688 L213.333333,42.6666667 Z" id="Mask"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        <p>Salvar projeto</p>
+                    </button>
                 </div>
             </div>
         </div>

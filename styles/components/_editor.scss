@@ -1,9 +1,127 @@
 @use '../abstract/variaveis' as *;
 
+.header-editor {
+
+    $cor-header: transparentize($cor-texto, 0.5);
+
+    display: flex;
+
+    margin: 2rem 1rem 1rem 2rem;
+
+    gap: 1rem;
+
+
+    .header-wrapper {
+
+        display: flex;
+        align-items: center;
+
+        user-select: none;
+
+        gap: 1rem;
+
+        .icone-header {
+            width: 40px;
+            
+            g {
+                g {
+                    fill: $cor-header;
+                }
+            }
+        }
+
+        p {
+            margin: 0;
+
+            width: 80px;
+
+            color: $cor-header;
+            font-size: 1rem;
+            font-weight: 400;
+
+            padding-left: 0.5rem;
+        }
+
+        p:last-child {
+            width: 80px;
+
+            border-left: 2px solid transparentize($cor-header, 0.2);
+            padding-left: 1rem;
+
+        }
+
+    }
+    .retornar {
+
+        display: flex;
+        align-items: center;
+
+        width: 50px;
+        max-width: 200px;
+        
+        background: none;
+        outline: none;
+    
+        // width: calc(300px - 2rem);
+        height: 50px;
+        
+        // padding: 0;
+        padding: 0.5rem;
+        gap: 0.75rem;
+        border: 2px solid transparent;
+        border-left: 2px solid transparentize($cor-header, 0.2);
+        // border-radius: 0.5rem;
+
+        overflow: hidden;
+
+        cursor: pointer;
+    
+        transition: all 500ms;
+    
+        &:hover {
+            
+            width: 170px;
+
+            border-radius: 0.5rem;
+            // border: 2px solid transparentize($cor-header, 0.2);
+            border: 2px solid $cor-header;
+
+            // p {
+            //     opacity: 100%;
+            // }
+        }
+    
+        svg {
+            min-width: 30px;
+            max-width: 30px;
+    
+            fill: $cor-header;
+    
+            transition: fill 250ms;
+        }
+    
+        p {
+            // opacity: 0;
+            margin: 0;
+            padding-right: 1rem;
+
+            min-width: 100px;
+    
+            color: $cor-header;
+            font-size: 1rem;
+            font-weight: 400;
+
+            text-align: left;
+    
+            transition: all 250ms;
+        }
+    }
+}
+
 .editor {
     display: flex;
     flex-direction: column;
-    margin: 2rem 1rem 0 1rem;
+    margin: 1rem 1rem 0 1rem;
 
     .opcoes {
         display: flex;
@@ -43,10 +161,13 @@
                 border: 0.125rem solid $cor-texto;
                 border-radius: 0.5rem;
 
+                // min-width: 210px;
                 width: 225px;
                 height: 31px;
 
                 line-height: 2rem;
+
+                // overflow: auto;
 
                 cursor: pointer;
 
@@ -68,14 +189,23 @@
                     user-select: none;
 
                     padding: 0 0.5rem 0 1rem;
-
                     
-                    p {
-                        margin: 0;
-                        color: transparentize($cor-texto, 0.5);
+                    overflow: hidden;
+                    
+                    .texto-container {
+
+                        white-space: nowrap;
+                        
+                        p {
+                            margin: 0;
+                            color: transparentize($cor-texto, 0.5);    
+                            
+                        }
                     }
 
                     svg {
+                        overflow: visible;
+
                         width: 20px;
                         fill: $cor-texto;
                     }
@@ -116,15 +246,8 @@
                     
                     .linguagem-opcao {
 
-                        padding-left: 1rem;
+                        padding-left: 1rem;    
 
-                        &:first-child {
-                            transition: all 200ms;
-                        }
-
-                        &:last-child {
-                            transition: all 400ms;
-                        }
 
                         &:hover {
 
@@ -275,13 +398,15 @@
 // }
 
 @media (max-width: 420px) {
-
     
-
 }
 
 @media (max-width: 600px) {
     
+    .header-editor {
+        display: none;
+    }
+
     .editor {
         .opcoes {
             justify-content: space-between;
