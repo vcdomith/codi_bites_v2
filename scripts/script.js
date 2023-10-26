@@ -167,9 +167,8 @@ listaProjetos.forEach((key) => criaPost(JSON.parse(localStorage[key])))
 //     }
 // }
 
-
 const botaoLinguagem = document.querySelector('.container-linguagem')
-const linguagemSelecionada = document.querySelector('.linguagem-placeholder > p')
+const linguagemSelecionada = document.querySelector('.texto-container > p')
 const listaLinguagens = document.querySelector('.linguagem')
 const linguagemOpcoes = Array.from(document.querySelectorAll('.linguagem-opcao'))
 const codeInputElement = document.querySelector('code-input')

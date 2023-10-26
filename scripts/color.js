@@ -8,7 +8,7 @@ const colorPickerText = document.getElementById('seletor-cor-texto');
 const codeHeader = document.querySelector('.opcoes');
 const quadradosIcone = document.querySelectorAll('.quadrado-icone');
 const containerLinguagem = document.querySelector('.container-linguagem')
-const linguagemPlaceholder = document.querySelector('.linguagem-placeholder > p')
+const linguagemPlaceholder = document.querySelector('.texto-container > p')
 const iconePlaceholder = document.querySelector('.linguagem-placeholder > svg')
 const listaLinguagem = document.querySelector('.linguagem')
 
