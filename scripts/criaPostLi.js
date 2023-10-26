@@ -417,7 +417,17 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
     //1_divWrapperHeader> 
     divWrapperHeader.appendChild(divHeaderInfo)
     // divWrapperHeader.appendChild(buttonRetornar)
-    buttons.forEach((button) => divWrapperHeader.appendChild(button))
+    buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+            
+            limpaPagina()
+            mostraPaginaProjetos()
+
+        })
+        divWrapperHeader.appendChild(button)
+
+    })
 
     if (parent !== null) {
         parent.appendChild(divWrapperHeader)
@@ -437,7 +447,7 @@ function criaEditorNovo() {
     ]
 
 
-    const divWrapperHeader = criaHeaderPagina('editor', 'Novo Projeto')
+    const divWrapperHeader = criaHeaderPagina('editor', 'Criando Novo Projeto')
     
     //<1_divWrapperEditor  <div class="editor">
     const divWrapperEditor = createNewElement('div', 'editor')
@@ -656,7 +666,8 @@ function limpaPagina() {
 
 }
 
-window.onload = function() {
+function mostraPaginaProjetos() {
+
     // Seleciona todos os elementos code-input
     // const listaProjetos = Object.keys(localStorage)
     // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
@@ -679,4 +690,31 @@ window.onload = function() {
         
         rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
     }
+
+}
+
+window.onload = function() {
+    // Seleciona todos os elementos code-input
+    // const listaProjetos = Object.keys(localStorage)
+    // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
+
+    //{ Cria a ul para ser alimentada de posts para elemento dentro do localStorage
+    // const container = document.querySelector('.container')
+
+    // criaHeaderPagina('projetos', null, container)
+
+    // const listaPosts = createNewElement('ul', 'lista-posts')
+    // listaPosts.style.listStyle = 'none'
+    // container.appendChild(listaPosts)
+    // //}
+
+    // criaPostNovo(listaPosts)
+
+    // const rangeLocalStorage = range(localStorage.length).reverse()
+
+    // if (localStorage.length > 0) {
+        
+    //     rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
+    // }
+    mostraPaginaProjetos()
 }
