@@ -63,46 +63,16 @@
             </div>
 */}
 
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function range(size, startAt = 0) {
-    return [...Array(size).keys()].map(i => i + startAt);
-}
-
-function appendMultipleChildren(quantity, parentElement, childElements){
-
-    range(quantity).forEach(() => {
-        parentElement.appendChild(childElements.cloneNode(true))
-    });
-
-}
-
-function createNewElement(elementTag, elementClass, elementContent = '') {
-
-    const element = document.createElement(elementTag)
-    if (elementClass) {
-        element.classList.add(elementClass)
-    }
-
-    if (elementContent !== undefined) {
-        element.textContent = elementContent;
-    }
-    // element.innerText = elementContent
-
-    return element
-}
-
-function criaEditor(parent = null) {
+function criaEditorNovo() {
 
     const linguagens = [
         'python', 'javaScript', 'typeScript', 'HTML',
         'CSS', 'scss', 'C', 'C++',
-        'PHP', 'java', 'ruby', 'rust',
-        'SQL', 'django', 'clojure', 'haskell'
+        'PHP', 'java', 'ruby'
     ]
 
+    const divWrapperHeader = criaHeaderPagina('editor', 'Criando Novo Projeto')
+    
     //<1_divWrapperEditor  <div class="editor">
     const divWrapperEditor = createNewElement('div', 'editor')
 
@@ -127,14 +97,21 @@ function criaEditor(parent = null) {
                     //<5_spanPlaceholder  <span class="linguagem-placeholder">
                     const spanPlaceholder = createNewElement('span', 'linguagem-placeholder')
 
-                        //*6_pPlaceholder  <p>Selecione uma linguagem</p>
-                        const pPlaceholder = createNewElement('p', null, 'Selecione uma linguagem')
+                        //<6_spanTextoContainer  <span class="texto-container">
+                        const spanTextoContainer = createNewElement('span', 'texto-container')
 
+                            //*7_pPlaceholder  <p>Selecione uma linguagem</p>
+                            const pPlaceholder = createNewElement('p', null, 'Selecione uma linguagem')
+
+                        //6_spanTextoContainer>
+                        spanTextoContainer.appendChild(pPlaceholder)
+
+                        //*6_svgPlaceholder
                         const svgPlaceholder = '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>'
 
                     //5_spanPlacehodler>
-                    spanPlaceholder.appendChild(pPlaceholder)
                     spanPlaceholder.innerHTML = svgPlaceholder
+                    spanPlaceholder.prepend(spanTextoContainer)
 
                     //<5_ulLinguagem  <ul class="linguagem param-objeto" style="list-style-type: none;">
                     const ulLinguagem = createNewElement('ul', 'linguagem param-objeto')
@@ -245,11 +222,11 @@ function criaEditor(parent = null) {
 
                 //*4_textareaDescricao  <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
                 const textareaDescricao = createNewElement('textarea', 'descricao descricao-projeto param-objeto')
-                textareaTitulo.setAttribute('type', 'text')
-                textareaTitulo.setAttribute('name', 'descricao-projeto')
-                textareaTitulo.setAttribute('id', 'textAreaDescricao')
-                textareaTitulo.setAttribute('placeholder', 'Descrição Projeto')
-                textareaTitulo.setAttribute('required', 'true')
+                textareaDescricao.setAttribute('type', 'text')
+                textareaDescricao.setAttribute('name', 'descricao-projeto')
+                textareaDescricao.setAttribute('id', 'textAreaDescricao')
+                textareaDescricao.setAttribute('placeholder', 'Descrição Projeto')
+                textareaDescricao.setAttribute('required', 'true')
 
             //3_divWrapperDescricao>    
             divWrapperDescricao.appendChild(h3LabelDescricao)
@@ -262,10 +239,32 @@ function criaEditor(parent = null) {
         //<2_divWrapperSalvar <div class="personalizacao-salvar">
         const divWrapperSalvar = createNewElement('div', 'personalizacao-salvar')
 
-            //*3_buttonSalvar <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
+            //<3_buttonSalvar <button type="submit" id="botao-salvar" class="botao-salvar">Salvar projeto</button>
             const buttonSalvar = createNewElement('button', 'botao-salvar', 'Salvar projeto')
             buttonSalvar.setAttribute('type', 'submit')
             buttonSalvar.setAttribute('id', 'botao-salvar')
+
+                //*4_svgSalvar
+                const svgSalvar = `
+                <svg viewBox="0 -35 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>disk</title>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="work-case" fill="#000000" transform="translate(85.333333, 85.333333)">
+                                    <path d="M243.498667,1.42108547e-14 L341.333333,97.8346667 L341.333333,341.333333 L1.42108547e-14,341.333333 L1.42108547e-14,1.42108547e-14 L243.498667,1.42108547e-14 Z M213.333333,234.666667 L128,234.666667 L128,298.688 L213.333333,298.688 L213.333333,234.666667 Z M85.3333333,42.6666667 L42.6666667,42.6666667 L42.6666667,298.666667 L85.3333333,298.666667 L85.3333333,192 L256,192 L256,298.666667 L298.666667,298.666667 L298.666667,115.498667 L256,72.8533333 L256,149.333333 L85.3333333,149.333333 L85.3333333,42.6666667 Z M213.333333,42.6666667 L128,42.6666667 L128,106.688 L213.333333,106.688 L213.333333,42.6666667 Z" id="Mask"></path>
+                                </g>
+                            </g>
+                        </svg>
+                `
+                
+                //*4_pSalvar
+                const pSalvar = createNewElement('p', null, 'Salvar projeto')
+            
+            //3_buttonSalvar>
+            buttonSalvar.innerHTML = svgSalvar
+            buttonSalvar.appendChild(pSalvar)
+            
+            // Funcionalidade de salvar o projeto
+            buttonSalvar.addEventListener('click', () => salvaProjeto())
 
         //2_divWrapperSalvar> 
         divWrapperSalvar.appendChild(buttonSalvar)
@@ -274,15 +273,94 @@ function criaEditor(parent = null) {
     divWrapperInformacoes.appendChild(divWrapperDetalhes)
     divWrapperInformacoes.appendChild(divWrapperSalvar)
 
-    const elementosCriados = [divWrapperEditor, divWrapperInformacoes]
-        
-    if (parent !== null) {
-        
-        return elementosCriados
-        
-    }
+    const containerParent = document.querySelector('.container')
 
-    parent.appendChild(divWrapperEditor)
-    parent.appendChild(divWrapperInformacoes)
+    containerParent.appendChild(divWrapperHeader)
+    containerParent.appendChild(divWrapperEditor)
+    containerParent.appendChild(divWrapperInformacoes)
+    
+    // Após criados e posicionados acrescenta automáticamente a funcionalidade de cor aos elementos 
+    corDinamica()
+    textareasFilled()
+    seletorLinguagem()
 
+}
+
+function textareasFilled() {
+
+    const textAreasIds = document.querySelectorAll('textarea');
+
+    textAreasIds.forEach(textArea => {
+    
+        textArea.addEventListener('input', function() {
+            if (textArea.value.trim() === '') {
+                textArea.classList.remove('filled');
+            } else {
+                textArea.classList.add('filled');
+            }
+        });
+    });
+
+}
+
+function seletorLinguagem() {
+
+    const botaoLinguagem = document.querySelector('.container-linguagem')
+    const linguagemSelecionada = document.querySelector('.texto-container > p')
+    const listaLinguagens = document.querySelector('.linguagem')
+    const linguagemOpcoes = Array.from(document.querySelectorAll('.linguagem-opcao'))
+    const codeInputElement = document.querySelector('code-input')
+
+
+    botaoLinguagem.addEventListener('click', (event) => {
+
+        event.stopPropagation()
+            
+        if (window.getComputedStyle(listaLinguagens).display === 'none') {
+            listaLinguagens.style.display = 'flex';
+            listaLinguagens.style.height = listaLinguagens.scrollHeight + 'px'; // Set the height to the actual content's height
+            botaoLinguagem.style.borderBottomRightRadius = '0'
+            botaoLinguagem.style.borderBottomLeftRadius = '0'
+            setTimeout(() => {
+                // listaLinguagens.style.height = contentHeight; // Set the height to the content height
+            }, 0);
+        } else {
+            listaLinguagens.style.height = '0';
+            setTimeout(() => {
+                listaLinguagens.style.display = 'none';
+                botaoLinguagem.style.borderBottomRightRadius = '0.5rem'
+                botaoLinguagem.style.borderBottomLeftRadius = '0.5rem'
+            }, 400); // Delay hiding the list until the transition is complete (300ms)
+        }
+        })
+
+    document.addEventListener('click', (event) => {
+        const isClickInside = botaoLinguagem.contains(event.target) || listaLinguagens.contains(event.target);
+        if (!isClickInside) {
+
+            listaLinguagens.style.height = '0';
+            setTimeout(() => {
+                listaLinguagens.style.display = 'none';
+                botaoLinguagem.style.borderBottomRightRadius = '0.5rem'
+                botaoLinguagem.style.borderBottomLeftRadius = '0.5rem'
+            }, 400); // Delay hiding the list until the transition is complete (300ms)
+        }
+    });
+
+    linguagemOpcoes.forEach((item) => {
+
+        item.addEventListener('click', (e) => {
+
+            const colorPicker = document.querySelector('.seletor-cor');
+
+            linguagemSelecionada.textContent = item.textContent
+            linguagemSelecionada.style.color = getContrastYIQ(colorPicker.value.slice(1))
+
+            listaLinguagens.setAttribute('data-value', item.textContent)
+
+            codeInputElement.setAttribute('lang', listaLinguagens.getAttribute('data-value'))
+
+        })
+
+    })
 }

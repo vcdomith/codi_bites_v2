@@ -17,6 +17,10 @@
 
             fill: $cor-base;
 
+            path, line {
+                stroke: $cor-base;
+            }
+
         }
 
         .informacao-h3 {
@@ -172,6 +176,68 @@
         
     }
     
+    .notificacao-alerta {
+        $cor-fundo-notificacao: #fff8ea;
+
+        background-color: $cor-fundo-notificacao;
+
+        padding-right: 0;
+
+        .wrapper-botoes {
+            display: flex;
+            
+            margin: 1rem 0 0.5rem 0;
+
+            gap: 0.5rem;
+
+            .botao-sair {
+                $cor-base: desaturate(darken($cor-fundo-notificacao, 65%), 50%);
+
+                width: auto;
+
+                outline: none;
+
+                background: none;
+
+                border: none;
+                border: 2px solid transparentize($cor-base, 0.2);
+                border-radius: 0.5rem;
+                padding-right: 0.5rem;
+
+                cursor: pointer;
+
+                text-align: start;
+                font-family: $fonte-base;
+                font-size: 0.8rem;
+                font-weight: 600;
+
+                color: transparentize($cor-base, 0.2);
+
+                transition: background-color 300ms,
+                            color 300ms;
+
+                &:hover {
+                    color: $cor-fundo-notificacao;
+                    background-color: transparentize($cor-base, 0.1);
+                }
+
+            }
+        }
+
+        .lista-notificacao-extra:has(.notificacao) {
+
+            .informacao-h3-alerta {
+                padding-bottom: 1.5rem;
+            }
+
+            
+        }
+
+        @include props-notificacao($cor-fundo-notificacao, 50px);
+        @include props-notificacao-extra-inner($cor-fundo-notificacao);
+        
+    }
+
     .notificacao-extra {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;

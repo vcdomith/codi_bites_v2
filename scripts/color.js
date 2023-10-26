@@ -1,5 +1,8 @@
 
-// Captura cada elemento que terá a funcionalidade da cor dinâmica
+function corDinamica() {
+
+
+    // Captura cada elemento que terá a funcionalidade da cor dinâmica
 const containerSeletor = document.querySelector('.container-seletor');
 const colorPickerColor = document.querySelector('.label-seletor-cor');
 const iconeSeletor = document.getElementById('icone-seletor');
@@ -11,15 +14,6 @@ const containerLinguagem = document.querySelector('.container-linguagem')
 const linguagemPlaceholder = document.querySelector('.texto-container > p')
 const iconePlaceholder = document.querySelector('.linguagem-placeholder > svg')
 const listaLinguagem = document.querySelector('.linguagem')
-
-// Função que calcula contraste da cor de fundo e escolhe branco ou preto dependendo do valor dessa cor
-function getContrastYIQ(hexcolor){
-	var r = parseInt(hexcolor.substr(0,2),16);
-	var g = parseInt(hexcolor.substr(2,2),16);
-	var b = parseInt(hexcolor.substr(4,2),16);
-	var yiq = ((r*299)+(g*587)+(b*114))/1000;
-	return (yiq >= 128) ? '#141414' : '#ffffff';
-}
 
 // Atribui a funcionalidade do input type=color ao label que o representa
 colorPickerColor.addEventListener('click', () => {
@@ -68,3 +62,6 @@ colorPicker.addEventListener('input', () => {
     })
 
 })
+
+}
+

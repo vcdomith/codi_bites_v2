@@ -1,201 +1,4 @@
 
-function palavraCorreta(palavra) {
-
-    // const palavraTratada = capitalize(palavra)
-
-    const palavrasMap = {
-
-
-        'titulo': 'Título',
-        'descricao': 'Descrição',
-        'codigo': 'Código',
-        'tag': 'Tag',
-        'linguagem': 'Linguagem'
-
-    }
-    
-    if (palavra in palavrasMap) {
-        
-        return palavrasMap[palavra]
-
-    } else {
-
-        console.log(`Dev: Palavra ${palavra} não encontrada no palavrasMap, atualizar o objeto!`)
-        return palavra
-
-    }
-
-}
-
-function mesBrasil(data) {
-
-    const mesesMap = {
-        'Jan': 'Jan',
-        'Feb': 'Fev',
-        'Mar': 'Mar',
-        'Apr': 'Abr',
-        'May': 'Mai',
-        'Jun': 'Jun',
-        'Jul': 'Jul',
-        'Aug': 'Ago',
-        'Sep': 'Set',
-        'Oct': 'Out',
-        'Nov': 'Nov',
-        'Dez': 'Dez',
-
-    }   
-
-    return mesesMap[data[1]]
-
-}
-
-function rgbStringToHex(rgbString) {
-    // Use a regular expression to extract the RGB values from the string.
-    const match = rgbString.match(/(\d+), (\d+), (\d+)/);
-  
-    if (match) {
-      const r = parseInt(match[1], 10);
-      const g = parseInt(match[2], 10);
-      const b = parseInt(match[3], 10);
-  
-      // Convert the RGB values to hexadecimal and pad with 0 if needed.
-      const hexR = r.toString(16).padStart(2, '0');
-      const hexG = g.toString(16).padStart(2, '0');
-      const hexB = b.toString(16).padStart(2, '0');
-  
-      // Combine the hexadecimal values with a '#' symbol and return the result.
-      return `#${hexR}${hexG}${hexB}`;
-    } else {
-      // Return an error message or handle the invalid input as needed.
-      return "Invalid RGB string";
-    }
-}
-
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-// Lógica para criar e mostrar notificações
-
-function createNewElement(elementTag, elementClass, elementContent = '') {
-    
-    const element = document.createElement(elementTag)
-
-    if (elementClass) {
-        element.classList.add(elementClass)
-    }
-    
-    if (elementContent !== undefined) {
-        element.textContent = elementContent;
-    }
-    // element.innerText = elementContent
-    
-    return element
-}
-
-const listaNotificacoes = document.getElementById('notificacoes')
-
-function criaNotificacao(tipo, conteudo, elementoPai = '') {
-
-    const notificacoes = {
-
-        sucesso: {
-    
-            tipo: 'sucesso',
-            svg: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M5 16.577l2.194-2.195 5.486 5.484L24.804 7.743 27 9.937l-14.32 14.32z"/></svg>',
-            texto: conteudo,
-    
-        },
-        
-        erro: {
-            
-            tipo: 'erro',
-            svg: '<svg fill="#000000" width="100%" height="100%" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M7.004 23.087l7.08-7.081-7.07-7.071L8.929 7.02l7.067 7.069L23.084 7l1.912 1.913-7.089 7.093 7.075 7.077-1.912 1.913-7.074-7.073L8.917 25z"/></svg>',    
-            texto: conteudo,
-            
-        },
-        
-        extra: {
-            
-            tipo: 'extra',
-            svg: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"/></svg>',
-            texto: conteudo,
-        }
-    }
-
-    const notificacaoSelecionada = notificacoes[tipo]
-
-    if (document.getElementById(`notificacao-${tipo}`)) {
-
-        if (notificacaoSelecionada.tipo !== 'extra') {
-
-            return
-        }
-
-    }
-
-    const notificacaoElemento = criaElementoNotificacao(notificacaoSelecionada)
-
-    const tempoNotificacaoVisivel = 10000
-
-    setTimeout(() => {
-        
-        if (notificacaoElemento) {
-            notificacaoElemento.style.opacity = '0'
-            notificacaoElemento.addEventListener('transitionend', () => notificacaoElemento.remove())
-        }
-    }, tempoNotificacaoVisivel)
-
-    if (elementoPai !== '') {
-        
-        elementoPai.appendChild(notificacaoElemento)
-        
-    }
-    
-    return notificacaoElemento
-}
-
-function criaElementoNotificacao(notificacao) {
-
-    const notificacaoCriada = createNewElement('li', 'notificacao')
-    notificacaoCriada.classList.add(`notificacao-${notificacao.tipo}`)
-    notificacaoCriada.setAttribute('id', `notificacao-${notificacao.tipo}`)
-
-        const wrapperInfo = createNewElement('div', 'wrapper-informacao')
-        
-            const svgInfo = notificacao.svg
-
-            const h3Info = createNewElement('h3', 'informacao-h3', notificacao.texto)
-            h3Info.classList.add(`informacao-h3-${notificacao.tipo}`)
-        
-        wrapperInfo.innerHTML = svgInfo
-        wrapperInfo.appendChild(h3Info)
-
-        const listaNotificacoesExtras = createNewElement('ul', 'lista-notificacao-extra')
-        listaNotificacoesExtras.setAttribute('style', 'list-style: none;')
-
-        const botaoDispensar = createNewElement('button', 'botao-dispensar', 'Dispensar')
-        botaoDispensar.setAttribute('id', `botao-dispensar-${notificacao.tipo}`)
-        botaoDispensar.setAttribute('type', 'button')
-
-    notificacaoCriada.appendChild(wrapperInfo)
-    notificacaoCriada.appendChild(listaNotificacoesExtras)
-
-    if (notificacao.tipo !== 'extra') {
-
-        notificacaoCriada.appendChild(botaoDispensar)
-        
-    }
-
-    botaoDispensar.addEventListener('click', () => {
-
-        notificacaoCriada.style.opacity = '0'
-        notificacaoCriada.addEventListener('transitionend', () => notificacaoCriada.remove())
-    })
-
-    return notificacaoCriada
-}
-
 // Lógica para criar e salvar projeto
 
 function criaProjeto() {
@@ -210,9 +13,9 @@ function criaProjeto() {
         
         if (element.value === '' || element.value === null || (element.value === undefined && element.getAttribute('data-value') === null)) {
 
-            if (element.value === undefined && element.getAttribute('data-value')) {
+            // if (element.value === undefined && element.getAttribute('data-value')) {
                 
-            }
+            // }
             camposVazios.push(element)
         }
     })
@@ -221,11 +24,13 @@ function criaProjeto() {
     if (camposVazios.length > 0) {
 
         const tipoNotificacaoEmitido = 'erro'
+        const listaNotificacoes = document.getElementById('notificacoes')
 
-        const notificacaoErro = criaNotificacao(tipoNotificacaoEmitido, 'Não foi possível salvar o projeto. Você precisa preencher os seguintes campos:', listaNotificacoes)
+        const notificacaoErro = criaNotificacao(tipoNotificacaoEmitido, 'Não foi possível salvar o projeto. Você precisa preencher os seguintes campos:', retornaElemento = true)
+        listaNotificacoes.appendChild(notificacaoErro)
 
         if (!notificacaoErro) {
-            console.log('Notificação já está sendo mostrada, espere para poder chama-lá denovo')
+            console.log(`Notificação já está sendo mostrada, espere para poder chama-lá denovo`)
             return false
         }
         
@@ -236,7 +41,7 @@ function criaProjeto() {
             const nomeCampoVazio = palavraCorreta(element.classList[0])
             console.log(nomeCampoVazio)
 
-            criaNotificacao('extra', nomeCampoVazio, notificacaoErroLista)
+            criaNotificacao('extra', nomeCampoVazio, retornaElemento = false, parentElement = notificacaoErroLista)
         })
 
         return false
@@ -254,7 +59,8 @@ function criaProjeto() {
         comentarios: 0,
         likes: 0,
         corTexto: rgbStringToHex(tagText.style.color),
-        data: `${data[2]} ${mesBrasil(data)} ${data[3]}`
+        data: `${data[2]} ${mesBrasil(data)} ${data[3]}`,
+        indice: localStorage.length + 1
     }
 
     // O objeto projeto é alimentado ao iterar a NodeList com todos elementos, para cada elemento:
@@ -263,7 +69,7 @@ function criaProjeto() {
         // A key do elemento sempre é a primeira classe da lista. Ex: titulo, descricao, codigo...
         const projetoKey = element.classList[0]
         // O valor de cada campo é salvo atrelado ao nome('key') do campo. Ex: O titulo do projeto no textarea...
-        const projetoValue = element.value
+        const projetoValue = element.value !== undefined ? element.value : element.getAttribute('data-value')
 
         // O objeto projeto é populado a cada elemento que é iterado
         projeto[projetoKey] = projetoValue
@@ -275,27 +81,35 @@ function criaProjeto() {
 function salvaProjeto() {
     
     const projeto = criaProjeto()
-
+    
     // criaProjeto() retorna o valor false caso exista um campo não preenchido na aplicação. Condicional que cancela a função antes de um exceção for chamada.
     if (projeto === false) {
         console.log('Função salvaProjeto() cancelada porque há campos não preenchidos')
         return
     }
+    
+    // Captura a lista de notificacoes
+    const listaNotificacoes = document.getElementById('notificacoes')
 
     // Valida o nome do projeto para assegurar que não tenha nenhuma duplicata ou overwrite no localStorage
 
     // Vai ser reescrito para que projetos sejam salvos em uma pasta local/github
     if (localStorage.getItem(`${projeto.titulo}`)) {
-        criaNotificacao('erro', `Projeto "${projeto.titulo}" já existente no localStorage`, listaNotificacoes)
+        criaNotificacao('erro', `Projeto "${projeto.titulo}" já existente no localStorage`)
         return
     }
     // localStorage.setItem(`${localStorage.length} - ${projeto.titulo}`, JSON.stringify(projeto))
-    localStorage.setItem(`${localStorage.length}`, JSON.stringify(projeto))
+    localStorage.setItem(`${projeto.indice}`, JSON.stringify(projeto))
+
+    limpaPagina()
+    mostraPaginaProjetos()
 
     // console.log(`Projeto ${projeto.titulo} salvo no localStorage`)
-    criaNotificacao('sucesso', 'Projeto salvo com sucesso!', listaNotificacoes)
+    criaNotificacao('sucesso', 'Projeto salvo com sucesso!')
 }
 
-const botaoSalvarProjeto = document.querySelector('#botao-salvar')
+// Funcionalidade botão de salvar
 
-botaoSalvarProjeto.addEventListener('click', () => salvaProjeto())
+// const botaoSalvarProjeto = document.querySelector('#botao-salvar')
+
+// botaoSalvarProjeto.addEventListener('click', () => salvaProjeto())
