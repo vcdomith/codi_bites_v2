@@ -286,6 +286,277 @@ function criaEditorNovo() {
 
 }
 
+function mostraPostDetalhado(projeto) {
+
+    const divWrapperHeader = criaHeaderPagina('editor', 'Criando Novo Projeto')
+    
+    //<1_divWrapperEditor  <div class="editor">
+    const divWrapperEditor = createNewElement('div', 'editor post-detalhado')
+
+        //<2_divWrapperOpcoes  <div class="opcoes">
+        const divWrapperOpcoes = createNewElement('div', 'opcoes')
+        divWrapperOpcoes.style.backgroundColor = projeto.cor
+
+            //<3_divWrapperIcones  <div class="icone-wrapper">
+            const divWrapperIcones = createNewElement('div', 'icone-wrapper')
+
+                //*4_divQuadradoIcone  3*<div class="quadrado-icone"></div>
+                const divQuadradoIcone = createNewElement('div', 'quadrado-icone')
+                divQuadradoIcone.setAttribute('style', `background-color: ${projeto.corTexto}`)
+
+            //3_divWrapperIcones>  
+            appendMultipleChildren(3, divWrapperIcones, divQuadradoIcone)
+
+            //<3_divWrapperBotoes  <div class="botoes">
+            const divWrapperBotoes = createNewElement('div', 'botoes')
+                
+                //<4_divWrapperTexto  <div class="wrapper-texto-post">
+                const divWrapperTexto = createNewElement('div', 'wrapper-texto-post')
+                divWrapperTexto.setAttribute('style', `border: 2px solid ${projeto.corTexto}`)
+
+                    //*5_h5Linguagem  <h5 class="texto-linguagem">Linguagem</h5>
+                    const h5Linguagem = createNewElement('h5', 'texto-linguagem', capitalize(projeto.linguagem))
+                    h5Linguagem.setAttribute('style', `color: ${projeto.corTexto}; border-right: 2px solid ${projeto.corTexto}; margin: 0;`)
+
+                    //*5_h5Tag  <h5 class="texto-tag">Tag</h5>
+                    const h5Tag = createNewElement('h5', 'texto-tag', projeto.tag)
+                    h5Tag.setAttribute('style', `color: ${projeto.corTexto}; margin: 0;`)
+
+                divWrapperTexto.appendChild(h5Linguagem)
+                divWrapperTexto.appendChild(h5Tag)
+
+                //<4_buttonWrapperCopiar  <div class="botao-copiar">
+                const buttonWrapperCopiar = createNewElement('div', 'botao-copiar')
+                buttonWrapperCopiar.setAttribute('type', 'button')
+                buttonWrapperCopiar.setAttribute('id', 'botao-copiar')
+                buttonWrapperCopiar.setAttribute('style', `border: 2px solid ${projeto.corTexto}`)
+
+                    //*5_svgCopiar
+                    const svgCopiar = `
+                    <svg fill="#000000" version="1.1" id="XMLID_72_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        viewBox="0 0 24 24" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <g id="clipboard">
+                        <g>
+                            <path d="M22,24H2V2h5V0h10v2h5V24z M4,22h16V4h-3v3H7V4H4V22z M9,5h6V2H9V5z"/>
+                        </g>
+                    </g>
+                    </svg>
+                    `
+                    
+                    //*5_pCopiar <p>copiar código</p>
+                    const pCopiar = createNewElement('p', null, 'copiar código')
+                    pCopiar.setAttribute('style', `color: ${projeto.corTexto}`)
+                    
+                //4_buttonWrapperCopiar>
+                buttonWrapperCopiar.innerHTML = svgCopiar
+                buttonWrapperCopiar.querySelector('svg').style.setProperty('--cor-svg', projeto.corTexto) 
+
+                buttonWrapperCopiar.appendChild(pCopiar)
+
+            //3_divWrapperBotoes>
+            divWrapperBotoes.appendChild(divWrapperTexto)
+            divWrapperBotoes.appendChild(buttonWrapperCopiar)
+
+        //2_divWrapperOpcoes>
+        divWrapperOpcoes.appendChild(divWrapperIcones)
+        divWrapperOpcoes.appendChild(divWrapperBotoes)
+
+        //*2_code-input <code-input lang="python" placeholder="Escreva seu código aqui" class="codigo param-objeto" required></code-input>
+        const codeInputElement = createNewElement('code-input', 'codigo param-objeto' , projeto.codigo)
+        codeInputElement.setAttribute('lang', projeto.linguagem)
+
+        //<2_divFooterEditor  <div class="footer-editor">
+        const divFooterEditor = createNewElement('div', 'footer-editor')
+
+            //<3_buttonExpandirCode <button type="button" id="expandir-code" class="botao-expandir">
+            const buttonExpandirCode = createNewElement('button', 'botao-expandir')
+            buttonExpandirCode.setAttribute('type', 'button')
+            buttonExpandirCode.setAttribute('id', 'expandir-code')
+
+                //*4_svgExpandirCode
+                const svgExpandir = `
+                <svg fill="#000000" viewBox="0 -3 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>
+                ` 
+                const svgRetrair = `
+                <svg fill="#000000" viewBox="0 -3 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.997 13.374l-7.081 7.081L7 18.54l8.997-8.998 9.003 9-1.916 1.916z"/></svg>
+                `
+            
+
+            //3_buttonExpandirCode> 
+            buttonExpandirCode.innerHTML = svgExpandir
+            buttonExpandirCode.addEventListener('click', () => {
+
+                if (codeInputElement.style.height !== '100vh') {
+                    
+                    codeInputElement.style.height = '100vh'
+                    codeInputElement.style.transition = 'height 700ms'
+
+                    buttonExpandirCode.innerHTML = svgRetrair
+
+                } else {
+
+                    codeInputElement.style.height = '40vh'
+
+                    buttonExpandirCode.innerHTML = svgExpandir
+
+                }
+
+            })
+        
+        //2_divFooterEditor>
+        divFooterEditor.appendChild(buttonExpandirCode)
+
+    //1_divWrapperEditor>
+    divWrapperEditor.appendChild(divWrapperOpcoes)
+    divWrapperEditor.appendChild(codeInputElement)
+    divWrapperEditor.appendChild(divFooterEditor)
+
+    //<1_divWrapperDetalhes  <div class="wrapper">
+    const divWrapperInformacoes = createNewElement('div', 'wrapper post-detalhado')
+
+        //<2_divWrapperDetalhes  <div class="detalhes">
+        const divWrapperDetalhes = createNewElement('div', 'detalhes')
+
+            //<3_divWrapperTitulo  <div>
+            const divWrapperTitulo = createNewElement('div', null)
+
+                //*4_h3LabelTitulo  <h3>Título</h3>
+                const h3LabelTitulo = createNewElement('h3', null, 'Título')
+
+                //*4_textareaTitulo  <textarea type="text" name="nome-projeto" id="textAreaNome" class="titulo nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
+                const textareaTitulo = createNewElement('textarea', 'titulo nome-projeto param-objeto filled', projeto.titulo)
+                textareaTitulo.setAttribute('type', 'text')
+                textareaTitulo.setAttribute('name', 'nome-projeto')
+                textareaTitulo.setAttribute('id', 'textAreaNome')
+                textareaTitulo.setAttribute('disabled', 'true')
+
+
+            //3_divWrapperTitulo>
+            divWrapperTitulo.appendChild(h3LabelTitulo)
+            divWrapperTitulo.appendChild(textareaTitulo)
+
+            //<3_divWrapperDescricao  <div>
+            const divWrapperDescricao = createNewElement('div', null)
+
+                //*4_h3LabelDescricao  <h3>Descrição</h3>
+                const h3LabelDescricao = createNewElement('h3', null, 'Descrição')
+
+                //*4_textareaDescricao  <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
+                const textareaDescricao = createNewElement('textarea', 'descricao descricao-projeto param-objeto filled', projeto.descricao)
+                textareaDescricao.setAttribute('type', 'text')
+                textareaDescricao.setAttribute('name', 'descricao-projeto')
+                textareaDescricao.setAttribute('id', 'textAreaDescricao')
+                textareaDescricao.setAttribute('disabled', 'true')
+
+
+            //3_divWrapperDescricao>    
+            divWrapperDescricao.appendChild(h3LabelDescricao)
+            divWrapperDescricao.appendChild(textareaDescricao)
+
+        //2_divWrapperDetalhes>  
+        divWrapperDetalhes.appendChild(divWrapperTitulo)
+        divWrapperDetalhes.appendChild(divWrapperDescricao)
+
+        //<2_divWrapperInfo <div class="personalizacao-salvar">
+        const divWrapperInfo = createNewElement('div', 'personalizacao-salvar')
+
+            //<3_wrapperLinguagemData   <div class="linaguagem-data"> 
+            const divWrapperData = createNewElement('div', 'linguagem-data')
+
+                //*4_data        <h5>Data</h5>
+                    // Condição que trata projetos antigos que não tinham data ainda
+                const data = projeto.data === undefined ? 's/ data' : projeto.data
+                const h5Data = createNewElement('h5', null, data)
+            
+            //>3_wrapperLinguagemData
+            divWrapperData.appendChild(h5Data)
+
+            //<3_wrapperSocialAutor   <div class="social-autor">
+            const divWrapperSocialAutor = createNewElement('div', 'social-autor')
+
+                //<4_wrapperSocial    <div class="social">
+                const divWrapperSocial = createNewElement('div', 'social')
+
+                    //<5_wrapperComentarios     <div>
+                    const divWrapperComentarios = createNewElement('div')
+
+                        //*6_imgComentarios      <img src="./assets/comentarios.svg" alt="imagem comentarios">
+                        const imgComentarios = createNewElement('img')
+                        imgComentarios.setAttribute('src', './assets/comentarios.svg')
+                        imgComentarios.setAttribute('alt', 'imagem comentarios')
+
+                        //*6_pQuantComentarios      <p style="margin: 0;">0</p>
+                        const pQuantidadeComentarios = createNewElement('p', null, projeto.comentarios)
+                        pQuantidadeComentarios.setAttribute('style', 'margin: 0;')
+
+                    //5_wrapperComentarios>     </div>
+                    divWrapperComentarios.appendChild(imgComentarios)
+                    divWrapperComentarios.appendChild(pQuantidadeComentarios)
+
+                    //<5_wrapperLikes    <div>
+                    const divWrapperLikes = createNewElement('div')
+
+                        //*6_imgLikes      <img src="./assets/likes.svg" alt="imagem coração likes">
+                        const imgLikes = createNewElement('img')
+                        imgLikes.setAttribute('src', './assets/likes.svg')
+                        imgLikes.setAttribute('alt', 'imagem coração likes')
+
+                        //*6_pQuantLikes      <p style="margin: 0;">0</p>
+                        const pQuantidadeLikes = createNewElement('p', null, projeto.likes)
+                        pQuantidadeLikes.setAttribute('style', 'margin: 0;')
+
+                    //5_wrapperLikes>     </div>
+                    divWrapperLikes.appendChild(imgLikes)
+                    divWrapperLikes.appendChild(pQuantidadeLikes)
+
+                //4_wrapperSocial>    </div class="social">
+                divWrapperSocial.appendChild(divWrapperComentarios)
+                divWrapperSocial.appendChild(divWrapperLikes)
+
+                //<4_outerAutor    <div class="autor">
+                const divAutor = createNewElement('div', 'autor')
+
+                    //<5_innerAutor     <div>
+                    const divWrapperAutor = createNewElement('div', 'wrapper-autor')
+
+                        //*6_fotoAutor      <img src="./assets/Photo.svg" alt="Foto usuário">
+                        const imgAutor = createNewElement('img')
+                        imgAutor.setAttribute('src', projeto.fotoAutor)
+                        imgAutor.setAttribute('alt', 'Foto usuário')
+
+                        //*6_nomeAutor      <p style="margin: 0;">@Nome Autor</p>
+                        const pAutor = createNewElement('p', null, projeto.nomeAutor)
+                        pAutor.setAttribute('style', 'margin: 0;')
+                    
+                    //5_innerAutor>     </div>
+                    divWrapperAutor.appendChild(imgAutor)
+                    divWrapperAutor.appendChild(pAutor)
+
+                //4_outerAutor>    </div class="autor">
+                divAutor.appendChild(divWrapperAutor)
+            
+            //3_wrapperSocialAutor>   </div class="social-autor">
+            divWrapperSocialAutor.appendChild(divWrapperSocial)
+            divWrapperSocialAutor.appendChild(divAutor)
+
+        //2_divWrapperSalvar> 
+        divWrapperInfo.appendChild(divWrapperData)
+        divWrapperInfo.appendChild(divWrapperSocialAutor)
+
+    //1_divWrapperInformacoes 
+    divWrapperInformacoes.appendChild(divWrapperDetalhes)
+    divWrapperInformacoes.appendChild(divWrapperInfo)
+
+    const containerParent = document.querySelector('.container')
+
+    containerParent.appendChild(divWrapperHeader)
+    containerParent.appendChild(divWrapperEditor)
+    containerParent.appendChild(divWrapperInformacoes)
+
+    textareasFilled()
+
+}
+
 function textareasFilled() {
 
     const textAreasIds = document.querySelectorAll('textarea');

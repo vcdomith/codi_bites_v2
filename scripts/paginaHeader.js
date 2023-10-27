@@ -123,6 +123,9 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
         //<2_buttonRetornar  <button type="button" class="retornar">
         const listaBotoes = pagina.botoes.split(' ')
         const buttons = listaBotoes.map((button) => criaBotaoheader(button))
+        // Usar o Function() como o eval para exetuar funções conforme os items listados no pagina.botoes     
+        // Ficaria assim: buttons.listaBotoes.map((button) => Function(`criaBotaoHeader${button}()`))
+        // Para funcionar teria que ser implementado com uma função criadora para cada botaoHeader, internamente seriam atribuidas suas funções e eventlisteners
 
     //1_divWrapperHeader> 
     divWrapperHeader.appendChild(divHeaderInfo)
@@ -154,6 +157,17 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
                 const listaNotificacaoAlerta = notificacaoAlerta.querySelector('.wrapper-botoes')
 
                 const botaoSair = createNewElement('button', 'botao-sair', 'Sair da Página')
+                botaoSair.addEventListener('click', () => {
+
+                    // Funcionalidade que volta para a página projetos
+                    limpaPagina()
+                    mostraPaginaProjetos()
+
+                    // Bloco que transiciona a notificação e remove ela
+                    notificacaoAlerta.style.opacity = '0'
+                    notificacaoAlerta.addEventListener('transitionend', () => notificacaoAlerta.remove())
+
+                })
 
                 listaNotificacaoAlerta.prepend(botaoSair)
 

@@ -74,7 +74,6 @@ function criaPost(projeto, parent) {
 
                     //*4      <h5>Tag</h5>
                     const h5TagPost = createNewElement('h5', null, projeto.tag)
-                    h5TagPost.setAttribute('style', 'text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3), 0px 6px 15px rgba(0, 0, 0, 0.21), 0px 1px 22px rgba(0,0,0,.18);')
                     h5TagPost.setAttribute('style', `color: ${projeto.corTexto}`)
 
                 divWrapperTextoHeader.appendChild(h5Linguagem)
@@ -203,7 +202,12 @@ function criaPost(projeto, parent) {
 
     parent.appendChild(liPost)
 
-    liPost.addEventListener('click', () => {console.log(liPost.classList[0])})
+    liPost.addEventListener('click', () => {
+
+        limpaPagina()
+        mostraPostDetalhado(JSON.parse(localStorage[liPost.classList[0]]))
+
+    })
 }
 
 function criaPostNovo(parent) {
