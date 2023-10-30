@@ -60,7 +60,79 @@ function criaBotaoheader(tipoBotao) {
     buttonCriado.innerHTML = svgRetornar
     buttonCriado.appendChild(pRetornar)
 
+    eval(`${botao.tipo}(buttonCriado)`)
+
     return buttonCriado
+}
+
+function retornar(button) {
+
+    button.addEventListener('click', () => {
+            
+        const elements = document.querySelectorAll('.param-objeto');
+
+        const vazios = []
+
+        elements.forEach((element) => {
+            
+            if (element.value === '' || element.value === null || (element.value === undefined && element.getAttribute('data-value') === null)) {
+
+                vazios.push(element)
+            }
+        })
+
+        // Condição para testar se algum elemento possui o atibuto disabled, significa que está sendo chamado na página de post detalhado
+        if (Array.from(elements).some((element) => element.disabled === true)) {
+            
+            limpaPagina()
+            mostraPaginaProjetos()
+            return
+
+        }
+
+        // Condição que testa se há campos preenchidos, para que informações nao sejam perdidas. É emitido uma notificação para que o usuário confirme a saida da página
+        if (vazios.length !== (elements.length - 1)) {
+            
+            const listaNotificacoes = document.getElementById('notificacoes')
+
+            console.log('Existem campos preenchidos')
+            const notificacaoAlerta = criaNotificacao('alerta', 'Se você sair agora seu conteúdo não será salvo, confirme:', true)
+            listaNotificacoes.appendChild(notificacaoAlerta)
+
+            const listaNotificacaoAlerta = notificacaoAlerta.querySelector('.wrapper-botoes')
+
+            const botaoSair = createNewElement('button', 'botao-sair', 'Sair da Página')
+            botaoSair.addEventListener('click', () => {
+
+                // Funcionalidade que volta para a página projetos
+                limpaPagina()
+                mostraPaginaProjetos()
+
+                // Bloco que transiciona a notificação e remove ela
+                notificacaoAlerta.style.opacity = '0'
+                notificacaoAlerta.addEventListener('transitionend', () => notificacaoAlerta.remove())
+
+            })
+
+            listaNotificacaoAlerta.prepend(botaoSair)
+
+        } else {
+
+            limpaPagina()
+            mostraPaginaProjetos()
+
+        }
+
+    })
+
+}
+
+function excluir(button) {
+    return
+}
+
+function editar(button) {
+    return
 }
 
 function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
@@ -132,55 +204,65 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
     // divWrapperHeader.appendChild(buttonRetornar)
     buttons.forEach((button) => {
 
-        button.addEventListener('click', () => {
+        // button.addEventListener('click', () => {
             
-            const elements = document.querySelectorAll('.param-objeto');
+        //     const elements = document.querySelectorAll('.param-objeto');
 
-            const vazios = []
+        //     const vazios = []
 
-            elements.forEach((element) => {
+        //     elements.forEach((element) => {
                 
-                if (element.value === '' || element.value === null || (element.value === undefined && element.getAttribute('data-value') === null)) {
+        //         if (element.value === '' || element.value === null || (element.value === undefined && element.getAttribute('data-value') === null)) {
 
-                    vazios.push(element)
-                }
-            })
+        //             vazios.push(element)
+        //         }
+        //     })
 
-            if (vazios.length !== (elements.length - 1)) {
+        //     // Condição para testar se algum elemento possui o atibuto disabled, significa que está sendo chamado na página de post detalhado
+        //     if (Array.from(elements).some((element) => element.disabled === true)) {
                 
-                const listaNotificacoes = document.getElementById('notificacoes')
+        //         limpaPagina()
+        //         mostraPaginaProjetos()
+        //         return
 
-                console.log('Existem campos preenchidos')
-                const notificacaoAlerta = criaNotificacao('alerta', 'Se você sair agora seu conteúdo não será salvo, confirme:', true)
-                listaNotificacoes.appendChild(notificacaoAlerta)
+        //     }
 
-                const listaNotificacaoAlerta = notificacaoAlerta.querySelector('.wrapper-botoes')
+        //     // Condição que testa se há campos preenchidos, para que informações nao sejam perdidas. É emitido uma notificação para que o usuário confirme a saida da página
+        //     if (vazios.length !== (elements.length - 1)) {
+                
+        //         const listaNotificacoes = document.getElementById('notificacoes')
 
-                const botaoSair = createNewElement('button', 'botao-sair', 'Sair da Página')
-                botaoSair.addEventListener('click', () => {
+        //         console.log('Existem campos preenchidos')
+        //         const notificacaoAlerta = criaNotificacao('alerta', 'Se você sair agora seu conteúdo não será salvo, confirme:', true)
+        //         listaNotificacoes.appendChild(notificacaoAlerta)
 
-                    // Funcionalidade que volta para a página projetos
-                    limpaPagina()
-                    mostraPaginaProjetos()
+        //         const listaNotificacaoAlerta = notificacaoAlerta.querySelector('.wrapper-botoes')
 
-                    // Bloco que transiciona a notificação e remove ela
-                    notificacaoAlerta.style.opacity = '0'
-                    notificacaoAlerta.addEventListener('transitionend', () => notificacaoAlerta.remove())
+        //         const botaoSair = createNewElement('button', 'botao-sair', 'Sair da Página')
+        //         botaoSair.addEventListener('click', () => {
 
-                })
+        //             // Funcionalidade que volta para a página projetos
+        //             limpaPagina()
+        //             mostraPaginaProjetos()
 
-                listaNotificacaoAlerta.prepend(botaoSair)
+        //             // Bloco que transiciona a notificação e remove ela
+        //             notificacaoAlerta.style.opacity = '0'
+        //             notificacaoAlerta.addEventListener('transitionend', () => notificacaoAlerta.remove())
 
-            } else {
+        //         })
 
-                limpaPagina()
-                mostraPaginaProjetos()
+        //         listaNotificacaoAlerta.prepend(botaoSair)
 
-            }
+        //     } else {
 
-        })
+        //         limpaPagina()
+        //         mostraPaginaProjetos()
+
+        //     }
+
+        // })
+
         divWrapperHeader.appendChild(button)
-
     })
 
     if (parent !== null) {

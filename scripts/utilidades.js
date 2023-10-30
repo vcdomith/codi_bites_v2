@@ -6,8 +6,26 @@ function getContrastYIQ(hexcolor){
 	return (yiq >= 128) ? '#141414' : '#ffffff';
 }
 
+function isLowerCase(letter) {
+    if (letter.toLowerCase() === letter && letter !== letter.toUpperCase()) {
+      return true;
+    }
+  
+    return false;
+  }
+
 function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+
+    if (isLowerCase(string.charAt(0))) {
+        
+        return string.charAt(0).toUpperCase() + string.slice(1);
+
+    } else {
+
+        return string
+
+    }
+
 }
 
 function range(size, startAt = 0) {

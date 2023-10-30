@@ -203,7 +203,7 @@ function criaEditorNovo() {
                 const h3LabelTitulo = createNewElement('h3', null, 'Título')
 
                 //*4_textareaTitulo  <textarea type="text" name="nome-projeto" id="textAreaNome" class="titulo nome-projeto param-objeto" placeholder="Nome Projeto" required></textarea>
-                const textareaTitulo = createNewElement('textarea', 'titulo nome-projeto param-objeto')
+                const textareaTitulo = createNewElement('textarea', 'titulo nome-projeto param-objeto hover')
                 textareaTitulo.setAttribute('type', 'text')
                 textareaTitulo.setAttribute('name', 'nome-projeto')
                 textareaTitulo.setAttribute('id', 'textAreaNome')
@@ -221,7 +221,7 @@ function criaEditorNovo() {
                 const h3LabelDescricao = createNewElement('h3', null, 'Descrição')
 
                 //*4_textareaDescricao  <textarea type="text" name="descricao-projeto" id="textAreaDescricao" class="descricao descricao-projeto param-objeto" placeholder="Descrição Projeto" required></textarea>
-                const textareaDescricao = createNewElement('textarea', 'descricao descricao-projeto param-objeto')
+                const textareaDescricao = createNewElement('textarea', 'descricao descricao-projeto param-objeto hover')
                 textareaDescricao.setAttribute('type', 'text')
                 textareaDescricao.setAttribute('name', 'descricao-projeto')
                 textareaDescricao.setAttribute('id', 'textAreaDescricao')
@@ -342,14 +342,61 @@ function mostraPostDetalhado(projeto) {
                     </g>
                     </svg>
                     `
+
+                    const svgCopiado = '<svg fill="#000000" viewBox="5 5 24 24" xmlns="http://www.w3.org/2000/svg" class="informacao-svg"><path d="M5 16.577l2.194-2.195 5.486 5.484L24.804 7.743 27 9.937l-14.32 14.32z"/></svg>'
                     
                     //*5_pCopiar <p>copiar código</p>
                     const pCopiar = createNewElement('p', null, 'copiar código')
-                    pCopiar.setAttribute('style', `color: ${projeto.corTexto}`)
-                    
-                //4_buttonWrapperCopiar>
-                buttonWrapperCopiar.innerHTML = svgCopiar
-                buttonWrapperCopiar.querySelector('svg').style.setProperty('--cor-svg', projeto.corTexto) 
+                    // pCopiar.setAttribute('style', `color: ${projeto.corTexto}`)
+                    pCopiar.style.setProperty('--cor-texto-copiar', projeto.corTexto)
+  
+                    //4_buttonWrapperCopiar>
+                    buttonWrapperCopiar.innerHTML = svgCopiar
+                    buttonWrapperCopiar.querySelector('svg').style.setProperty('--cor-svg', projeto.corTexto)
+
+                var intervalo;
+
+                buttonWrapperCopiar.addEventListener('click', () => {
+
+                    clearInterval(intervalo)
+                    intervalo = setInterval(() => {
+
+                        buttonWrapperCopiar.innerHTML = svgCopiar
+                        buttonWrapperCopiar.appendChild(pCopiar)
+                        pCopiar.textContent = 'copiar código'
+
+                    }, 3000)
+
+                    const editorCodigo = document.querySelector('code-input')
+                    var range = document.createRange();
+                    range.selectNode(editorCodigo);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+
+                    const listaNotificacoes = document.getElementById('notificacoes')
+
+                    // Try to copy the selected text to the clipboard
+                    try {
+
+                        document.execCommand("copy");
+                        window.getSelection().removeAllRanges();
+
+                        buttonWrapperCopiar.innerHTML = svgCopiado
+                        buttonWrapperCopiar.appendChild(pCopiar)
+                        pCopiar.textContent = 'copiado'
+
+                        criaNotificacao('sucesso', 'Código copiado com sucesso para a área de transferência', false, listaNotificacoes)
+
+                    } catch (error) {
+
+                        console.error("Unable to copy code to clipboard: " + error);
+                        window.getSelection().removeAllRanges();
+
+                        criaNotificacao('erro', 'Não foi possível copiar o código para a área de transferência', false, listaNotificacoes)
+                    }
+
+
+                })
 
                 buttonWrapperCopiar.appendChild(pCopiar)
 

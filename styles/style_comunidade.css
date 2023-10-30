@@ -417,6 +417,16 @@ textarea {
 .post-detalhado .opcoes .botao-copiar:hover {
   width: 115px;
 }
+.post-detalhado .opcoes .botao-copiar:active {
+  background-color: #FFFFFF;
+}
+.post-detalhado .opcoes .botao-copiar:active svg {
+  fill: #141414;
+}
+.post-detalhado .opcoes .botao-copiar:active p {
+  color: #141414;
+  z-index: 10;
+}
 .post-detalhado .opcoes .botao-copiar svg {
   --cor-svg: #fff;
   min-width: 18px;
@@ -424,9 +434,15 @@ textarea {
   fill: var(--cor-svg);
 }
 .post-detalhado .opcoes .botao-copiar p {
+  --cor-texto-copar: #fff;
+  color: var(--cor-texto-copar);
+  text-align: center;
   font-size: 0.83rem;
   font-weight: 600;
-  min-width: 120px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  min-width: 90px;
   transition: width 700ms;
 }
 .post-detalhado code-input {
@@ -633,7 +649,7 @@ textarea {
   border: 2px solid rgba(255, 255, 255, 0.1960784314);
   outline: none;
 }
-.detalhes div .nome-projeto:hover {
+.detalhes div .nome-projeto.hover:hover {
   border: 2px dashed rgba(255, 255, 255, 0.1960784314);
 }
 .detalhes div .descricao-projeto {
@@ -663,7 +679,7 @@ textarea {
   border: 2px solid rgba(255, 255, 255, 0.1960784314);
   outline: none;
 }
-.detalhes div .descricao-projeto:hover {
+.detalhes div .descricao-projeto.hover:hover {
   border: 2px dashed rgba(255, 255, 255, 0.1960784314);
 }
 

@@ -42,7 +42,7 @@ function criaPost(projeto, parent) {
     */
 
     //<1 <li class="post">
-    const liPost = createNewElement('button',`${projeto.indice} post`)
+    const liPost = createNewElement('button',`${projeto.id} post`)
 
         //<2  <div class="editor">
         const divWrapperEditor = createNewElement('div', 'editor')
@@ -205,7 +205,10 @@ function criaPost(projeto, parent) {
     liPost.addEventListener('click', () => {
 
         limpaPagina()
-        mostraPostDetalhado(JSON.parse(localStorage[liPost.classList[0]]))
+
+        const indiceProjetoVinculado = JSON.parse(localStorage[liPost.classList[0]])
+
+        mostraPostDetalhado(indiceProjetoVinculado)
 
     })
 }
@@ -260,59 +263,4 @@ function limpaPagina() {
     
 }
 
-function mostraPostDetalhado() {
-    
-}
 
-function mostraPaginaProjetos() {
-
-    // Seleciona todos os elementos code-input
-    // const listaProjetos = Object.keys(localStorage)
-    // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
-
-    //{ Cria a ul para ser alimentada de posts para elemento dentro do localStorage
-    const container = document.querySelector('.container')
-
-    criaHeaderPagina('projetos', null, container)
-
-    const listaPosts = createNewElement('ul', 'lista-posts')
-    listaPosts.style.listStyle = 'none'
-    container.appendChild(listaPosts)
-    //}
-
-    criaPostNovo(listaPosts)
-
-    const rangeLocalStorage = range(localStorage.length, startAt = 1).reverse()
-
-    if (localStorage.length > 0) {
-        
-        rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
-    }
-
-}
-
-window.onload = function() {
-    // Seleciona todos os elementos code-input
-    // const listaProjetos = Object.keys(localStorage)
-    // listaProjetos.forEach((projeto) => criaPost(JSON.parse(localStorage[projeto])))
-
-    //{ Cria a ul para ser alimentada de posts para elemento dentro do localStorage
-    // const container = document.querySelector('.container')
-
-    // criaHeaderPagina('projetos', null, container)
-
-    // const listaPosts = createNewElement('ul', 'lista-posts')
-    // listaPosts.style.listStyle = 'none'
-    // container.appendChild(listaPosts)
-    // //}
-
-    // criaPostNovo(listaPosts)
-
-    // const rangeLocalStorage = range(localStorage.length).reverse()
-
-    // if (localStorage.length > 0) {
-        
-    //     rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
-    // }
-    mostraPaginaProjetos()
-}

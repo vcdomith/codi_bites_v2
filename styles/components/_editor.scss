@@ -467,6 +467,23 @@
                 //     fill: $cor-fundo-editor;
                 // }
             }
+
+            &:active {
+
+                background-color: $cor-texto;
+
+                svg {
+
+                    fill: $cor-fundo-editor;
+
+                }
+                
+                p {
+                    
+                    color: $cor-fundo-editor;
+                    z-index: 10;
+                }
+            }
     
             svg {
                 --cor-svg: #fff;
@@ -478,10 +495,18 @@
             }
             
             p {
+                --cor-texto-copar: #fff;
+
+                color: var(--cor-texto-copar);
+
+                text-align: center;
+
                 font-size: 0.83rem;
                 font-weight: 600;
 
-                min-width: 120px;
+                user-select: none;
+                
+                min-width: 90px;
 
                 transition: width 700ms;
             }
@@ -530,7 +555,7 @@
 
             svg {
                 overflow: visible;
-    
+     
                 width: 20px;
                 fill: $cor-texto;
 

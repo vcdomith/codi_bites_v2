@@ -60,7 +60,7 @@ function criaProjeto() {
         likes: 0,
         corTexto: rgbStringToHex(tagText.style.color),
         data: `${data[2]} ${mesBrasil(data)} ${data[3]}`,
-        indice: localStorage.length + 1
+        id: Date.now().toString()
     }
 
     // O objeto projeto é alimentado ao iterar a NodeList com todos elementos, para cada elemento:
@@ -99,9 +99,9 @@ function salvaProjeto() {
         return
     }
     // localStorage.setItem(`${localStorage.length} - ${projeto.titulo}`, JSON.stringify(projeto))
-    localStorage.setItem(`${projeto.indice}`, JSON.stringify(projeto))
+    localStorage.setItem(`${projeto.id}`, JSON.stringify(projeto))
 
-    limpaPagina()
+    limpaPagina()                             
     mostraPaginaProjetos()
 
     // console.log(`Projeto ${projeto.titulo} salvo no localStorage`)
