@@ -316,11 +316,11 @@ function mostraPostDetalhado(projeto) {
 
                     //*5_h5Linguagem  <h5 class="texto-linguagem">Linguagem</h5>
                     const h5Linguagem = createNewElement('h5', 'texto-linguagem', capitalize(projeto.linguagem))
-                    h5Linguagem.setAttribute('style', `color: ${projeto.corTexto}; border-right: 2px solid ${projeto.corTexto}; margin: 0;`)
+                    h5Linguagem.setAttribute('style', `color: ${projeto.corTexto}; border-right: 2px solid ${projeto.corTexto}; margin: 0; user-select: none;`)
 
                     //*5_h5Tag  <h5 class="texto-tag">Tag</h5>
                     const h5Tag = createNewElement('h5', 'texto-tag', projeto.tag)
-                    h5Tag.setAttribute('style', `color: ${projeto.corTexto}; margin: 0;`)
+                    h5Tag.setAttribute('style', `color: ${projeto.corTexto}; margin: 0; user-select: none;`)
 
                 divWrapperTexto.appendChild(h5Linguagem)
                 divWrapperTexto.appendChild(h5Tag)
@@ -399,6 +399,8 @@ function mostraPostDetalhado(projeto) {
                 })
 
                 buttonWrapperCopiar.appendChild(pCopiar)
+                buttonWrapperCopiar.style.setProperty('--cor-botao', projeto.corTexto)
+                buttonWrapperCopiar.style.setProperty('--cor-fundo', projeto.cor)
 
             //3_divWrapperBotoes>
             divWrapperBotoes.appendChild(divWrapperTexto)
@@ -411,6 +413,8 @@ function mostraPostDetalhado(projeto) {
         //*2_code-input <code-input lang="python" placeholder="Escreva seu código aqui" class="codigo param-objeto" required></code-input>
         const codeInputElement = createNewElement('code-input', 'codigo param-objeto' , projeto.codigo)
         codeInputElement.setAttribute('lang', projeto.linguagem)
+        codeInputElement.style.setProperty('--cor-fundo-selecao', projeto.cor)
+        codeInputElement.style.setProperty('--cor-texto-selecao', projeto.corTexto)
 
         //<2_divFooterEditor  <div class="footer-editor">
         const divFooterEditor = createNewElement('div', 'footer-editor')

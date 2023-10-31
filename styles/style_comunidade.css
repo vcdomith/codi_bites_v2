@@ -363,6 +363,8 @@ textarea {
   visibility: hidden;
 }
 .editor code-input {
+  --cor-fundo-selecao: #fff;
+  --cor-texto-selecao: #141414;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   background-color: #141414;
@@ -376,6 +378,14 @@ textarea {
 }
 .editor code-input:focus-within {
   outline: none;
+}
+.editor code-input textarea::-moz-selection {
+  background: var(--cor-fundo-selecao);
+  color: var(--cor-texto-selecao);
+}
+.editor code-input textarea::selection {
+  background: var(--cor-fundo-selecao);
+  color: var(--cor-texto-selecao);
 }
 .editor code-input pre code {
   background-color: #141414 !important;
@@ -403,6 +413,8 @@ textarea {
   font-style: italic;
 }
 .post-detalhado .opcoes .botao-copiar {
+  --cor-botao: #fff;
+  --cor-fundo: #141414;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -418,24 +430,22 @@ textarea {
   width: 115px;
 }
 .post-detalhado .opcoes .botao-copiar:active {
-  background-color: #FFFFFF;
+  background-color: var(--cor-botao);
 }
 .post-detalhado .opcoes .botao-copiar:active svg {
-  fill: #141414;
+  fill: var(--cor-fundo);
 }
 .post-detalhado .opcoes .botao-copiar:active p {
-  color: #141414;
+  color: var(--cor-fundo);
   z-index: 10;
 }
 .post-detalhado .opcoes .botao-copiar svg {
-  --cor-svg: #fff;
   min-width: 18px;
   max-height: 18px;
-  fill: var(--cor-svg);
+  fill: var(--cor-botao);
 }
 .post-detalhado .opcoes .botao-copiar p {
-  --cor-texto-copar: #fff;
-  color: var(--cor-texto-copar);
+  color: var(--cor-botao);
   text-align: center;
   font-size: 0.83rem;
   font-weight: 600;

@@ -378,6 +378,8 @@
 
     code-input {
         // width: 100%;
+        --cor-fundo-selecao: #fff;
+        --cor-texto-selecao: #141414;
 
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
@@ -399,6 +401,13 @@
 
         &:focus-within {
             outline: none;
+        }
+
+        textarea::selection {
+
+            background: var(--cor-fundo-selecao);
+            color: var(--cor-texto-selecao);
+
         }
         
         pre{
@@ -444,6 +453,9 @@
     
        .botao-copiar {
 
+            --cor-botao: #fff;
+            --cor-fundo: #141414;
+
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -470,34 +482,32 @@
 
             &:active {
 
-                background-color: $cor-texto;
+                background-color: var(--cor-botao);
 
                 svg {
 
-                    fill: $cor-fundo-editor;
+                    fill: var(--cor-fundo);
 
                 }
                 
                 p {
                     
-                    color: $cor-fundo-editor;
+                    color: var(--cor-fundo);
                     z-index: 10;
                 }
             }
-    
-            svg {
-                --cor-svg: #fff;
 
+            svg {
+    
                 min-width: 18px;
                 max-height: 18px;
-    
-                fill: var(--cor-svg);
+
+                fill: var(--cor-botao);
             }
             
             p {
-                --cor-texto-copar: #fff;
 
-                color: var(--cor-texto-copar);
+                color: var(--cor-botao);
 
                 text-align: center;
 
