@@ -190,7 +190,7 @@
                 border-bottom-left-radius: 1rem;
                 border-bottom-right-radius: 1rem;
 
-                background-color: transparentize($cor-fundo-editor, 0.3);
+                background-color: $cor-fundo-post;
 
                 font-family: $fonte-base;
                 color: $cor-texto;

@@ -128,14 +128,38 @@ function retornar(button) {
 }
 
 function excluir(button) {
-    return
+    
+    button.addEventListener('click', () => {
+
+        limpaPagina()
+
+        const container = document.querySelector('.container')
+
+        criaHeaderPagina('projetos', 'Excluir Projetos', 'retornar editar', container)
+
+        const listaCards = createNewElement('ul', 'lista-cards')
+        listaCards.style.listStyle = 'none'
+        container.appendChild(listaCards)
+        
+        const localStorageKeys = Object.keys(localStorage).sort().reverse()
+        
+        localStorageKeys.forEach((id, i) => {
+
+            listaProjetosExcluir(JSON.parse(localStorage[id]), (i + 1), listaCards)
+            i++
+
+        })
+
+    })
+
+
 }
 
 function editar(button) {
     return
 }
 
-function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
+function criaHeaderPagina(tipoPagina, contextoPagina = null, botoesUsados = null, parent = null) {
 
     const paginaMap = {
 
@@ -153,7 +177,7 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
             `,
             nome: 'Editor de Códigos',
             contexto: contextoPagina !== null ? contextoPagina : 'Não Definido',
-            botoes: 'retornar'
+            botoes: botoesUsados !== null ? botoesUsados : 'retornar'
         },
 
         projetos: {
@@ -162,8 +186,8 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, parent = null) {
             <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" class="icone-header"><path d="M553.89 875.24c0.15-0.02 0.29-0.05 0.44-0.07l-0.19-0.19-0.25 0.26z" fill="#fff"/><path d="M877.72 658.29V109.71H292.58v109.71h-146.3v438.86H73.14v256h877.71v-256h-73.13z m-73.14-475.43v475.43H637.99c-25.34 43.54-71.99 73.14-126 73.14s-100.66-29.6-126-73.14h-20.28V182.86h438.87zM219.43 292.57h73.14v365.71h-73.14V292.57z m658.28 548.57H146.28V731.43h202.97c41.2 45.9 100.38 73.14 162.75 73.14 62.36 0 121.55-27.24 162.75-73.14h202.97v109.71z" fill="#fff" /><path d="M402.28 292.57h365.71v73.14H402.28zM402.28 438.86h365.71V512H402.28z" fill="#fff" /></svg>
             `,
             nome: 'Projetos Salvos',
-            contexto: 'Projetos localStorage',
-            botoes: 'excluir editar'
+            contexto: contextoPagina !== null ? contextoPagina : 'Projetos localStorage',
+            botoes: botoesUsados !== null ? botoesUsados : 'excluir editar'
         }
         
     }

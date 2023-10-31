@@ -13,7 +13,7 @@ function mostraPaginaProjetos() {
     //{ Cria a ul para ser alimentada de posts para elemento dentro do localStorage
     const container = document.querySelector('.container')
 
-    criaHeaderPagina('projetos', null, container)
+    criaHeaderPagina('projetos', null, null, container)
 
     const listaPosts = createNewElement('ul', 'lista-posts')
     listaPosts.style.listStyle = 'none'
@@ -28,7 +28,7 @@ function mostraPaginaProjetos() {
         
         // rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
 
-        const localStorageKeys =  Object.keys(localStorage).sort().reverse()
+        const localStorageKeys = Object.keys(localStorage).sort().reverse()
 
         localStorageKeys.forEach((id) => criaPost(JSON.parse(localStorage[id]), listaPosts))
 

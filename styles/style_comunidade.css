@@ -391,6 +391,16 @@ textarea {
   background-color: #141414 !important;
 }
 
+.post-detalhado.wrapper {
+  margin: 0 1rem 1rem 1rem;
+  background-color: #151C24;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+.post-detalhado.editor {
+  margin-bottom: 0;
+}
 .post-detalhado .opcoes {
   display: flex;
   flex-direction: row;
@@ -464,8 +474,6 @@ textarea {
   display: flex;
   justify-content: end;
   background-color: #141414;
-  border-bottom-right-radius: 1rem;
-  border-bottom-left-radius: 1rem;
   padding: 0.5rem;
 }
 .post-detalhado .footer-editor .botao-expandir {
@@ -491,14 +499,23 @@ textarea {
 }
 .post-detalhado .personalizacao-salvar {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   justify-content: space-between;
   color: #FFFFFF;
-  gap: 2rem;
+  gap: 0.5rem;
+  padding: 0 1rem 0.5rem 1rem;
+}
+.post-detalhado .personalizacao-salvar .linguagem-data h5 {
+  margin: 0;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 .post-detalhado .personalizacao-salvar .social-autor {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
@@ -514,10 +531,6 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-.post-detalhado .personalizacao-salvar .social-autor .autor .wrapper-autor p {
-  padding-right: 1rem;
-  border-right: 2px solid #FFFFFF;
 }
 
 @media (max-width: 600px) {
@@ -883,7 +896,7 @@ textarea {
   border-top: 2px solid rgba(255, 255, 255, 0.1);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  background-color: rgba(20, 20, 20, 0.7);
+  background-color: #151C24;
   font-family: "Inter", sans-serif;
   color: #FFFFFF;
 }
@@ -1475,4 +1488,84 @@ textarea {
 }
 .notificacoes .botao-dispensar {
   padding: 0.5rem;
+}
+
+.lista-cards {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 1rem;
+  gap: 2rem;
+}
+.lista-cards .botao-card {
+  display: flex;
+  position: relative;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 200px;
+  right: 0;
+  border: none;
+  outline: none;
+  background-color: #cccccc;
+  background-image: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: filter 1000ms, width 1000ms, right 1000ms;
+}
+.lista-cards .botao-card:hover {
+  filter: brightness(120%);
+}
+.lista-cards .botao-card:hover .wrapper-indice > svg {
+  opacity: 1;
+}
+.lista-cards .botao-card .wrapper-indice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.lista-cards .botao-card .wrapper-indice .indice-projeto {
+  margin: 0;
+  font-size: 4rem;
+  color: #051D3B;
+}
+.lista-cards .botao-card .wrapper-indice svg {
+  opacity: 0;
+  fill: #051D3B;
+  width: 70px;
+  transition: opacity 250ms;
+}
+.lista-cards .botao-card .card-detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 1;
+  border-left: 2px solid rgba(5, 29, 59, 0.5);
+  gap: 0.5rem;
+}
+.lista-cards .botao-card .card-detalhes .card-nome, .lista-cards .botao-card .card-detalhes .card-descricao {
+  border: none;
+  background: none;
+  padding-left: 1rem;
+  font-family: "Inter", sans-serif;
+  color: #051D3B;
+  align-self: start;
+  width: 100%;
+}
+.lista-cards .botao-card .card-detalhes .card-nome {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.lista-cards .botao-card .card-detalhes .card-descricao {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.lista-cards .botao-card .card-detalhes h5 {
+  position: relative;
+  left: 16px;
+  margin: 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: rgba(5, 29, 59, 0.5);
 }/*# sourceMappingURL=style_comunidade.css.map */

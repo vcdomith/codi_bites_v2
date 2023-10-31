@@ -58,7 +58,7 @@ function criaProjeto() {
         nomeAutor: 'Nilvo',
         comentarios: 0,
         likes: 0,
-        corTexto: rgbStringToHex(tagText.style.color),
+        corTexto: tagText.style.color === '' ? '#FFF' : rgbStringToHex(tagText.style.color),
         data: `${data[2]} ${mesBrasil(data)} ${data[3]}`,
         id: Date.now().toString()
     }

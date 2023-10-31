@@ -288,7 +288,7 @@ function criaEditorNovo() {
 
 function mostraPostDetalhado(projeto) {
 
-    const divWrapperHeader = criaHeaderPagina('editor', 'Criando Novo Projeto')
+    const divWrapperHeader = criaHeaderPagina('editor', 'Post Detalhado')
     
     //<1_divWrapperEditor  <div class="editor">
     const divWrapperEditor = createNewElement('div', 'editor post-detalhado')
@@ -385,7 +385,7 @@ function mostraPostDetalhado(projeto) {
                         buttonWrapperCopiar.appendChild(pCopiar)
                         pCopiar.textContent = 'copiado'
 
-                        criaNotificacao('sucesso', 'Código copiado com sucesso para a área de transferência', false, listaNotificacoes)
+                        criaNotificacao('sucesso', `Código copiado com sucesso para a área de transferência`, false, listaNotificacoes)
 
                     } catch (error) {
 
