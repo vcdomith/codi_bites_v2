@@ -907,11 +907,10 @@ textarea {
   background: none;
   outline: none;
   border: none;
-  font-family: "Cormorant", serif;
+  font-family: "Inter", sans-serif;
   color: #FFFFFF;
-  font-style: italic;
   font-size: 3rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .container .lista-posts .post .detalhes-post .comunidade-descricao {
   grid-area: descricao;
