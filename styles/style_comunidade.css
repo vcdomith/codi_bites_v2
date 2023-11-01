@@ -907,10 +907,11 @@ textarea {
   background: none;
   outline: none;
   border: none;
-  font-family: "Inter", sans-serif;
+  font-family: "Cormorant", serif;
   color: #FFFFFF;
+  font-style: italic;
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .container .lista-posts .post .detalhes-post .comunidade-descricao {
   grid-area: descricao;
@@ -1497,7 +1498,13 @@ textarea {
   margin: 1rem;
   gap: 2rem;
 }
-.lista-cards .botao-card {
+.lista-cards .container-projeto {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  border-radius: 1rem;
+}
+.lista-cards .container-projeto .botao-card {
   display: flex;
   position: relative;
   gap: 2rem;
@@ -1513,30 +1520,30 @@ textarea {
   cursor: pointer;
   transition: filter 1000ms, width 1000ms, right 1000ms;
 }
-.lista-cards .botao-card:hover {
+.lista-cards .container-projeto .botao-card:hover {
   filter: brightness(120%);
 }
-.lista-cards .botao-card:hover .wrapper-indice > svg {
+.lista-cards .container-projeto .botao-card:hover .wrapper-indice > svg {
   opacity: 1;
 }
-.lista-cards .botao-card .wrapper-indice {
+.lista-cards .container-projeto .botao-card .wrapper-indice {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-.lista-cards .botao-card .wrapper-indice .indice-projeto {
+.lista-cards .container-projeto .botao-card .wrapper-indice .indice-projeto {
   margin: 0;
   font-size: 4rem;
   color: #051D3B;
 }
-.lista-cards .botao-card .wrapper-indice svg {
+.lista-cards .container-projeto .botao-card .wrapper-indice svg {
   opacity: 0;
-  fill: #051D3B;
+  fill: rgba(5, 29, 59, 0.7);
   width: 70px;
   transition: opacity 250ms;
 }
-.lista-cards .botao-card .card-detalhes {
+.lista-cards .container-projeto .botao-card .card-detalhes {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -1544,7 +1551,7 @@ textarea {
   border-left: 2px solid rgba(5, 29, 59, 0.5);
   gap: 0.5rem;
 }
-.lista-cards .botao-card .card-detalhes .card-nome, .lista-cards .botao-card .card-detalhes .card-descricao {
+.lista-cards .container-projeto .botao-card .card-detalhes .card-nome, .lista-cards .container-projeto .botao-card .card-detalhes .card-descricao {
   border: none;
   background: none;
   padding-left: 1rem;
@@ -1553,19 +1560,137 @@ textarea {
   align-self: start;
   width: 100%;
 }
-.lista-cards .botao-card .card-detalhes .card-nome {
+.lista-cards .container-projeto .botao-card .card-detalhes .card-nome {
   font-size: 2rem;
   font-weight: 600;
 }
-.lista-cards .botao-card .card-detalhes .card-descricao {
+.lista-cards .container-projeto .botao-card .card-detalhes .card-descricao {
   font-size: 1rem;
   font-weight: 500;
 }
-.lista-cards .botao-card .card-detalhes h5 {
+.lista-cards .container-projeto .botao-card .card-detalhes h5 {
   position: relative;
   left: 16px;
   margin: 0;
   font-size: 0.8rem;
   font-style: italic;
   color: rgba(5, 29, 59, 0.5);
+}
+.lista-cards .container-excluir {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  padding: 1rem 2rem;
+  margin: 0;
+  border-radius: 1rem;
+}
+.lista-cards .container-excluir svg {
+  fill: #ffeaea;
+  width: 123px;
+  max-height: 100px;
+}
+.lista-cards .container-excluir .card-excluir {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  color: #ffeaea;
+  border-left: 2px solid #ffeaea;
+  padding-left: 2rem;
+}
+.lista-cards .container-excluir .card-excluir h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.lista-cards .container-excluir .card-excluir h4 {
+  margin: 0;
+  font-family: "Cormorant", serif;
+  font-size: 2.4rem;
+  font-style: italic;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card {
+  display: flex;
+  justify-content: center;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  outline: none;
+  background: none;
+  border: none;
+  height: 35px;
+  font-size: 1.25rem;
+  color: #ffeaea;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: background-color 300ms, border-radius 300ms, width 600ms;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card button:hover {
+  background-color: #ffeaea;
+  color: #a71100;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card button:hover ~ .linha {
+  height: 0;
+  opacity: 0;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card button:hover svg {
+  fill: #a71100;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card button:hover svg path {
+  fill: #a71100;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card button p {
+  margin: 0;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .confirma-excluir {
+  width: 40px;
+  overflow: hidden;
+  order: 0;
+  padding-right: 1rem;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .confirma-excluir:hover {
+  width: 150px;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .confirma-excluir svg {
+  max-width: 35px;
+  max-height: 35px;
+  min-width: 35px;
+  min-height: 35px;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .confirma-excluir svg path {
+  fill: #ffeaea;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .cancela-excluir {
+  position: relative;
+  left: -4px;
+  order: 2;
+  width: 40px;
+  overflow: hidden;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .cancela-excluir:hover {
+  width: 150px;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .cancela-excluir svg {
+  max-width: 35px;
+  max-height: 35px;
+  min-width: 35px;
+  min-height: 35px;
+  fill: #ffeaea;
+}
+.lista-cards .container-excluir .card-excluir .wrapper-botoes-card .linha {
+  position: relative;
+  left: -2px;
+  width: 2px;
+  height: 100%;
+  background-color: #ffeaea;
+  order: 1;
+  transition: height 300ms, opacity 300ms;
 }/*# sourceMappingURL=style_comunidade.css.map */

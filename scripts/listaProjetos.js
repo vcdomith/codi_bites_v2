@@ -2,58 +2,166 @@
 
 function listaProjetosExcluir(projeto, indice, parent) {
 
-    //<1_buttonWrapperProjeto  <button type="button" class="botao-card" id="botao-projeto">
-    const buttonWrapperCard = createNewElement('button', 'botao-card')
-    buttonWrapperCard.setAttribute('type', 'button')
-    buttonWrapperCard.setAttribute('id', 'botao-card')
+    //<1_divContainerProjeto  <div class="container-projeto"
+    const divContainerProjeto = createNewElement('div', 'container-projeto')
 
-        //<2_divWrapperIndice  <div class="wrapper-indice"
-        const divWrapperIndice = createNewElement('div', 'wrapper-indice')
+        //<2_buttonWrapperProjeto  <button type="button" class="botao-card" id="botao-projeto">
+        const buttonWrapperCard = createNewElement('button', 'botao-card')
+        buttonWrapperCard.setAttribute('type', 'button')
+        buttonWrapperCard.setAttribute('id', 'botao-card')
 
-            //*3_h2IndiceProjeto  <h2>1<h2>
-            const h2IndiceProjeto = createNewElement('h2', 'indice-projeto', indice)
+            //<3_divWrapperIndice  <div class="wrapper-indice"
+            const divWrapperIndice = createNewElement('div', 'wrapper-indice')
 
-            //*3_svgDeletar
-            const svgExcluir = `
-            <svg fill="#000000" viewBox="-1 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M7.004 23.087l7.08-7.081-7.07-7.071L8.929 7.02l7.067 7.069L23.084 7l1.912 1.913-7.089 7.093 7.075 7.077-1.912 1.913-7.074-7.073L8.917 25z"/></svg>
-            `
-        //2_divWrapperIndice>
-        divWrapperIndice.innerHTML = svgExcluir
-        divWrapperIndice.prepend(h2IndiceProjeto)
+                //*4_h2IndiceProjeto  <h2>1<h2>
+                const h2IndiceProjeto = createNewElement('h2', 'indice-projeto', indice)
 
-        //<2_divWrapperDetalhes  <div class="wrapper-detalhes">
-        const divWrapperDetalhes = createNewElement('div', 'card-detalhes')
+                //*4_svgDeletar
+                const svgExcluir = `
+                <svg fill="#000000" viewBox="-1 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M7.004 23.087l7.08-7.081-7.07-7.071L8.929 7.02l7.067 7.069L23.084 7l1.912 1.913-7.089 7.093 7.075 7.077-1.912 1.913-7.074-7.073L8.917 25z"/></svg>
+                `
+            //3_divWrapperIndice>
+            divWrapperIndice.innerHTML = svgExcluir
+            divWrapperIndice.prepend(h2IndiceProjeto)
 
-            //*3_textareaTitulo  <textarea name="" id="" class="projeto-titulo" rows="2">Pesquisa Binária em Python</textarea>
-            const textareaTitulo = createNewElement('textarea', 'card-nome', projeto.titulo)
-            textareaTitulo.setAttribute('rows', '2')
-            textareaTitulo.setAttribute('spellcheck', 'false')
-            textareaTitulo.setAttribute('disabled', 'true')
-            textareaTitulo.style.pointerEvents="none"
+            //<3_divWrapperDetalhes  <div class="wrapper-detalhes">
+            const divWrapperDetalhes = createNewElement('div', 'card-detalhes')
 
-            //*3_textareaDescricao  <textarea name="" id="" class="projeto-titulo" rows="2">Pesquisa Binária em Python</textarea>
-            const textareaDescricao = createNewElement('textarea', 'card-descricao', projeto.descricao)
-            textareaDescricao.setAttribute('rows', '3')
-            textareaDescricao.setAttribute('spellcheck', 'false')
-            textareaDescricao.setAttribute('disabled', 'true')
-            textareaDescricao.style.pointerEvents="none"
+                //*4_textareaTitulo  <textarea name="" id="" class="projeto-titulo" rows="2">Pesquisa Binária em Python</textarea>
+                const textareaTitulo = createNewElement('textarea', 'card-nome', projeto.titulo)
+                textareaTitulo.setAttribute('rows', '2')
+                textareaTitulo.setAttribute('spellcheck', 'false')
+                textareaTitulo.setAttribute('disabled', 'true')
+                textareaTitulo.style.pointerEvents="none"
 
-            //*3_h5Data  <h5>15 Out 2023</h5>
-            const data = projeto.data === undefined ? 's/ data' : projeto.data
-            const h5Data = createNewElement('h5', null, projeto.data)
+                //*4_textareaDescricao  <textarea name="" id="" class="projeto-titulo" rows="2">Pesquisa Binária em Python</textarea>
+                const textareaDescricao = createNewElement('textarea', 'card-descricao', projeto.descricao)
+                textareaDescricao.setAttribute('rows', '3')
+                textareaDescricao.setAttribute('spellcheck', 'false')
+                textareaDescricao.setAttribute('disabled', 'true')
+                textareaDescricao.style.pointerEvents="none"
 
-        //2_divWrapperDetalhes> 
-        divWrapperDetalhes.appendChild(textareaTitulo)
-        divWrapperDetalhes.appendChild(textareaDescricao)
-        divWrapperDetalhes.appendChild(h5Data)
+                //*4_h5Data  <h5>15 Out 2023</h5>
+                const data = projeto.data === undefined ? 's/ data' : projeto.data
+                const h5Data = createNewElement('h5', null, projeto.data)
 
-    //1_buttonWrapperProjeto>  
-    buttonWrapperCard.appendChild(divWrapperIndice)
-    buttonWrapperCard.appendChild(divWrapperDetalhes)
+            //3_divWrapperDetalhes> 
+            divWrapperDetalhes.appendChild(textareaTitulo)
+            divWrapperDetalhes.appendChild(textareaDescricao)
+            divWrapperDetalhes.appendChild(h5Data)
 
-    // Preencher com função que chama notificação para confirmar, exclui o projeto do localStorage, chama notificação de sucesso e então atualiza a página
-    buttonWrapperCard.addEventListener('click', () => {})
+        //2_buttonWrapperProjeto>  
+        buttonWrapperCard.appendChild(divWrapperIndice)
+        buttonWrapperCard.appendChild(divWrapperDetalhes)
 
-    parent.appendChild(buttonWrapperCard)
+    //1_divContainerProjeto>
+    divContainerProjeto.appendChild(buttonWrapperCard)
+
+    parent.appendChild(divContainerProjeto)
+
+    botaoCardProjetoExcluir(buttonWrapperCard, divContainerProjeto)
+
+}
+
+function botaoCardProjetoExcluir(button, parent) {
+
+    button.addEventListener('click', () => {
+
+        const titulo = button.querySelector('.card-nome').value
+
+        parent.style.backgroundColor = '#a71100'
+        parent.innerHTML = ""
+
+        criaCardEstadoExcluir(button, titulo, parent)
+
+
+    })
+
+
+}
+
+function criaCardEstadoExcluir(button, titulo, parent) {
+
+    //<1_divContainerCardExcluir  <div class="container-excluir"
+    const divContainerCardExcluir = createNewElement('div', 'container-excluir')
+
+        //*2_svgCardExcluir  
+        const svgCardExcluir = `
+        <svg fill="#000000" viewBox="5 2 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M7.004 23.087l7.08-7.081-7.07-7.071L8.929 7.02l7.067 7.069L23.084 7l1.912 1.913-7.089 7.093 7.075 7.077-1.912 1.913-7.074-7.073L8.917 25z"/></svg>
+        `
+
+        //<2_divWrapperCardExcluir <div class="card-excluir"
+        const divWrapperCardExcluir = createNewElement('div', 'card-excluir')
+
+            //*3_h3TextoCardExcluir  <h3>Deseja excluir o projeto: <h3>
+            const h3TextoCardExcluir = createNewElement('h3', null, 'Deseja excluir o projeto?')
+
+            //*3_h4ProjetoCardExcluir <h4>Criador de 'Post Novo' ?<h4>
+            const h4ProjetoCardExcluir = createNewElement('h4', null, `" ${titulo} "`)
+
+            //<3_divWrapperBotoesCard  <div class="wrapper-botoes-card"
+            const divWrapperBotoesCard = createNewElement('div', 'wrapper-botoes-card')
+
+                //*4_buttonConfirmaExcluir  <button type="button" id="confirma-excluir" class="confirma-excluir">Excluir</button>
+                const buttonConfirmaExcluir = createNewElement('button', 'confirma-excluir')
+                buttonConfirmaExcluir.setAttribute('type', 'button')
+                buttonConfirmaExcluir.setAttribute('id', 'confirma-excluir')
+
+                    //*5_svgConfirmaExcluir
+                    const svgConfirmaExcluir = `
+                    <svg viewBox="-5 -6 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-179.000000, -360.000000)" fill="#000000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M130.35,216 L132.45,216 L132.45,208 L130.35,208 L130.35,216 Z M134.55,216 L136.65,216 L136.65,208 L134.55,208 L134.55,216 Z M128.25,218 L138.75,218 L138.75,206 L128.25,206 L128.25,218 Z M130.35,204 L136.65,204 L136.65,202 L130.35,202 L130.35,204 Z M138.75,204 L138.75,200 L128.25,200 L128.25,204 L123,204 L123,206 L126.15,206 L126.15,220 L140.85,220 L140.85,206 L144,206 L144,204 L138.75,204 Z" id="delete-[#1487]"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    `
+
+                    //*5_pConfirmaExcluir <p>Excluir</p>
+                    const pConfirmaExcluir = createNewElement('p', null, 'Excluir')
+
+                //4_buttonConfirmaExcluir>
+                buttonConfirmaExcluir.innerHTML = svgConfirmaExcluir
+                buttonConfirmaExcluir.appendChild(pConfirmaExcluir)
+
+                //<4_buttonCancelaExcluir  <button type="button" id="cancela-excluir" class="cancela-excluir">Cancelar</button>
+                const buttonCancelaExcluir = createNewElement('button', 'cancela-excluir')
+                buttonCancelaExcluir.setAttribute('type', 'button')
+                buttonCancelaExcluir.setAttribute('id', 'cancela-excluir')
+
+                    //*5_svgCancelaExcluir
+                    const svgCancelaExcluir = `
+                    <svg fill="#000000" viewBox="-4 0 34 34" xmlns="http://www.w3.org/2000/svg"><path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z"/></svg>
+                    `
+
+                    //*5_pConfirmaExcluir <p>Excluir</p>
+                    const pCancelaExcluir = createNewElement('p', null, 'Cancelar')
+
+                //4_buttonCancelaExcluir>
+                buttonCancelaExcluir.innerHTML = svgCancelaExcluir
+                // buttonCancelaExcluir.prepend(pCancelaExcluir)
+                buttonCancelaExcluir.appendChild(pCancelaExcluir)
+
+                //*4_divLinha  <div class="linha">    
+                const divLinha = createNewElement('div', 'linha')
+
+            //3_divWrapperBotoesCard>
+            divWrapperBotoesCard.appendChild(buttonConfirmaExcluir)
+            divWrapperBotoesCard.appendChild(buttonCancelaExcluir)
+            divWrapperBotoesCard.appendChild(divLinha)
+
+        //2_divWrapperCardExcluir>
+        divWrapperCardExcluir.appendChild(h3TextoCardExcluir)
+        divWrapperCardExcluir.appendChild(h4ProjetoCardExcluir)
+        divWrapperCardExcluir.appendChild(divWrapperBotoesCard)
+
+    //1_divContainerCardExcluir>
+    divContainerCardExcluir.innerHTML = svgCardExcluir
+    divContainerCardExcluir.appendChild(divWrapperCardExcluir)
+
+    parent.appendChild(divContainerCardExcluir)
 
 }
