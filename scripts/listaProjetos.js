@@ -3,7 +3,7 @@
 function listaProjetosExcluir(projeto, indice, parent) {
 
     //<1_divContainerProjeto  <div class="container-projeto"
-    const divContainerProjeto = createNewElement('div', 'container-projeto')
+    const divContainerProjeto = createNewElement('div', `container-projeto`)
 
         //<2_buttonWrapperProjeto  <button type="button" class="botao-card" id="botao-projeto">
         const buttonWrapperCard = createNewElement('button', 'botao-card')
@@ -25,7 +25,7 @@ function listaProjetosExcluir(projeto, indice, parent) {
             divWrapperIndice.prepend(h2IndiceProjeto)
 
             //<3_divWrapperDetalhes  <div class="wrapper-detalhes">
-            const divWrapperDetalhes = createNewElement('div', 'card-detalhes')
+            const divWrapperDetalhes = createNewElement('div', `${projeto.id} card-detalhes`)
 
                 //*4_textareaTitulo  <textarea name="" id="" class="projeto-titulo" rows="2">Pesquisa Binária em Python</textarea>
                 const textareaTitulo = createNewElement('textarea', 'card-nome', projeto.titulo)
@@ -59,11 +59,11 @@ function listaProjetosExcluir(projeto, indice, parent) {
 
     parent.appendChild(divContainerProjeto)
 
-    botaoCardProjetoExcluir(buttonWrapperCard, divContainerProjeto)
+    botaoCardProjetoExcluir(buttonWrapperCard, projeto, divContainerProjeto)
 
 }
 
-function botaoCardProjetoExcluir(button, parent) {
+function botaoCardProjetoExcluir(button, projeto, parent) {
 
     button.addEventListener('click', () => {
 
@@ -72,15 +72,25 @@ function botaoCardProjetoExcluir(button, parent) {
         parent.style.backgroundColor = '#a71100'
         parent.innerHTML = ""
 
-        criaCardEstadoExcluir(button, titulo, parent)
+        criaCardEstadoExcluir(projeto, titulo, parent)
 
+        setTimeout(() => {
+            document.addEventListener('click', clickOutsideHandler);
+        }, 100); // Adjust the delay as needed
 
     })
 
+    function clickOutsideHandler(event) {
+        if (!parent.contains(event.target)) {
+            // The click occurred outside the parent element
+            document.removeEventListener('click', clickOutsideHandler);
+            criaPaginaExcluir();
+        }
+    }
 
 }
 
-function criaCardEstadoExcluir(button, titulo, parent) {
+function criaCardEstadoExcluir(projeto, titulo, parent) {
 
     //<1_divContainerCardExcluir  <div class="container-excluir"
     const divContainerCardExcluir = createNewElement('div', 'container-excluir')
@@ -93,11 +103,19 @@ function criaCardEstadoExcluir(button, titulo, parent) {
         //<2_divWrapperCardExcluir <div class="card-excluir"
         const divWrapperCardExcluir = createNewElement('div', 'card-excluir')
 
-            //*3_h3TextoCardExcluir  <h3>Deseja excluir o projeto: <h3>
-            const h3TextoCardExcluir = createNewElement('h3', null, 'Deseja excluir o projeto?')
+            //*3_textareaTextoCardExcluir  <textarea rows="2" spellcheck="false" disabled>Deseja excluir o projeto: <textarea>
+            const textareaTextoCardExcluir = createNewElement('textarea', null, 'Deseja excluir o projeto?')
+            textareaTextoCardExcluir.setAttribute('rows', '1')
+            textareaTextoCardExcluir.setAttribute('spellcheck', 'false')
+            textareaTextoCardExcluir.setAttribute('disabled', 'true')
 
-            //*3_h4ProjetoCardExcluir <h4>Criador de 'Post Novo' ?<h4>
-            const h4ProjetoCardExcluir = createNewElement('h4', null, `" ${titulo} "`)
+            //*3_textareaProjetoCardExcluir <textarea rows="3" spellcheck="false" disabled>Criador de 'Post Novo' ?<textarea>
+            const textareaProjetoCardExcluir = createNewElement('textarea', null, `" ${titulo} "`)
+            textareaProjetoCardExcluir.setAttribute('rows', '1')
+            textareaProjetoCardExcluir.setAttribute('spellcheck', 'false')
+            textareaProjetoCardExcluir.setAttribute('disabled', 'true')
+
+            checkOverflow(textareaProjetoCardExcluir)
 
             //<3_divWrapperBotoesCard  <div class="wrapper-botoes-card"
             const divWrapperBotoesCard = createNewElement('div', 'wrapper-botoes-card')
@@ -127,6 +145,13 @@ function criaCardEstadoExcluir(button, titulo, parent) {
                 buttonConfirmaExcluir.innerHTML = svgConfirmaExcluir
                 buttonConfirmaExcluir.appendChild(pConfirmaExcluir)
 
+                buttonConfirmaExcluir.addEventListener('click', () => {
+
+                    localStorage.removeItem(projeto.id)
+                    criaPaginaExcluir()
+
+                })
+
                 //<4_buttonCancelaExcluir  <button type="button" id="cancela-excluir" class="cancela-excluir">Cancelar</button>
                 const buttonCancelaExcluir = createNewElement('button', 'cancela-excluir')
                 buttonCancelaExcluir.setAttribute('type', 'button')
@@ -145,6 +170,13 @@ function criaCardEstadoExcluir(button, titulo, parent) {
                 // buttonCancelaExcluir.prepend(pCancelaExcluir)
                 buttonCancelaExcluir.appendChild(pCancelaExcluir)
 
+                // Funcionalidade botao cancelar
+                buttonCancelaExcluir.addEventListener('click', () => {
+
+                    criaPaginaExcluir()
+
+                })
+
                 //*4_divLinha  <div class="linha">    
                 const divLinha = createNewElement('div', 'linha')
 
@@ -154,8 +186,8 @@ function criaCardEstadoExcluir(button, titulo, parent) {
             divWrapperBotoesCard.appendChild(divLinha)
 
         //2_divWrapperCardExcluir>
-        divWrapperCardExcluir.appendChild(h3TextoCardExcluir)
-        divWrapperCardExcluir.appendChild(h4ProjetoCardExcluir)
+        divWrapperCardExcluir.appendChild(textareaTextoCardExcluir)
+        divWrapperCardExcluir.appendChild(textareaProjetoCardExcluir)
         divWrapperCardExcluir.appendChild(divWrapperBotoesCard)
 
     //1_divContainerCardExcluir>
@@ -164,4 +196,59 @@ function criaCardEstadoExcluir(button, titulo, parent) {
 
     parent.appendChild(divContainerCardExcluir)
 
+    // clickForaCard(divContainerCardExcluir, projeto.id)
 }
+
+function checkOverflow(textarea) {
+
+    window.addEventListener('resize', () => {
+            
+        textarea.rows = 1
+    
+        const tamanhoPadraoTextarea = textarea.clientHeight;
+    
+        const overflowing = textarea.scrollHeight > tamanhoPadraoTextarea
+    
+        if (overflowing) {
+            
+            textarea.rows = 2
+    
+        }
+
+    })
+
+}
+
+
+// function clickForaCard(button, id) {
+
+//     button.addEventListener('click', function (event) {
+//         event.stopPropagation(); // Prevent the click event from propagating to the window
+//         console.log(event.target, button)
+
+//         if (event.target !== button && id !== button.classList[0]) {
+
+//             console.log(id, button.classList[0])
+//             // Click occurred outside of the target element
+//             // Call your function here
+//             criaPaginaExcluir();
+//         }
+//       });
+
+//     // window.addEventListener('click', function (event) {
+//     // if (event.target !== button && id !== button.classList[0]) {
+
+//     //     console.log(id, button.classList[0])
+//     //     // Click occurred outside of the target element
+//     //     // Call your function here
+//     //     criaPaginaExcluir();
+//     // }
+//     // });
+
+// }
+
+// window.addEventListener('click', (e) => {
+
+//     console.log(e.target)
+
+// })

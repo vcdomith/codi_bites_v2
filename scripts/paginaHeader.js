@@ -65,7 +65,7 @@ function criaBotaoheader(tipoBotao) {
     return buttonCriado
 }
 
-function retornar(button) {
+function retornar(button, check = true) {
 
     button.addEventListener('click', () => {
             
@@ -82,7 +82,7 @@ function retornar(button) {
         })
 
         // Condição para testar se algum elemento possui o atibuto disabled, significa que está sendo chamado na página de post detalhado
-        if (Array.from(elements).some((element) => element.disabled === true)) {
+        if (Array.from(elements).some((element) => element.disabled === true) || elements.length === 0) {
             
             limpaPagina()
             mostraPaginaProjetos()
@@ -131,32 +131,37 @@ function excluir(button) {
     
     button.addEventListener('click', () => {
 
-        limpaPagina()
-
-        const container = document.querySelector('.container')
-
-        criaHeaderPagina('projetos', 'Excluir Projetos', 'retornar editar', container)
-
-        const listaCards = createNewElement('ul', 'lista-cards')
-        listaCards.style.listStyle = 'none'
-        container.appendChild(listaCards)
-        
-        const localStorageKeys = Object.keys(localStorage).sort().reverse()
-        
-        localStorageKeys.forEach((id, i) => {
-
-            listaProjetosExcluir(JSON.parse(localStorage[id]), (i + 1), listaCards)
-            i++
-
-        })
+        criaPaginaExcluir()
 
     })
-
 
 }
 
 function editar(button) {
     return
+}
+
+function criaPaginaExcluir() {
+
+    limpaPagina()
+
+    const container = document.querySelector('.container')
+
+    criaHeaderPagina('projetos', 'Excluir Projetos', 'retornar editar', container)
+
+    const listaCards = createNewElement('ul', 'lista-cards')
+    listaCards.style.listStyle = 'none'
+    container.appendChild(listaCards)
+    
+    const localStorageKeys = Object.keys(localStorage).sort().reverse()
+    
+    localStorageKeys.forEach((id, i) => {
+
+        listaProjetosExcluir(JSON.parse(localStorage[id]), (i + 1), listaCards)
+        i++
+
+    })
+
 }
 
 function criaHeaderPagina(tipoPagina, contextoPagina = null, botoesUsados = null, parent = null) {

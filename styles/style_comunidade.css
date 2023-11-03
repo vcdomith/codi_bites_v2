@@ -1576,12 +1576,18 @@ textarea {
   color: rgba(5, 29, 59, 0.5);
 }
 .lista-cards .container-excluir {
+  z-index: 1;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
   width: 100%;
   flex: 1;
   padding: 1rem 2rem;
   margin: 0;
   border-radius: 1rem;
+  transition: opacity 500ms;
 }
 .lista-cards .container-excluir svg {
   fill: #ffeaea;
@@ -1598,19 +1604,38 @@ textarea {
   border-left: 2px solid #ffeaea;
   padding-left: 2rem;
 }
-.lista-cards .container-excluir .card-excluir h3 {
+.lista-cards .container-excluir .card-excluir textarea:first-child {
+  background: none;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  text-align: center;
+  align-self: center center;
+  font-family: "Inter", sans-serif;
   font-size: 1.2rem;
+  color: #ffeaea;
 }
-.lista-cards .container-excluir .card-excluir h4 {
+.lista-cards .container-excluir .card-excluir textarea:nth-child(2) {
+  background: none;
   margin: 0;
+  border: 0;
+  width: 100%;
+  text-align: center;
   font-family: "Cormorant", serif;
   font-size: 2.4rem;
   font-style: italic;
   font-weight: 500;
+  color: #ffeaea;
   padding: 0.5rem;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card {
+  pointer-events: auto;
+  position: relative;
+  height: 35px;
   display: flex;
   justify-content: center;
 }
@@ -1626,7 +1651,6 @@ textarea {
   color: #ffeaea;
   padding: 0.5rem 0;
   cursor: pointer;
-  transition: background-color 300ms, border-radius 300ms, width 600ms;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card button:hover {
   background-color: #ffeaea;
@@ -1644,14 +1668,19 @@ textarea {
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card button p {
   margin: 0;
+  font-weight: 500;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card .confirma-excluir {
+  position: absolute;
+  right: -2px;
   width: 40px;
   overflow: hidden;
   order: 0;
   padding-right: 1rem;
+  transition: background-color 500ms, border-radius 300ms, width 600ms, padding 300ms;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card .confirma-excluir:hover {
+  padding-left: 0.5rem;
   width: 150px;
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -1666,11 +1695,12 @@ textarea {
   fill: #ffeaea;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card .cancela-excluir {
-  position: relative;
-  left: -4px;
+  position: absolute;
+  left: 0;
   order: 2;
   width: 40px;
   overflow: hidden;
+  transition: background-color 300ms, border-radius 300ms, width 600ms;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card .cancela-excluir:hover {
   width: 150px;
@@ -1685,10 +1715,10 @@ textarea {
   fill: #ffeaea;
 }
 .lista-cards .container-excluir .card-excluir .wrapper-botoes-card .linha {
-  position: relative;
-  left: -2px;
+  position: absolute;
+  left: 0;
   width: 2px;
-  height: 100%;
+  height: 35px;
   background-color: #ffeaea;
   order: 1;
   transition: height 300ms, opacity 300ms;
