@@ -135,11 +135,11 @@
 
     .container-excluir {
 
-        z-index: 1;
+        z-index: 10;
 
         $cor-card-excluir: #ffeaea;
         
-        pointer-events: none;
+        // pointer-events: none;
         user-select: none;
 
         display: flex;
@@ -155,13 +155,21 @@
 
         transition: opacity 500ms;
 
-        svg {
+        & * *:not(button) {
+            pointer-events: none;
+        }
 
+
+        svg {
+            
             fill: $cor-card-excluir;
-            width: 123px;
+            width: 102px;
+            min-width: 102px;
             max-height: 100px;
 
         }
+
+
 
         .card-excluir {
 

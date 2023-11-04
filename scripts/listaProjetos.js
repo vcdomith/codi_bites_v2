@@ -72,22 +72,16 @@ function botaoCardProjetoExcluir(button, projeto, parent) {
         parent.style.backgroundColor = '#a71100'
         parent.innerHTML = ""
 
-        criaCardEstadoExcluir(projeto, titulo, parent)
+        if (document.querySelector('.container-excluir')) {
+            
+            criaPaginaExcluir()
+        
+        } else {
 
-        setTimeout(() => {
-            document.addEventListener('click', clickOutsideHandler);
-        }, 100); // Adjust the delay as needed
+            criaCardEstadoExcluir(projeto, titulo, parent)
 
-    })
-
-    function clickOutsideHandler(event) {
-        if (!parent.contains(event.target)) {
-            // The click occurred outside the parent element
-            document.removeEventListener('click', clickOutsideHandler);
-            criaPaginaExcluir();
         }
-    }
-
+    })
 }
 
 function criaCardEstadoExcluir(projeto, titulo, parent) {
@@ -194,9 +188,10 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
     divContainerCardExcluir.innerHTML = svgCardExcluir
     divContainerCardExcluir.appendChild(divWrapperCardExcluir)
 
+    divContainerCardExcluir.style.filter = 'none'
+
     parent.appendChild(divContainerCardExcluir)
 
-    // clickForaCard(divContainerCardExcluir, projeto.id)
 }
 
 function checkOverflow(textarea) {
