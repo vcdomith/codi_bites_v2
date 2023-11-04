@@ -192,7 +192,7 @@ function criaHeaderPagina(tipoPagina, contextoPagina = null, botoesUsados = null
             `,
             nome: 'Projetos Salvos',
             contexto: contextoPagina !== null ? contextoPagina : 'Projetos localStorage',
-            botoes: botoesUsados !== null ? botoesUsados : 'excluir editar'
+            botoes: botoesUsados !== null ? botoesUsados : 'editar excluir'
         }
         
     }
