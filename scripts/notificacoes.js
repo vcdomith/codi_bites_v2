@@ -119,3 +119,10 @@ function criaElementoNotificacao(notificacao) {
 
     return notificacaoCriada
 }
+
+function apagaNotificacao(notificacao) {
+
+    notificacao.style.opacity = '0'
+    notificacao.addEventListener('transitionend', () => notificacao.remove())
+
+}

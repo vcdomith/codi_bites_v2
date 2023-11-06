@@ -166,10 +166,9 @@
 
         padding-right: 0;
 
-        .informacao-h3-erro {
-            padding-bottom: 1.5rem;
-        }
-
+        // .informacao-h3-erro {
+        //     padding-bottom: 1.5rem;
+        // }
 
         @include props-notificacao($cor-fundo-notificacao, 50px);
         @include props-notificacao-extra-inner($cor-fundo-notificacao);
@@ -247,6 +246,13 @@
         background-color: #fdefd2;
         
         @include props-notificacao(#fdefd2, 30px)
+    }
+
+    .tem-notificacoes-extra {
+
+        .informacao-h3-erro {
+            padding-bottom: 1.5rem;
+        }
     }
     
     .botao-dispensar {

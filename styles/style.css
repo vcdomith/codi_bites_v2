@@ -390,6 +390,39 @@ textarea {
 .editor code-input pre code {
   background-color: #141414 !important;
 }
+.editor .pagina-editar {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.editor .footer-editor {
+  display: flex;
+  justify-content: end;
+  background-color: #141414;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  padding: 0.5rem;
+}
+.editor .footer-editor .botao-expandir {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 100vmax;
+  width: 24px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.editor .footer-editor .botao-expandir:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.editor .footer-editor .botao-expandir:hover svg {
+  fill: #141414;
+}
+.editor .footer-editor .botao-expandir svg {
+  overflow: visible;
+  width: 20px;
+  fill: #FFFFFF;
+  transition: fill 300ms;
+}
 
 .post-detalhado.wrapper {
   margin: 0 1rem 1rem 1rem;
@@ -924,9 +957,6 @@ textarea {
   background-color: #ffeaea;
   padding-right: 0;
 }
-.notificacoes .notificacao-erro .informacao-h3-erro {
-  padding-bottom: 1.5rem;
-}
 .notificacoes .notificacao-erro .wrapper-informacao {
   display: flex;
   align-items: flex-start;
@@ -1204,6 +1234,9 @@ textarea {
 }
 .notificacoes .notificacao-extra .botao-dispensar:hover {
   color: rgba(93, 75, 38, 0.6);
+}
+.notificacoes .tem-notificacoes-extra .informacao-h3-erro {
+  padding-bottom: 1.5rem;
 }
 .notificacoes .botao-dispensar {
   padding: 0.5rem;

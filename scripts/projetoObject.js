@@ -41,6 +41,8 @@ function criaProjeto() {
             const nomeCampoVazio = palavraCorreta(element.classList[0])
             console.log(nomeCampoVazio)
 
+            notificacaoErro.classList.add('tem-notificacoes-extra')
+
             criaNotificacao('extra', nomeCampoVazio, retornaElemento = false, parentElement = notificacaoErroLista)
         })
 
@@ -108,8 +110,80 @@ function salvaProjeto() {
     criaNotificacao('sucesso', 'Projeto salvo com sucesso!')
 }
 
+function atualizaProjeto(projetoSelecionado) {
+
+    const projetoAtualizado = criaProjeto()
+    const projetoSalvo = JSON.parse(localStorage[projetoSelecionado.id])
+
+    projetoAtualizado['id'] = projetoSelecionado.id
+    projetoAtualizado['data'] = projetoSelecionado.data
+
+    if (projetoIgual(projetoAtualizado, projetoSalvo)) {
+
+        criaNotificacao('erro', 'Não há nenhuma alteração para que a atualização seja possível!')
+        return
+
+    }
+    
+    const listaNotificacoes = document.getElementById('notificacoes')
+
+    const notificacaoAlertaSobrescrever = criaNotificacao('alerta', 'Com essa operação você vai sobrescrever o projeto salvo com as informações presentes nessa página, confirme:', true)
+
+    listaNotificacoes.appendChild(notificacaoAlertaSobrescrever)
+
+    const listaNotificacaoAlerta = notificacaoAlertaSobrescrever.querySelector('.wrapper-botoes')
+
+    const botaoConfirmar = createNewElement('button', 'botao-sair', 'Atualizar projeto')
+    botaoConfirmar.addEventListener('click', () => {
+
+        // Funcionalidade que atualiza o projeto no localStorage
+        localStorage.setItem(projetoSelecionado.id, JSON.stringify(projetoAtualizado))
+
+        // Bloco que transiciona a notificação e remove ela
+        apagaNotificacao(notificacaoAlertaSobrescrever) 
+
+        // Bloco que emite notificação de sucesso e retorna o usuário para a página de projeto, para ver o resultado de suas alterações
+        criaNotificacao('sucesso', 'Projeto atualizado com sucesso!')
+        limpaPagina()
+        mostraPaginaProjetos()
+
+    })
+
+    listaNotificacaoAlerta.prepend(botaoConfirmar)
+
+}
+
 // Funcionalidade botão de salvar
 
 // const botaoSalvarProjeto = document.querySelector('#botao-salvar')
 
 // botaoSalvarProjeto.addEventListener('click', () => salvaProjeto())
+
+
+function apagaNotificacao(notificacao) {
+
+    notificacao.style.opacity = '0'
+    notificacao.addEventListener('transitionend', () => notificacaoAlertaSobrescrever.remove())
+
+}
+
+function projetoIgual(projetoAtualizado, projetoSalvo) {
+
+    const projetoAtualizadoKeys = Object.keys(projetoAtualizado)
+
+    for (const key of projetoAtualizadoKeys) {
+         
+        console.log(projetoAtualizado[key], projetoSalvo[key])
+
+        if (projetoAtualizado[key] !== projetoSalvo[key]) {
+            
+            return false
+
+        }
+
+    }
+
+    return true
+
+}
+

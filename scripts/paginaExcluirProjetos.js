@@ -1,5 +1,28 @@
 
 
+function criaPaginaExcluir() {
+
+    limpaPagina()
+
+    const container = document.querySelector('.container')
+
+    criaHeaderPagina('projetos', 'Excluir Projetos', 'retornar editar', container)
+
+    const listaCards = createNewElement('ul', 'lista-cards')
+    listaCards.style.listStyle = 'none'
+    container.appendChild(listaCards)
+    
+    const localStorageKeys = Object.keys(localStorage).sort().reverse()
+    
+    localStorageKeys.forEach((id, i) => {
+
+        listaProjetosExcluir(JSON.parse(localStorage[id]), (i + 1), listaCards)
+        i++
+
+    })
+
+}
+
 function listaProjetosExcluir(projeto, indice, parent) {
 
     //<1_divContainerProjeto  <div class="container-projeto"

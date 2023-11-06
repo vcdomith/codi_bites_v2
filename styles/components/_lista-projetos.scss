@@ -71,6 +71,12 @@
                 }
     
                 svg {
+
+                    path {
+
+                        fill: transparentize($cor-fundo, 0.3);
+
+                    }
     
                     opacity: 0;
     

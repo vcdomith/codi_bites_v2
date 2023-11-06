@@ -92,7 +92,15 @@ function retornar(button, check = true) {
 
         // Condição que testa se há campos preenchidos, para que informações nao sejam perdidas. É emitido uma notificação para que o usuário confirme a saida da página
         if (vazios.length !== (elements.length - 1)) {
-            
+
+            // Condição para mostrar apenas uma notificação do tipo alerta ao mesmo tempo e evitar erros
+            if (document.querySelector('.notificacao-alerta')) {
+                
+                console.log('Notificação já está sendo mostrada!')
+                return 
+
+            }
+
             const listaNotificacoes = document.getElementById('notificacoes')
 
             console.log('Existem campos preenchidos')
@@ -109,8 +117,7 @@ function retornar(button, check = true) {
                 mostraPaginaProjetos()
 
                 // Bloco que transiciona a notificação e remove ela
-                notificacaoAlerta.style.opacity = '0'
-                notificacaoAlerta.addEventListener('transitionend', () => notificacaoAlerta.remove())
+                apagaNotificacao(notificacaoAlerta)
 
             })
 
@@ -138,31 +145,15 @@ function excluir(button) {
 }
 
 function editar(button) {
-    return
-}
-
-function criaPaginaExcluir() {
-
-    limpaPagina()
-
-    const container = document.querySelector('.container')
-
-    criaHeaderPagina('projetos', 'Excluir Projetos', 'retornar editar', container)
-
-    const listaCards = createNewElement('ul', 'lista-cards')
-    listaCards.style.listStyle = 'none'
-    container.appendChild(listaCards)
     
-    const localStorageKeys = Object.keys(localStorage).sort().reverse()
-    
-    localStorageKeys.forEach((id, i) => {
+    button.addEventListener('click', () => {
 
-        listaProjetosExcluir(JSON.parse(localStorage[id]), (i + 1), listaCards)
-        i++
+        criaPaginaEditar()
 
     })
 
 }
+
 
 function criaHeaderPagina(tipoPagina, contextoPagina = null, botoesUsados = null, parent = null) {
 
