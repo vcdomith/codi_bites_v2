@@ -165,6 +165,13 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
                 buttonConfirmaExcluir.addEventListener('click', () => {
 
                     localStorage.removeItem(projeto.id)
+
+                    if (localStorage.length === 0) {
+                        
+                        mostraPaginaProjetos()
+
+                    }
+
                     criaPaginaExcluir()
 
                 })
