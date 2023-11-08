@@ -180,69 +180,6 @@ function retornar(button) {
 
             break;
         }
-            
-        // const elements = document.querySelectorAll('.param-objeto');
-
-        // const vazios = []
-
-        // elements.forEach((element) => {
-            
-        //     if (element.value === '' || element.value === null || (element.value === undefined && element.getAttribute('data-value') === null)) {
-
-        //         vazios.push(element)
-
-        //     }
-        // })
-
-        // // // Condição para testar se algum elemento possui o atibuto disabled, significa que está sendo chamado na página de post detalhado
-        // // if (Array.from(elements).some((element) => element.disabled === true) || elements.length === 0) {
-            
-        // //     limpaPagina()
-        // //     mostraPaginaProjetos()
-        // //     return
-
-        // // }
-
-        // // Condição que testa se há campos preenchidos, para que informações nao sejam perdidas. É emitido uma notificação para que o usuário confirme a saida da página
-        // if (vazios.length !== (elements.length - 1)) {
-
-        //     // Condição para mostrar apenas uma notificação do tipo alerta ao mesmo tempo e evitar erros
-        //     if (document.querySelector('.notificacao-alerta')) {
-                
-        //         console.log('Notificação já está sendo mostrada!')
-        //         return 
-
-        //     }
-
-        //     const listaNotificacoes = document.getElementById('notificacoes')
-
-        //     console.log('Existem campos preenchidos')
-        //     const notificacaoAlerta = criaNotificacao('alerta', 'Se você sair agora seu conteúdo não será salvo, confirme:', true)
-        //     listaNotificacoes.appendChild(notificacaoAlerta)
-
-        //     const listaNotificacaoAlerta = notificacaoAlerta.querySelector('.wrapper-botoes')
-
-        //     const botaoSair = createNewElement('button', 'botao-sair', 'Sair da Página')
-        //     botaoSair.addEventListener('click', () => {
-
-        //         // Funcionalidade que volta para a página projetos
-        //         limpaPagina()
-        //         mostraPaginaProjetos()
-
-        //         // Bloco que transiciona a notificação e remove ela
-        //         apagaNotificacao(notificacaoAlerta)
-
-        //     })
-
-        //     listaNotificacaoAlerta.prepend(botaoSair)
-
-        // } else {
-
-        //     limpaPagina()
-        //     mostraPaginaProjetos()
-
-        // }
-
     })
 
 }
