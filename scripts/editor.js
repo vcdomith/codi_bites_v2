@@ -555,7 +555,7 @@ function criaEditorProjeto(projeto) {
     const divWrapperHeader = criaHeaderPagina('editor', 'Editando Projeto')
     
     //<1_divWrapperEditor  <div class="editor">
-    const divWrapperEditor = createNewElement('div', 'editor')
+    const divWrapperEditor = createNewElement('div', `${projeto.id} editor`)
 
         //<2_divWrapperOpcoes  <div class="opcoes">
         const divWrapperOpcoes = createNewElement('div', 'opcoes')

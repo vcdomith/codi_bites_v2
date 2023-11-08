@@ -187,3 +187,22 @@ function projetoIgual(projetoAtualizado, projetoSalvo) {
 
 }
 
+function condicaoSairPagina(projetoSelecionado) {
+
+    const projetoAtualizado = criaProjeto()
+    const projetoSalvo = JSON.parse(localStorage[projetoSelecionado])
+
+    projetoAtualizado['id'] = projetoSalvo.id
+    projetoAtualizado['data'] = projetoSalvo.data
+
+    if (projetoIgual(projetoAtualizado, projetoSalvo)) {
+
+        return true
+
+    } else {
+
+        return false
+
+    }
+
+}
