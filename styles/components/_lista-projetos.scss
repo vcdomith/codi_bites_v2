@@ -143,7 +143,7 @@
 
         z-index: 10;
 
-        $cor-card-excluir: #ffeaea;
+        $cor-card-excluir: #f0eae1;
         
         // pointer-events: none;
         user-select: none;
@@ -269,7 +269,7 @@
                     &:hover {
 
                         background-color: $cor-card-excluir;
-                        color: #a71100;   
+                        color: #181715;   
                         
                         & ~ .linha {
 
@@ -279,10 +279,10 @@
                         }
 
                         svg {
-                            fill: #a71100;
+                            fill: #181715;
 
                             path {
-                                fill: #a71100;
+                                fill: #181715;
                             }
                         }
                     }

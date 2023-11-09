@@ -138,3 +138,9 @@ function rgbStringToHex(rgbString) {
       return "Invalid RGB string";
     }
 }
+
+function pageContext() {
+
+    return document.querySelector('.header-editor').classList[0]
+
+}

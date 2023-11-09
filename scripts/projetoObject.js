@@ -27,12 +27,13 @@ function criaProjeto() {
         const listaNotificacoes = document.getElementById('notificacoes')
 
         const notificacaoErro = criaNotificacao(tipoNotificacaoEmitido, 'Não foi possível salvar o projeto. Você precisa preencher os seguintes campos:', retornaElemento = true)
-        listaNotificacoes.appendChild(notificacaoErro)
-
+        
         if (!notificacaoErro) {
             console.log(`Notificação já está sendo mostrada, espere para poder chama-lá denovo`)
             return false
         }
+        
+        listaNotificacoes.appendChild(notificacaoErro)
         
         const notificacaoErroLista = notificacaoErro.querySelector('ul')
 
@@ -187,3 +188,22 @@ function projetoIgual(projetoAtualizado, projetoSalvo) {
 
 }
 
+function condicaoSairPagina(projetoSelecionado) {
+
+    const projetoAtualizado = criaProjeto()
+    const projetoSalvo = JSON.parse(localStorage[projetoSelecionado])
+
+    projetoAtualizado['id'] = projetoSalvo.id
+    projetoAtualizado['data'] = projetoSalvo.data
+
+    if (projetoIgual(projetoAtualizado, projetoSalvo)) {
+
+        return true
+
+    } else {
+
+        return false
+
+    }
+
+}

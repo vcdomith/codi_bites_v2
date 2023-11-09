@@ -514,77 +514,77 @@
     
         }
     
-       .botao-copiar {
+        .botao-copiar {
 
-            --cor-botao: #fff;
-            --cor-fundo: #141414;
+                --cor-botao: #fff;
+                --cor-fundo: #141414;
 
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0 0.5rem;
-            border-radius: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0 0.5rem;
+                border-radius: 0.5rem;
 
-            width: 18px;
-            height: 31px;
+                width: 18px;
+                height: 31px;
 
-            overflow: hidden;
+                overflow: hidden;
 
-            cursor: pointer;
+                cursor: pointer;
 
-            transition: width 700ms;
+                transition: width 700ms;
 
-            &:hover {
-                // background-color: $cor-texto;
-                width: 115px;
+                &:hover {
+                    // background-color: $cor-texto;
+                    width: 115px;
 
-                // svg {
-                //     fill: $cor-fundo-editor;
-                // }
-            }
+                    // svg {
+                    //     fill: $cor-fundo-editor;
+                    // }
+                }
 
-            &:active {
+                &:active {
 
-                background-color: var(--cor-botao);
+                    background-color: var(--cor-botao);
+
+                    svg {
+
+                        fill: var(--cor-fundo);
+
+                    }
+                    
+                    p {
+                        
+                        color: var(--cor-fundo);
+                        z-index: 10;
+                    }
+                }
 
                 svg {
+        
+                    min-width: 18px;
+                    max-height: 18px;
 
-                    fill: var(--cor-fundo);
-
+                    fill: var(--cor-botao);
                 }
                 
                 p {
+
+                    color: var(--cor-botao);
+
+                    text-align: center;
+
+                    font-size: 0.83rem;
+                    font-weight: 600;
+
+                    user-select: none;
                     
-                    color: var(--cor-fundo);
-                    z-index: 10;
+                    min-width: 90px;
+
+                    transition: width 700ms;
                 }
-            }
 
-            svg {
-    
-                min-width: 18px;
-                max-height: 18px;
-
-                fill: var(--cor-botao);
-            }
-            
-            p {
-
-                color: var(--cor-botao);
-
-                text-align: center;
-
-                font-size: 0.83rem;
-                font-weight: 600;
-
-                user-select: none;
-                
-                min-width: 90px;
-
-                transition: width 700ms;
-            }
-
-       } 
+        } 
     }
     
     code-input {
@@ -600,8 +600,8 @@
         justify-content: end;
 
         background-color: $cor-fundo-editor;
-        // border-bottom-right-radius: 1rem;
-        // border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
 
         padding: 0.5rem;
 
