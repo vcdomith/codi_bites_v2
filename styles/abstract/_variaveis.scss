@@ -4,12 +4,12 @@ $fonte-base: 'Inter', sans-serif;
 $fonte-titulo: 'Cormorant', serif;
 
 // Cores
-$cor-fundo: #051D3B;
+$cor-fundo: #3f4042;
 $cor-fundo-editor: #141414;
-$cor-fundo-post: #151C24;
+$cor-fundo-post: darken($cor-fundo, 12%);
 $cor-botao: #5081FB14;
 $cor-caixa-texto: #FFFFFF29;
-$cor-texto: #FFFFFF;
+$cor-texto: #f0eae1;
 $cor-botao-salvar: #5081FB;
 
 

@@ -38,7 +38,7 @@ function criaNotificacao(tipo, conteudo, retornaElemento = false, parentElement 
 
     if (document.getElementById(`notificacao-${tipo}`)) {
 
-        if (notificacaoSelecionada.tipo !== 'extra') {
+        if (notificacaoSelecionada.tipo !== 'extra' && document.querySelector(`#notificacao-${tipo} > div > h3`).textContent === notificacaoSelecionada.texto) {
 
             return
         }

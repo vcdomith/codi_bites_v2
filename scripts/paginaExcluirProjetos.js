@@ -92,7 +92,7 @@ function botaoCardProjetoExcluir(button, projeto, parent) {
 
         const titulo = button.querySelector('.card-nome').value
 
-        parent.style.backgroundColor = '#a71100'
+        parent.style.backgroundColor = '#181715'
         parent.innerHTML = ""
 
         if (document.querySelector('.container-excluir')) {
@@ -164,8 +164,11 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
 
                 buttonConfirmaExcluir.addEventListener('click', () => {
 
+                    criaNotificacao('sucesso', `O projeto "${projeto.titulo}" foi excluído com sucesso!`)
+
                     localStorage.removeItem(projeto.id)
                     console.log(localStorage.length === 0)
+
 
                     if (localStorage.length === 0) {
                         
