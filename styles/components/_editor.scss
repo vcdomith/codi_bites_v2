@@ -715,14 +715,65 @@
 //     }
 // }
 
-@media (max-width: 420px) {
+@media (max-width: 400px) {
+
+    .header-editor {
+
+        .header-wrapper {
+
+            p {
+                // display: none;
+            }
+        }
+
+    }
+
+    .editor {
+
+        .opcoes {
+
+            justify-content: end;
+
+            .icone-wrapper {
+                display: none;
+            }
+
+        }
+
+        .botoes {
+
+            .container-seletor {
+                
+                flex: 1 2;
+
+                overflow: scroll;
+        
+                min-width: 35px;
+        
+            }
+
+        }
+    }
     
+
 }
 
 @media (max-width: 600px) {
     
+    // .header-editor {
+    //     display: none;
+    // }
+
     .header-editor {
-        display: none;
+
+        
+        .header-wrapper {
+
+            p:not(:last-child) {
+                display: none;
+            }
+        }
+
     }
 
     .editor {
@@ -740,7 +791,15 @@
                 width: 100%;
                 justify-content: space-between;
     
+                .container-linguagem {
+
+                    flex: 0.8;
+
+                }
+
                 .container-seletor {
+
+                    // min-width: auto;
                     flex: 1
                     ;
                 }

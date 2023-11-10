@@ -8,3 +8,16 @@ window.onload = function() {
 
     codeInputElements.forEach((cInput) => cInput.setAttribute('disabled'))
 }
+
+function disableTextAreas() {
+    
+    
+    window.onload = function() {
+        // Seleciona todos os elementos code-input
+        let codeInputElements = document.querySelectorAll("code-input");
+    
+        codeInputElements.forEach((cInput) => cInput.setAttribute('disabled'))
+    }
+
+
+}

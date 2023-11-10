@@ -210,6 +210,13 @@ function criaPost(projeto, parent) {
 
         mostraPostDetalhado(indiceProjetoVinculado)
 
+        window.onload = function() {
+            // Seleciona todos os elementos code-input
+            let codeInputElements = document.querySelectorAll("code-input");
+        
+            codeInputElements.forEach((cInput) => cInput.setAttribute('disabled'))
+        }
+
     })
 }
 

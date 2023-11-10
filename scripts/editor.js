@@ -542,6 +542,10 @@ function mostraPostDetalhado(projeto) {
 
     textareasFilled()
 
+    // Atributo de disabled do code-input tem que ficar no final para ser de fato efetuado, depois que o elemento é criado e inserido no corpo da página
+    codeInputElement.setAttribute('disabled', 'true')
+
+
 }
 
 function criaEditorProjeto(projeto) {

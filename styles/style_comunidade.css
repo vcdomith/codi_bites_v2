@@ -568,8 +568,21 @@ textarea {
   gap: 0.5rem;
 }
 
+@media (max-width: 400px) {
+  .editor .opcoes {
+    justify-content: end;
+  }
+  .editor .opcoes .icone-wrapper {
+    display: none;
+  }
+  .editor .botoes .container-seletor {
+    flex: 1 2;
+    overflow: scroll;
+    min-width: 35px;
+  }
+}
 @media (max-width: 600px) {
-  .header-editor {
+  .header-editor .header-wrapper p:not(:last-child) {
     display: none;
   }
   .editor .opcoes {
@@ -582,6 +595,9 @@ textarea {
   .editor .opcoes .botoes {
     width: 100%;
     justify-content: space-between;
+  }
+  .editor .opcoes .botoes .container-linguagem {
+    flex: 0.8;
   }
   .editor .opcoes .botoes .container-seletor {
     flex: 1;
