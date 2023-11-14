@@ -363,6 +363,7 @@ textarea {
   visibility: hidden;
 }
 .editor code-input {
+  --cor-placeholder: #ffffff85;
   --cor-fundo-selecao: #fff;
   --cor-texto-selecao: #141414;
   border-bottom-left-radius: 1rem;
@@ -378,6 +379,12 @@ textarea {
 }
 .editor code-input:focus-within {
   outline: none;
+}
+.editor code-input textarea::-moz-placeholder {
+  color: var(--cor-placeholder)!important;
+}
+.editor code-input textarea::placeholder {
+  color: var(--cor-placeholder)!important;
 }
 .editor code-input textarea::-moz-selection {
   background: var(--cor-fundo-selecao);

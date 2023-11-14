@@ -31,13 +31,28 @@ var codeInput = {
     textareaSyncAttributes: [
         "aria-*",
         "value",
-        "name",
         // Form validation - https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation
-        "required",
-        "minlength", "maxlength",
         "min", "max",
         "type",
-        "pattern"
+        "pattern",
+
+        // Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+        "autocomplete", 
+        "autocorrect", 
+        "autofocus",
+        "cols",
+        "dirname",
+        "disabled",
+        "form",
+        "maxlength",
+        "minlength",
+        "name",
+        "placeholder",
+        "readonly",
+        "required",
+        "rows",
+        "spellcheck",
+        "wrap"
     ],
 
     /**
@@ -759,7 +774,6 @@ var codeInput = {
                         oldValue = oldValue.toLowerCase();
 
                         // Remove old language class and add new
-                        console.log("code-input: Language: REMOVE", "language-" + oldValue);
                         code.classList.remove("language-" + oldValue); // From codeElement
                         code.parentElement.classList.remove("language-" + oldValue); // From preElement
                         code.classList.remove("language-none"); // Prism
@@ -767,7 +781,6 @@ var codeInput = {
 
                         if (newValue != undefined && newValue != "") {
                             code.classList.add("language-" + newValue);
-                            console.log("code-input: Language: ADD", "language-" + newValue);
                         }
 
                         if (mainTextarea.placeholder == oldValue) mainTextarea.placeholder = newValue;
@@ -777,7 +790,7 @@ var codeInput = {
                         break;
                     default:
                         if (codeInput.textareaSyncAttributes.includes(name)) {
-                            if(newValue == null) {
+                            if(newValue == null || newValue == undefined) {
                                 this.textareaElement.removeAttribute(name);
                             } else {
                                 this.textareaElement.setAttribute(name, newValue);
@@ -937,27 +950,6 @@ var codeInput = {
          */
         reportValidity() {
             return this.textareaElement.reportValidity();
-        }
-
-
-        /**
-         * @override
-         */
-        setAttribute(qualifiedName, value) {
-            super.setAttribute(qualifiedName, value); // code-input
-            if(this.textareaElement != null) {
-                this.textareaElement.setAttribute(qualifiedName, value); // textarea
-            }
-        }
-
-        /**
-         * @override
-         */
-        getAttribute(qualifiedName) {
-            if (this.textareaElement == null) {
-                return super.getAttribute(qualifiedName);
-            }
-            return this.textareaElement.getAttribute(qualifiedName); // textarea
         }
 
         /**

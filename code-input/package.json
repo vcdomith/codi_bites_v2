@@ -1,10 +1,10 @@
 {
   "name": "@webcoder49/code-input",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Fully customisable, editable syntax-highlighted textareas.",
   "browser": "code-input.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"This is a front-end library, not a Node library. Please see the README for how to use.\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,8 @@
   ],
   "author": {
     "name": "WebCoder49",
-    "email": "webcoder49.tutorials@gmail.com",
-    "url": "https://webcoder49.github.io/"
+    "email": "hi@webcoder49.dev",
+    "url": "https://webcoder49.dev/"
   },
   "license": "MIT",
   "bugs": {
