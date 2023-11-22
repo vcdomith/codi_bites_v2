@@ -8,10 +8,16 @@ function criaPaginaExcluir() {
 
     criaHeaderPagina('projetos', 'Excluir Projetos', 'retornar editar', container)
 
+    
     const listaCards = createNewElement('ul', 'lista-cards')
     listaCards.style.listStyle = 'none'
     container.appendChild(listaCards)
     
+    if (localStorage.length === 0) {
+
+        criaAvisoStorageVazio(listaCards)
+
+    }
     const localStorageKeys = Object.keys(localStorage).sort().reverse()
     
     localStorageKeys.forEach((id, i) => {

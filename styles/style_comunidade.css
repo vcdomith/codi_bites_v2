@@ -1,3 +1,12 @@
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: #3f4042;
+    margin: 0;
+    width: auto;
+  }
+}
 html,
 body {
   font-family: "Inter", sans-serif;
@@ -363,7 +372,6 @@ textarea {
   visibility: hidden;
 }
 .editor code-input {
-  --cor-placeholder: #ffffff85;
   --cor-fundo-selecao: #fff;
   --cor-texto-selecao: #141414;
   border-bottom-left-radius: 1rem;
@@ -379,12 +387,6 @@ textarea {
 }
 .editor code-input:focus-within {
   outline: none;
-}
-.editor code-input textarea::-moz-placeholder {
-  color: var(--cor-placeholder)!important;
-}
-.editor code-input textarea::placeholder {
-  color: var(--cor-placeholder)!important;
 }
 .editor code-input textarea::-moz-selection {
   background: var(--cor-fundo-selecao);
@@ -883,7 +885,7 @@ textarea {
   box-shadow: inset 1px 1px 15px 5px rgba(88, 89, 92, 0.5);
 }
 .container .lista-posts .post-novo button:hover img {
-  filter: brightness(0) saturate(100%) invert(97%) sepia(97%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%);
+  filter: brightness(0) saturate(100%) invert(91%) sepia(12%) saturate(287%) hue-rotate(15deg) brightness(112%) contrast(88%);
   color: rgba(255, 255, 255, 0.5019607843);
 }
 .container .lista-posts .post-novo button:hover p {
@@ -891,7 +893,7 @@ textarea {
 }
 .container .lista-posts .post-novo button img {
   transition: filter 500ms;
-  filter: brightness(0) saturate(100%) invert(57%) sepia(33%) saturate(173%) hue-rotate(173deg) brightness(92%) contrast(82%);
+  filter: brightness(0) saturate(100%) invert(61%) sepia(0%) saturate(287%) hue-rotate(15deg) brightness(97%) contrast(85%);
   width: 35px;
 }
 .container .lista-posts .post-novo button p {
