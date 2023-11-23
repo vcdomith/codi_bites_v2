@@ -374,8 +374,6 @@ textarea {
 .editor code-input {
   --cor-fundo-selecao: #fff;
   --cor-texto-selecao: #141414;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
   background-color: #141414;
   border: none;
   margin: 0;
@@ -383,6 +381,7 @@ textarea {
   font-family: "Roboto Mono", monospace;
   color: #f0eae1;
   font-size: 1rem;
+  white-space: pre-wrap;
   height: 40vh;
 }
 .editor code-input:focus-within {
@@ -509,7 +508,7 @@ textarea {
 }
 .post-detalhado code-input {
   text-wrap: wrap;
-  height: 50vh;
+  height: 40vh;
   border-radius: 0;
 }
 .post-detalhado .footer-editor {

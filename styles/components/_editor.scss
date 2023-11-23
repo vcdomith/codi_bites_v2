@@ -381,8 +381,8 @@
         --cor-fundo-selecao: #fff;
         --cor-texto-selecao: #141414;
 
-        border-bottom-left-radius: 1rem;
-        border-bottom-right-radius: 1rem;
+        // border-bottom-left-radius: 1rem;
+        // border-bottom-right-radius: 1rem;
         background-color: $cor-fundo-editor;
         border: none;
         // border-top: 2rem solid #c7fc0b;
@@ -395,7 +395,7 @@
         font-family: $fonte-editor;
         color: $cor-texto;
         font-size: 1rem;
-        // white-space: pre-line;
+        white-space: pre-wrap;
 
         height: 40vh;
 
@@ -589,7 +589,7 @@
     
     code-input {
         text-wrap: wrap;
-        height: 50vh;
+        height: 40vh;
 
         border-radius: 0;
 

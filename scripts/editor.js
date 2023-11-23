@@ -122,9 +122,51 @@ function criaEditorNovo() {
         codeInputElement.setAttribute('placeholder', 'Escreva seu código aqui')
         codeInputElement.setAttribute('required', 'true')
 
+        //<2_divFooterEditor  <div class="footer-editor">
+        const divFooterEditor = createNewElement('div', 'footer-editor')
+
+            //<3_buttonExpandirCode <button type="button" id="expandir-code" class="botao-expandir">
+            const buttonExpandirCode = createNewElement('button', 'botao-expandir')
+            buttonExpandirCode.setAttribute('type', 'button')
+            buttonExpandirCode.setAttribute('id', 'expandir-code')
+
+                //*4_svgExpandirCode
+                const svgExpandir = `
+                <svg fill="#000000" viewBox="0 -3 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"/></svg>
+                ` 
+                const svgRetrair = `
+                <svg fill="#000000" viewBox="0 -3 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.997 13.374l-7.081 7.081L7 18.54l8.997-8.998 9.003 9-1.916 1.916z"/></svg>
+                `
+            
+
+            //3_buttonExpandirCode> 
+            buttonExpandirCode.innerHTML = svgExpandir
+            buttonExpandirCode.addEventListener('click', () => {
+
+                if (codeInputElement.style.height !== '80vh') {
+                    
+                    codeInputElement.style.height = '80vh'
+                    codeInputElement.style.transition = 'height 700ms'
+
+                    buttonExpandirCode.innerHTML = svgRetrair
+
+                } else {
+
+                    codeInputElement.style.height = '40vh'
+
+                    buttonExpandirCode.innerHTML = svgExpandir
+
+                }
+
+            })
+        
+        //2_divFooterEditor>
+        divFooterEditor.appendChild(buttonExpandirCode)
+
     //1_divWrapperEditor>
     divWrapperEditor.appendChild(divWrapperOpcoes)
     divWrapperEditor.appendChild(codeInputElement)
+    divWrapperEditor.appendChild(divFooterEditor)
 
     //<1_divWrapperDetalhes  <div class="wrapper">
     const divWrapperInformacoes = createNewElement('div', 'wrapper')
@@ -373,9 +415,9 @@ function mostraPostDetalhado(projeto) {
             buttonExpandirCode.innerHTML = svgExpandir
             buttonExpandirCode.addEventListener('click', () => {
 
-                if (codeInputElement.style.height !== '100vh') {
+                if (codeInputElement.style.height !== '80vh') {
                     
-                    codeInputElement.style.height = '100vh'
+                    codeInputElement.style.height = '80vh'
                     codeInputElement.style.transition = 'height 700ms'
 
                     buttonExpandirCode.innerHTML = svgRetrair
@@ -694,9 +736,9 @@ function criaEditorProjeto(projeto) {
             buttonExpandirCode.innerHTML = svgExpandir
             buttonExpandirCode.addEventListener('click', () => {
 
-                if (codeInputElement.style.height !== '100vh') {
+                if (codeInputElement.style.height !== '80vh') {
                     
-                    codeInputElement.style.height = '100vh'
+                    codeInputElement.style.height = '80vh'
                     codeInputElement.style.transition = 'height 700ms'
 
                     buttonExpandirCode.innerHTML = svgRetrair

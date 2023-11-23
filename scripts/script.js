@@ -20,7 +20,6 @@ function mostraPaginaProjetos() {
         container.appendChild(listaPosts)
 
         criaAvisoStorageVazio(listaPosts)
-        criaPostNovo(listaPosts)
 
         return
 

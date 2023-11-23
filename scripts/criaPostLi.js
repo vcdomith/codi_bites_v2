@@ -220,7 +220,7 @@ function criaPost(projeto, parent) {
     })
 }
 
-function criaPostNovo(parent) {
+function criaPostNovo(parent, classe = 'post-novo') {
 
     // <li class="post-novo">
     //     <button>
@@ -232,7 +232,7 @@ function criaPostNovo(parent) {
     // </li>
 
     //<1_liWrapperNovoPost  <li class="post-novo">
-    const liWrapperNovoPost = createNewElement('li', 'post-novo')
+    const liWrapperNovoPost = createNewElement('li', classe)
 
         //<2_botaoWrapperPost  <button>
         const botaoWrapperPost = createNewElement('button')
@@ -243,7 +243,7 @@ function criaPostNovo(parent) {
             imgNovoPost.setAttribute('alt', 'símbolo de mais')
 
             //3*pNovoPost  <p>Novo post</p>
-            const pNovoPost = createNewElement('p', null, 'Novo post')
+            const pNovoPost = createNewElement('p', null, 'Novo projeto')
 
         //2_botaoWrapperPost>  
         botaoWrapperPost.appendChild(imgNovoPost)
