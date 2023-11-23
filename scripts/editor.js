@@ -821,6 +821,8 @@ function criaEditorProjeto(projeto) {
 
     })
 
+    textareaTitulo.dispatchEvent(inputEvent)
+    textareaDescricao.dispatchEvent(inputEvent)
     inputSeletorCor.dispatchEvent(inputEvent)
 
 }

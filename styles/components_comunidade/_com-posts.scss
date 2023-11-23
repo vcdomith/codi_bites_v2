@@ -15,6 +15,60 @@
         padding: 0;
         gap: 3rem 1rem;
 
+        .container-aviso {
+
+            $cor-aviso: transparentize($cor-texto, 0.5);
+    
+            pointer-events: none;
+            user-select: none;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            // border: 2px dashed $cor-aviso;
+            border-radius: 1rem;
+    
+            margin-top: 2rem;
+            padding: 2rem;
+            gap: 1rem;
+    
+            background-color: transparentize($cor-aviso, 0.45);
+    
+            height: 150px;
+            width: 100%;
+            // width: fit-content;
+            // place-self: center;
+    
+            svg {
+    
+                min-width: 50px;
+                width: 50px;
+    
+                path {
+    
+                    fill: $cor-aviso;
+    
+                }
+    
+            }
+    
+            .aviso-texto {
+    
+                color: $cor-aviso;
+                max-width: 400px;
+    
+                font-weight: 500;
+    
+                border-left: 2px solid $cor-aviso;
+                padding-left: 1rem;
+    
+                margin: 0;
+    
+            }
+
+        }
+
         .post-novo {
             display: flex;
             flex-direction: row;

@@ -859,6 +859,37 @@ textarea {
   padding: 0;
   gap: 3rem 1rem;
 }
+.container .lista-posts .container-aviso {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  gap: 1rem;
+  background-color: rgba(240, 234, 225, 0.05);
+  height: 150px;
+  width: 100%;
+}
+.container .lista-posts .container-aviso svg {
+  min-width: 50px;
+  width: 50px;
+}
+.container .lista-posts .container-aviso svg path {
+  fill: rgba(240, 234, 225, 0.5);
+}
+.container .lista-posts .container-aviso .aviso-texto {
+  color: rgba(240, 234, 225, 0.5);
+  max-width: 400px;
+  font-weight: 500;
+  border-left: 2px solid rgba(240, 234, 225, 0.5);
+  padding-left: 1rem;
+  margin: 0;
+}
 .container .lista-posts .post-novo {
   display: flex;
   flex-direction: row;

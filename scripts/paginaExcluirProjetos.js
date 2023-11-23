@@ -13,11 +13,6 @@ function criaPaginaExcluir() {
     listaCards.style.listStyle = 'none'
     container.appendChild(listaCards)
     
-    if (localStorage.length === 0) {
-
-        criaAvisoStorageVazio(listaCards)
-
-    }
     const localStorageKeys = Object.keys(localStorage).sort().reverse()
     
     localStorageKeys.forEach((id, i) => {
