@@ -577,6 +577,9 @@ textarea {
 }
 
 @media (max-width: 400px) {
+  .header-editor .header-wrapper p {
+    display: none;
+  }
   .editor .opcoes {
     justify-content: end;
   }
@@ -875,9 +878,10 @@ textarea {
 }
 .container .lista-posts .container-aviso .wrapper-aviso {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   padding: 0 1rem;
-  width: clamp(200px, 60%, 600px);
+  width: clamp(200px, 80%, 500px);
 }
 .container .lista-posts .container-aviso .wrapper-aviso svg {
   min-width: 50px;
@@ -891,8 +895,8 @@ textarea {
   color: rgba(240, 234, 225, 0.5);
   max-width: 400px;
   font-weight: 500;
-  border-left: 2px solid rgba(240, 234, 225, 0.5);
-  padding-left: 1rem;
+  border-top: 2px solid rgba(240, 234, 225, 0.5);
+  padding-top: 1rem;
   margin: 0;
 }
 .container .lista-posts .container-aviso .post-novo-aviso {
@@ -902,7 +906,7 @@ textarea {
   height: 20vh;
   pointer-events: auto;
   max-height: 45px;
-  width: clamp(200px, 60%, 600px);
+  width: clamp(200px, 80%, 500px);
 }
 .container .lista-posts .container-aviso .post-novo-aviso button {
   display: flex;
@@ -921,19 +925,21 @@ textarea {
 .container .lista-posts .container-aviso .post-novo-aviso button:hover {
   border-bottom-left-radius: 0;
   border-top-right-radius: 0;
-  background-color: rgba(240, 234, 225, 0.5);
+  background-color: #f0eae1;
 }
 .container .lista-posts .container-aviso .post-novo-aviso button:hover img {
   filter: brightness(0) saturate(100%) invert(91%) sepia(12%) saturate(287%) hue-rotate(15deg) brightness(112%) contrast(88%);
   color: rgba(255, 255, 255, 0.5019607843);
 }
 .container .lista-posts .container-aviso .post-novo-aviso button:hover p {
+  font-family: serif;
   color: #3f4042;
 }
 .container .lista-posts .container-aviso .post-novo-aviso button img {
   display: none;
 }
 .container .lista-posts .container-aviso .post-novo-aviso button p {
+  font-weight: 600;
   font-size: 1.2rem;
 }
 .container .lista-posts .post-novo {
@@ -1112,6 +1118,17 @@ textarea {
   font-size: 1rem;
 }
 
+@media (min-width: 500px) {
+  .container .lista-posts .container-aviso .wrapper-aviso {
+    flex-direction: row;
+  }
+  .container .lista-posts .container-aviso .wrapper-aviso .aviso-texto {
+    border: none;
+    padding: 0;
+    border-left: 2px solid rgba(240, 234, 225, 0.5);
+    padding-left: 1rem;
+  }
+}
 @media (min-width: 1280px) {
   .container .lista-posts {
     flex-direction: row;

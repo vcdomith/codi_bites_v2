@@ -41,11 +41,12 @@
             .wrapper-aviso {
 
                 display: flex;
+                flex-direction: column;
 
                 gap: 1rem;
                 padding: 0 1rem;
 
-                width: clamp(200px, 60%, 600px);
+                width: clamp(200px, 80%, 500px);
 
                 svg {
         
@@ -69,8 +70,8 @@
         
                     font-weight: 500;
         
-                    border-left: 2px solid $cor-aviso;
-                    padding-left: 1rem;
+                    border-top: 2px solid $cor-aviso;
+                    padding-top: 1rem;
         
                     margin: 0;
         
@@ -91,7 +92,7 @@
                 pointer-events: auto;
 
                 max-height: 45px;
-                width: clamp(200px, 60%, 600px);
+                width: clamp(200px, 80%, 500px);
 
                 
                 button {
@@ -120,7 +121,7 @@
                         border-bottom-left-radius: 0;
                         border-top-right-radius: 0;
 
-                        background-color: $cor-aviso;
+                        background-color: $cor-texto;
     
     
                         img {
@@ -131,6 +132,7 @@
                         }
     
                         p {
+                            font-family: serif;
                             color: $cor-fundo;
                         }
     
@@ -144,6 +146,7 @@
 
                     p {
 
+                        font-weight: 600;
                         font-size: 1.2rem;
 
                     }
@@ -449,6 +452,35 @@
     }
 }
 
+@media (min-width: 500px) {
+
+    .container {
+
+        .lista-posts {
+
+            .container-aviso {
+                $cor-aviso: transparentize($cor-texto, 0.5);
+
+                .wrapper-aviso {
+        
+                    flex-direction: row;
+
+                    .aviso-texto {
+
+                        border: none;
+                        padding: 0;
+
+                        border-left: 2px solid $cor-aviso;          
+                        padding-left: 1rem;              
+
+                    }
+                }
+            }
+        }
+    }
+
+
+}
 
 @media (min-width: 1280px) {
     .container {
@@ -457,7 +489,7 @@
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
-            
+
             .post-novo {
                 min-width: 600px;
                 min-height: 100px;

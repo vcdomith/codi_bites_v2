@@ -577,6 +577,9 @@ textarea {
 }
 
 @media (max-width: 400px) {
+  .header-editor .header-wrapper p {
+    display: none;
+  }
   .editor .opcoes {
     justify-content: end;
   }
