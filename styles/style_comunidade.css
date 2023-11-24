@@ -932,14 +932,13 @@ textarea {
   color: rgba(255, 255, 255, 0.5019607843);
 }
 .container .lista-posts .container-aviso .post-novo-aviso button:hover p {
-  font-family: serif;
   color: #3f4042;
 }
 .container .lista-posts .container-aviso .post-novo-aviso button img {
   display: none;
 }
 .container .lista-posts .container-aviso .post-novo-aviso button p {
-  font-weight: 600;
+  font-weight: bold;
   font-size: 1.2rem;
 }
 .container .lista-posts .post-novo {
@@ -962,10 +961,9 @@ textarea {
   transition: all 500ms;
 }
 .container .lista-posts .post-novo button:hover {
-  border: 2px dashed #f0eae1;
+  border: 2px solid #f0eae1;
   border-bottom-left-radius: 0;
   border-top-right-radius: 0;
-  box-shadow: inset 1px 1px 15px 5px rgba(88, 89, 92, 0.5);
 }
 .container .lista-posts .post-novo button:hover img {
   filter: brightness(0) saturate(100%) invert(91%) sepia(12%) saturate(287%) hue-rotate(15deg) brightness(112%) contrast(88%);
