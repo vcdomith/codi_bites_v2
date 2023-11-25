@@ -28,7 +28,7 @@ async function acessaRepo() {
     
         owner = 'vcdomith'
         repo = 'codi_bites'
-        path = '_projetos/'
+        path = '_projetos/projetos.txt'
         
     }
 
