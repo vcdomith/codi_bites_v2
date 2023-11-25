@@ -96,6 +96,36 @@
             //     opacity: 100%;
             // }
         }
+
+        &:active {
+
+            border-radius: 0.5rem;
+            border: 2px solid $cor-header;
+
+            background-color: $cor-texto;
+
+            svg {
+
+                fill: $cor-fundo;
+
+                g {
+                    g{
+                        fill: $cor-fundo;
+                    }
+                }
+
+                path:last-child {
+                    fill: $cor-fundo;
+                }
+            }
+
+            p {
+
+                color: $cor-fundo;
+
+            }
+
+        }
     
         svg {
             min-width: 30px;
@@ -448,7 +478,7 @@
 
             transition: background-color 300ms;
 
-            &:hover {
+            &:hover, &:active  {
                 background-color: transparentize($cor-texto, 0.2);
 
                 svg {

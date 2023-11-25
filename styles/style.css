@@ -19,6 +19,14 @@ textarea {
   resize: none;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 0.2rem;
@@ -79,6 +87,12 @@ textarea {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+}
+.cabecalho .container-icones .lupa path {
+  fill: rgba(240, 234, 225, 0.5);
+}
+.cabecalho .container-icones .menu path {
+  fill: rgba(240, 234, 225, 0.5);
 }
 .cabecalho .perfil {
   display: none;
@@ -192,6 +206,23 @@ textarea {
   width: 170px;
   border-radius: 0.5rem;
   border: 2px solid rgba(240, 234, 225, 0.5);
+}
+.header-editor .retornar:active {
+  border-radius: 0.5rem;
+  border: 2px solid rgba(240, 234, 225, 0.5);
+  background-color: #f0eae1;
+}
+.header-editor .retornar:active svg {
+  fill: #3f4042;
+}
+.header-editor .retornar:active svg g g {
+  fill: #3f4042;
+}
+.header-editor .retornar:active svg path:last-child {
+  fill: #3f4042;
+}
+.header-editor .retornar:active p {
+  color: #3f4042;
 }
 .header-editor .retornar svg {
   min-width: 30px;
@@ -419,10 +450,10 @@ textarea {
   cursor: pointer;
   transition: background-color 300ms;
 }
-.editor .footer-editor .botao-expandir:hover {
+.editor .footer-editor .botao-expandir:hover, .editor .footer-editor .botao-expandir:active {
   background-color: rgba(240, 234, 225, 0.8);
 }
-.editor .footer-editor .botao-expandir:hover svg {
+.editor .footer-editor .botao-expandir:hover svg, .editor .footer-editor .botao-expandir:active svg {
   fill: #141414;
 }
 .editor .footer-editor .botao-expandir svg {
@@ -925,7 +956,7 @@ textarea {
   font-weight: 600;
   color: rgba(77, 118, 39, 0.3);
 }
-.notificacoes .notificacao-sucesso .botao-dispensar:hover {
+.notificacoes .notificacao-sucesso .botao-dispensar:hover, .notificacoes .notificacao-sucesso .botao-dispensar:active {
   color: rgba(77, 118, 39, 0.6);
 }
 .notificacoes .notificacao-sucesso .notificacao-extra {
@@ -979,7 +1010,7 @@ textarea {
   font-weight: 600;
   color: rgba(77, 118, 39, 0.3);
 }
-.notificacoes .notificacao-sucesso .notificacao-extra .botao-dispensar:hover {
+.notificacoes .notificacao-sucesso .notificacao-extra .botao-dispensar:hover, .notificacoes .notificacao-sucesso .notificacao-extra .botao-dispensar:active {
   color: rgba(77, 118, 39, 0.6);
 }
 .notificacoes .notificacao-erro {
@@ -1027,7 +1058,7 @@ textarea {
   font-weight: 600;
   color: rgba(118, 39, 39, 0.3);
 }
-.notificacoes .notificacao-erro .botao-dispensar:hover {
+.notificacoes .notificacao-erro .botao-dispensar:hover, .notificacoes .notificacao-erro .botao-dispensar:active {
   color: rgba(118, 39, 39, 0.6);
 }
 .notificacoes .notificacao-erro .notificacao-extra {
@@ -1081,7 +1112,7 @@ textarea {
   font-weight: 600;
   color: rgba(118, 39, 39, 0.3);
 }
-.notificacoes .notificacao-erro .notificacao-extra .botao-dispensar:hover {
+.notificacoes .notificacao-erro .notificacao-extra .botao-dispensar:hover, .notificacoes .notificacao-erro .notificacao-extra .botao-dispensar:active {
   color: rgba(118, 39, 39, 0.6);
 }
 .notificacoes .notificacao-alerta {
@@ -1109,7 +1140,7 @@ textarea {
   color: rgba(118, 92, 39, 0.8);
   transition: background-color 300ms, color 300ms;
 }
-.notificacoes .notificacao-alerta .wrapper-botoes .botao-sair:hover {
+.notificacoes .notificacao-alerta .wrapper-botoes .botao-sair:hover, .notificacoes .notificacao-alerta .wrapper-botoes .botao-sair:active {
   color: #fff8ea;
   background-color: rgba(118, 92, 39, 0.9);
 }
@@ -1157,7 +1188,7 @@ textarea {
   font-weight: 600;
   color: rgba(118, 92, 39, 0.3);
 }
-.notificacoes .notificacao-alerta .botao-dispensar:hover {
+.notificacoes .notificacao-alerta .botao-dispensar:hover, .notificacoes .notificacao-alerta .botao-dispensar:active {
   color: rgba(118, 92, 39, 0.6);
 }
 .notificacoes .notificacao-alerta .notificacao-extra {
@@ -1211,7 +1242,7 @@ textarea {
   font-weight: 600;
   color: rgba(118, 92, 39, 0.3);
 }
-.notificacoes .notificacao-alerta .notificacao-extra .botao-dispensar:hover {
+.notificacoes .notificacao-alerta .notificacao-extra .botao-dispensar:hover, .notificacoes .notificacao-alerta .notificacao-extra .botao-dispensar:active {
   color: rgba(118, 92, 39, 0.6);
 }
 .notificacoes .notificacao-extra {
@@ -1261,7 +1292,7 @@ textarea {
   font-weight: 600;
   color: rgba(93, 75, 38, 0.3);
 }
-.notificacoes .notificacao-extra .botao-dispensar:hover {
+.notificacoes .notificacao-extra .botao-dispensar:hover, .notificacoes .notificacao-extra .botao-dispensar:active {
   color: rgba(93, 75, 38, 0.6);
 }
 .notificacoes .tem-notificacoes-extra .informacao-h3-erro {

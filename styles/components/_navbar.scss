@@ -22,6 +22,24 @@ $tamanho-menu-lateral: calc(200px + 4rem);
         align-items: center;
 
         gap: 2rem;
+
+        .lupa {
+
+            path {
+
+                fill: transparentize($cor-texto, 0.5);
+            }
+
+        }
+
+        .menu {
+
+            path {
+
+                fill: transparentize($cor-texto, 0.5);
+            }
+
+        }
     }
 
     .perfil {

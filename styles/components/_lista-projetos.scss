@@ -287,6 +287,28 @@
                         }
                     }
 
+                    &:active {
+
+                        background-color: $cor-card-excluir;
+
+                        & ~ .linha {
+
+                            height: 0;
+                            opacity: 0;
+
+                        }
+
+                        svg {
+                            
+                            fill: #181715;
+
+                            path {
+                                fill: #181715;
+                            }
+                        }
+
+                    }
+
                     p {
                         margin: 0;
                         font-weight: 500;

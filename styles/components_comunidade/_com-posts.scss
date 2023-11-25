@@ -116,7 +116,7 @@
 
                     transition: all 500ms;
 
-                    &:hover {
+                    &:hover, &:active {
     
                         border-bottom-left-radius: 0;
                         border-top-right-radius: 0;
@@ -203,6 +203,24 @@
 
                     p {
                         color: $cor-texto;
+                    }
+
+                }
+
+                &:active {
+
+                    background-color: $cor-texto;
+
+                    img {
+
+                        filter: brightness(0) saturate(100%) invert(23%) sepia(9%) saturate(167%) hue-rotate(182deg) brightness(96%) contrast(89%);
+
+                    }
+
+                    p {
+
+                        color: $cor-fundo;
+
                     }
 
                 }

@@ -67,7 +67,7 @@
 
         color: transparentize($cor-base, 0.7);
 
-        &:hover {
+        &:hover, &:active {
             color: transparentize($cor-base, 0.4);
         }
     }
@@ -215,7 +215,7 @@
                 transition: background-color 300ms,
                             color 300ms;
 
-                &:hover {
+                &:hover, &:active {
                     color: $cor-fundo-notificacao;
                     background-color: transparentize($cor-base, 0.1);
                 }
