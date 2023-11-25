@@ -4,7 +4,6 @@ function getUrlAtual() {
     const urlAtual = window.location.href
     return urlAtual
     
-
 }
 
 
@@ -28,7 +27,7 @@ async function acessaRepo() {
     
         owner = 'vcdomith'
         repo = 'codi_bites'
-        path = '_projetos/projetos.txt'
+        path = '_projetos/data.json'
         
     }
 
@@ -43,9 +42,9 @@ async function acessaRepo() {
             throw new Error(`HTTP Error. Status: ${response.status}`)
         }
 
-        const data = await response.json()
+        const responseJSON = await response.json()
 
-        console.log(data)
+        return responseJSON;
 
     }   catch(error) {
 
@@ -54,4 +53,70 @@ async function acessaRepo() {
     }
 
 }
-acessaRepo()
+
+
+
+async function atualizaLocalStorage() {
+
+    try {
+        
+        const projetos = await acessaRepo()
+        console.log(projetos.content);
+        const pDecoded = atob(projetos.content)
+        console.log(pDecoded);
+        return grab = JSON.parse(pDecoded);
+
+
+    } catch (error) {
+        
+        console.error(error.message)
+
+    }
+
+}
+
+// let projetosJson = {}
+// Object.keys(localStorage).forEach( (key) => {
+
+//     projetosJson[key] = (JSON.parse(localStorage[key]));
+
+// })
+
+let projetosJson = Object.fromEntries(
+    Object.keys(localStorage).map((key) => [key, JSON.parse(localStorage[key])])
+  );
+
+const a = JSON.stringify(projetosJson);
+
+function exportToJsonFile(objectData, filename) {
+    const blob = new Blob([JSON.stringify(objectData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'data.json';
+    
+    const clickHandler = () => {
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+            a.removeEventListener('click', clickHandler);
+        }, 150);
+    };
+    
+    a.addEventListener('click', clickHandler, false);
+    a.click();
+}
+
+// async function main() {
+
+//     try {
+//         const projetosSalvos = await acessaRepo();
+        
+//     } catch (error) {
+//         console.error('Error:', error);
+//     }
+// }
+
+// main();
+
+
