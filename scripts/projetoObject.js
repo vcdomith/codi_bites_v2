@@ -40,7 +40,6 @@ function criaProjeto() {
         camposVazios.forEach((element) => {
 
             const nomeCampoVazio = palavraCorreta(element.classList[0])
-            console.log(nomeCampoVazio)
 
             notificacaoErro.classList.add('tem-notificacoes-extra')
 
@@ -173,8 +172,6 @@ function projetoIgual(projetoAtualizado, projetoSalvo) {
     const projetoAtualizadoKeys = Object.keys(projetoAtualizado)
 
     for (const key of projetoAtualizadoKeys) {
-         
-        console.log(projetoAtualizado[key], projetoSalvo[key])
 
         if (projetoAtualizado[key] !== projetoSalvo[key]) {
             
