@@ -64,7 +64,9 @@ async function atualizaLocalStorage() {
         console.log(projetos.content);
         const pDecoded = atob(projetos.content)
         console.log(pDecoded);
-        return grab = JSON.parse(pDecoded);
+        const grab = JSON.parse(pDecoded);
+
+        return Promise.resolve(grab)
 
 
     } catch (error) {
@@ -74,6 +76,25 @@ async function atualizaLocalStorage() {
     }
 
 }
+
+
+// let arquivos = atualizaLocalStorage().then(res => arquivos = res)
+
+// Design pattern IIFE(Instantly Invoked Funcion Expression), comumente utilizada para lidar com retorno de Promises
+(async () => {
+
+    try {
+
+        return arquivosRepo = await atualizaLocalStorage() 
+        
+    } catch (error) {
+        
+        console.error(error.message)
+        
+    }
+    
+})();
+
 
 // let projetosJson = {}
 // Object.keys(localStorage).forEach( (key) => {
