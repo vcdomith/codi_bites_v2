@@ -19,7 +19,7 @@ async function acessaRepo() {
 
         owner = urlTratado.hostname.slice(0, urlTratado.hostname.indexOf('.'))
         repo = urlTratado.pathname.replaceAll('/', '')
-        path = '_projetos/'
+        path = '_projetos/data.json'
         
     
     } else {
