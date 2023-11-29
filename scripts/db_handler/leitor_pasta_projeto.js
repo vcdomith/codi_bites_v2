@@ -6,7 +6,6 @@ function getUrlAtual() {
     
 }
 
-
 async function acessaRepo() {
 
     const url = getUrlAtual()
@@ -55,18 +54,25 @@ async function acessaRepo() {
 }
 
 
-
-async function atualizaLocalStorage() {
+async function atualizaLocalStorageAPI() {
 
     try {
-        
-        const projetos = await acessaRepo()
-        console.log(projetos.content);
-        const pDecoded = atob(projetos.content)
-        console.log(pDecoded);
-        const grab = JSON.parse(pDecoded);
 
-        return Promise.resolve(grab)
+        const projetos = await acessaRepo()
+        const pDecoded = atob(projetos.content)
+        const parsedProjetos = JSON.parse(pDecoded);
+
+        let arquivos = {}
+
+        // Object.keys(parsedProjetos).forEach((key) => {
+        //     arquivos[key] = JSON.stringify(parsedProjetos[key])
+        // })
+
+        // return arquivos
+
+        Object.keys(parsedProjetos).forEach((key) => {
+            localStorage[key] = JSON.stringify(parsedProjetos[key])
+        })
 
 
     } catch (error) {
@@ -77,23 +83,22 @@ async function atualizaLocalStorage() {
 
 }
 
-
 // let arquivos = atualizaLocalStorage().then(res => arquivos = res)
 
 // Design pattern IIFE(Instantly Invoked Funcion Expression), comumente utilizada para lidar com retorno de Promises
-(async () => {
+// (async () => {
 
-    try {
+//     try {
 
-        return arquivosRepo = await atualizaLocalStorage() 
+//         return arquivosRepo = await atualizaLocalStorage() 
         
-    } catch (error) {
+//     } catch (error) {
         
-        console.error(error.message)
+//         console.error(error.message)
         
-    }
+//     }
     
-})();
+// })();
 
 
 // let projetosJson = {}
