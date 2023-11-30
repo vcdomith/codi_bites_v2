@@ -55,16 +55,15 @@ async function acessaRepo() {
 async function teste() {
 
     try {
-        
-        const c = JSON.stringify(projetosJson)
 
-        const projetos = await acessaRepo()
+        const projetosAPI = await acessaRepo()
         
-        const decodedContent = atob(projetos.content)
+        const decodedContent = atob(projetosAPI.content)
         const trimmed = decodedContent.slice(1, decodedContent.length-2);
 
-        const parsedData = JSON.parse(trimmed) 
-        console.log(parsedData);
+        const parsedData = await JSON.parse(trimmed) 
+
+        projetos = parsedData;
 
     } catch (error) {
         
@@ -80,8 +79,8 @@ async function atualizaLocalStorageAPI() {
 
     try {
 
-        const projetos = await acessaRepo()
-        const pDecoded = atob(projetos.content)
+        const projetosAPI = await acessaRepo()
+        const pDecoded = atob(projetosAPI.content)
         const parsedProjetos = JSON.parse(pDecoded);
 
         let arquivos = {}
@@ -108,19 +107,19 @@ async function atualizaLocalStorageAPI() {
 // let arquivos = atualizaLocalStorage().then(res => arquivos = res)
 
 // Design pattern IIFE(Instantly Invoked Funcion Expression), comumente utilizada para lidar com retorno de Promises
-// (async () => {
+(async () => {
 
-//     try {
+    try {
 
-//         return arquivosRepo = await atualizaLocalStorage() 
+        return arquivosRepo = await teste() 
         
-//     } catch (error) {
+    } catch (error) {
         
-//         console.error(error.message)
+        console.error(error.message)
         
-//     }
+    }
     
-// })();
+})();
 
 
 // let projetosJson = {}

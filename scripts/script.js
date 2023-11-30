@@ -1,8 +1,9 @@
 
 const localStorageKeys =  Object.keys(localStorage).sort().reverse()
 
-const projetos = localStorageKeys.map((id) => JSON.parse(localStorage[id]))
+// const projetos = localStorageKeys.map((id) => JSON.parse(localStorage[id]))
 
+let projetos
 
 function mostraPaginaProjetos() {
 
@@ -13,6 +14,7 @@ function mostraPaginaProjetos() {
     //{ Cria a ul para ser alimentada de posts para elemento dentro do localStorage
     const container = document.querySelector('.container')
 
+    // Isso não é responsabilidade da função mostraPaginaProjetos, colocar no window.onload
     if (localStorage.length === 0) {
         
         const listaPosts = createNewElement('ul', 'lista-posts')
@@ -50,9 +52,21 @@ function mostraPaginaProjetos() {
 
 }
 
+async function atualizaLocalStorage() {
+
+    await teste()
+    const projetosKeys = Object.keys(projetos)
+    console.log(projetosKeys);
+}
 
 window.onload = function() {
     
+    atualizaLocalStorage()
+
+    console.log(localStorage);
+
     mostraPaginaProjetos()
+    
+    
 
 }
