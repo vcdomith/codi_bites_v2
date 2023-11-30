@@ -11,7 +11,8 @@ async function acessaRepo() {
     const url = getUrlAtual()
     
     // Get Repository url data
-    let owner, repo, path
+    let owner, repo
+    const path = '_projetos/projetos.txt'
 
     if (url.includes('github')) {
  
@@ -19,14 +20,12 @@ async function acessaRepo() {
 
         owner = urlTratado.hostname.slice(0, urlTratado.hostname.indexOf('.'))
         repo = urlTratado.pathname.replaceAll('/', '')
-        path = '_projetos/data.json'
         
     
     } else {
     
         owner = 'vcdomith'
-        repo = 'codi_bites'
-        path = '_projetos/data.json'
+        repo = 'codi_bites_v2'
         
     }
 
@@ -37,19 +36,42 @@ async function acessaRepo() {
 
         const response = await fetch(apiUrl)
 
-        if (!response.ok) {
-            throw new Error(`HTTP Error. Status: ${response.status}`)
-        }
+        // if (!response.ok) {
+        //     throw new Error(`HTTP Error. Status: ${response.status}`)
+        // }
 
         const responseJSON = await response.json()
 
         return responseJSON;
 
-    }   catch(error) {
+    } catch(error) {
 
         console.error(error)
 
     }
+
+}
+
+async function teste() {
+
+    try {
+        
+        const c = JSON.stringify(projetosJson)
+
+        const projetos = await acessaRepo()
+        
+        const decodedContent = atob(projetos.content)
+        const trimmed = decodedContent.slice(1, decodedContent.length-2);
+
+        const parsedData = JSON.parse(trimmed) 
+        console.log(parsedData);
+
+    } catch (error) {
+        
+        console.error(error);
+
+    }
+
 
 }
 
@@ -133,16 +155,11 @@ function exportToJsonFile(objectData, filename) {
     a.click();
 }
 
-// async function main() {
+let b = {}
+Object.keys(localStorage).forEach(key => {
 
-//     try {
-//         const projetosSalvos = await acessaRepo();
-        
-//     } catch (error) {
-//         console.error('Error:', error);
-//     }
-// }
+    b[key] = (localStorage[key])
 
-// main();
+})
 
 
