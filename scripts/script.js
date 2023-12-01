@@ -1,9 +1,18 @@
 
-const localStorageKeys =  Object.keys(localStorage).sort().reverse()
+// const localStorageKeys =  Object.keys(localStorage).sort().reverse()
 
 // const projetos = localStorageKeys.map((id) => JSON.parse(localStorage[id]))
 
-let projetos
+function clearLocalStorageOnUnload() {
+    // Clear localStorage
+    alert('sair')
+    localStorage.clear();
+  }
+  
+  // Add 'unload' event listener to the window
+window.addEventListener('unload', clearLocalStorageOnUnload);
+
+let projetos, projetosKeys
 
 function mostraPaginaProjetos() {
 
@@ -43,7 +52,14 @@ function mostraPaginaProjetos() {
         // rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
         criaPostNovo(listaPosts)
 
-        const localStorageKeys = Object.keys(localStorage).sort().reverse()
+        // let localStorageKeys = []
+        // localStorageKeys = Object.keys(localStorage).sort().reverse()
+        // localStorageKeys = localStorageKeys.filter(id => parseInt(id))
+
+        // Primeiro obtem as keys do localStorage > filtra apenas as keys que podem virar Int > Ordena de mais novo para mais velho
+        const localStorageKeys = Object.keys(localStorage)
+            .filter(key => parseInt(key))
+            .sort((a, b) => b - a);
 
         localStorageKeys.forEach((id) => criaPost(JSON.parse(localStorage[id]), listaPosts))
 
@@ -55,18 +71,19 @@ function mostraPaginaProjetos() {
 async function atualizaLocalStorage() {
 
     await teste()
-    const projetosKeys = Object.keys(projetos)
-    console.log(projetosKeys);
+    
+    projetosKeys = Object.keys(projetos)
+
+    if (localStorage['projetosImportados']) if (localStorage['projetosImportados'] === 'true') return
+
+    projetosKeys.forEach(key => localStorage[key] = JSON.stringify(projetos[key]))
 }
 
-window.onload = function() {
+window.onload = async function() {
     
-    atualizaLocalStorage()
-
-    console.log(localStorage);
+    await atualizaLocalStorage()
 
     mostraPaginaProjetos()
     
     
-
 }

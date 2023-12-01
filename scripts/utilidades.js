@@ -109,7 +109,7 @@ function mesBrasil(data) {
         'Sep': 'Set',
         'Oct': 'Out',
         'Nov': 'Nov',
-        'Dez': 'Dez',
+        'Dec': 'Dez',
 
     }   
 
