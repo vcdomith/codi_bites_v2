@@ -3,14 +3,25 @@
 
 // const projetos = localStorageKeys.map((id) => JSON.parse(localStorage[id]))
 
-function clearLocalStorageOnUnload() {
-    // Clear localStorage
-    alert('sair')
-    localStorage.clear();
-  }
-  
-  // Add 'unload' event listener to the window
-window.addEventListener('unload', clearLocalStorageOnUnload);
+// window.addEventListener('beforeunload', function (e) {
+//     // Check if there are unsaved changes
+    
+//     // if (true) {
+//     //     // Standard for most browsers
+//     //     e.returnValue = 'Se você sair agora você perderá seus dados não salvos, clique em sincronizar para salvá-los';
+
+//     //     // For some older browsers
+//     //     return 'Are you sure you want to leave without saving your changes?';
+//     // }
+// });
+
+window.onbeforeunload = () => {
+
+
+    criaNotificacao('alerta', 'Você possuí conteúdo não salvo. Clique no botão "sincronizar" para salva-lo.', false, document.querySelector('#notificacoes'))
+
+    return ''
+}
 
 let projetos, projetosKeys
 
