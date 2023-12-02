@@ -13,7 +13,7 @@ function criaPaginaExcluir() {
     listaCards.style.listStyle = 'none'
     container.appendChild(listaCards)
     
-    const localStorageKeys = Object.keys(localStorage).sort().reverse()
+    atualizaLocalStorageKeys()
     
     localStorageKeys.forEach((id, i) => {
 

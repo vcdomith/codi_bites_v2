@@ -17,13 +17,11 @@
 
 window.onbeforeunload = () => {
 
+    if (localStorage['projetosImportados']) localStorage.removeItem('projetosImportados')
+    // criaNotificacao('alerta', 'Você possuí conteúdo não salvo. Clique no botão "sincronizar" para salva-lo.', false, document.querySelector('#notificacoes'))
 
-    criaNotificacao('alerta', 'Você possuí conteúdo não salvo. Clique no botão "sincronizar" para salva-lo.', false, document.querySelector('#notificacoes'))
-
-    return ''
+    // return ''
 }
-
-let projetos, projetosKeys
 
 function mostraPaginaProjetos() {
 
@@ -63,14 +61,7 @@ function mostraPaginaProjetos() {
         // rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
         criaPostNovo(listaPosts)
 
-        // let localStorageKeys = []
-        // localStorageKeys = Object.keys(localStorage).sort().reverse()
-        // localStorageKeys = localStorageKeys.filter(id => parseInt(id))
-
-        // Primeiro obtem as keys do localStorage > filtra apenas as keys que podem virar Int > Ordena de mais novo para mais velho
-        const localStorageKeys = Object.keys(localStorage)
-            .filter(key => parseInt(key))
-            .sort((a, b) => b - a);
+        atualizaLocalStorageKeys()
 
         localStorageKeys.forEach((id) => criaPost(JSON.parse(localStorage[id]), listaPosts))
 
@@ -79,22 +70,28 @@ function mostraPaginaProjetos() {
 
 }
 
-async function atualizaLocalStorage() {
+function projetosForamImportados() {
 
-    await teste()
-    
-    projetosKeys = Object.keys(projetos)
+    if (localStorage['projetosImportados'] && localStorage['projetosImportados'] === 'true') return true
+    return false
 
-    if (localStorage['projetosImportados']) if (localStorage['projetosImportados'] === 'true') return
-
-    projetosKeys.forEach(key => localStorage[key] = JSON.stringify(projetos[key]))
 }
+
 
 window.onload = async function() {
     
-    await atualizaLocalStorage()
+    if (!projetosForamImportados()) {
+        try {
+            
+            await recebeProjetosAPI()
+            atualizaLocalStorage()
+
+        } catch (error) {
+            
+        }
+
+    }
 
     mostraPaginaProjetos()
-    
     
 }
