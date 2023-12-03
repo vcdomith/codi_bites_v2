@@ -1,4 +1,6 @@
 
+let localStorageKeys = []
+
 function atualizaLocalStorage() {
 
     // if (localStorage['projetosImportados'] && localStorage['projetosImportados'] === 'true') return 

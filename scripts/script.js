@@ -81,6 +81,7 @@ function projetosForamImportados() {
 window.onload = async function() {
     
     if (!projetosForamImportados()) {
+
         try {
             
             await recebeProjetosAPI()
@@ -88,6 +89,8 @@ window.onload = async function() {
 
         } catch (error) {
             
+            console.error(error);
+
         }
 
     }

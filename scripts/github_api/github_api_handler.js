@@ -42,9 +42,9 @@ async function receberDadosAPI() {
 
         const response = await fetch(apiUrl)
 
-        // if (!response.ok) {
-        //     throw new Error(`HTTP Error. Status: ${response.status}`)
-        // }
+        if (!response.ok) {
+            throw new Error(`HTTP Error. Status: ${response.status}`)
+        }
 
         const responseJSON = await response.json()
 
@@ -101,6 +101,15 @@ async function assignData() {
 
 
 }
+
+function tratarDadosProjetosParaEnvio() {
+
+    atualizaListaProjetos()
+    
+    return JSON.stringify(listaProjetos)
+
+}
+
 // Lógica para tratar projetos localStorage para serem enviados e escritos no formato correto no repositório!
 /*
 atualizaListaProjetos()
@@ -108,9 +117,11 @@ const dadosEnviados = JSON.stringify(listaProjetos)
 enviarDadosAPI(dadosEnviados)
 */
 
-async function enviarDadosAPI(text) {
+async function enviarDadosAPI() {
 
     const apiUrl = getUrlAPI()
+
+    let text = tratarDadosProjetosParaEnvio()
 
     // if (!localStorage['api']) {
         
