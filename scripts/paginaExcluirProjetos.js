@@ -170,8 +170,6 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
                     localStorage.removeItem(projeto.id)
 
                     if (localStorage.length === 0) {
-                        
-                        console.log('inside')
 
                         limpaPagina()
                         mostraPaginaProjetos()

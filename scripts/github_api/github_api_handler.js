@@ -69,8 +69,6 @@ async function debug() {
         console.log(decodedContent);
 
         console.log(JSON.parse(decodedContent));
-        
-
 
     } catch (error) {
         
@@ -95,10 +93,9 @@ async function assignData() {
 
     } catch (error) {
         
-        // console.error(error);
+        console.error(error);
 
     }
-
 
 }
 

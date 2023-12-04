@@ -18,6 +18,7 @@
 window.onbeforeunload = () => {
 
     if (localStorage['projetosImportados']) localStorage.removeItem('projetosImportados')
+    enviarDadosAPI()
     // criaNotificacao('alerta', 'Você possuí conteúdo não salvo. Clique no botão "sincronizar" para salva-lo.', false, document.querySelector('#notificacoes'))
 
     // return ''
@@ -65,7 +66,6 @@ function mostraPaginaProjetos() {
 
         localStorageKeys.forEach((id) => criaPost(JSON.parse(localStorage[id]), listaPosts))
 
-
     }
 
 }
@@ -77,9 +77,10 @@ function projetosForamImportados() {
 
 }
 
-
 window.onload = async function() {
     
+    //Lógica que confere se o token está salvo no localStorage. Se não estiver mostra um elemento que tem um input/prompt que pede o token e explica como será o uso se
+
     if (!projetosForamImportados()) {
 
         try {
