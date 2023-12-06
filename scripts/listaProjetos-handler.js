@@ -1,5 +1,5 @@
 
-let listaProjetos, projetosKeys, listaProjetosAPI
+let listaProjetos, projetosKeys, listaProjetosInicialAPI
 
 
 async function recebeProjetosAPI() {
@@ -7,8 +7,9 @@ async function recebeProjetosAPI() {
     try {
 
         await assignData()
-        listaProjetosAPI = {...listaProjetos}
+        listaProjetosInicialAPI = {...listaProjetos}
         projetosKeys = Object.keys(listaProjetos)
+        console.log('Projetos importados com sucesso da API');
         
         
     } catch (error) {
@@ -33,10 +34,8 @@ function atualizaListaProjetos() {
 
 function checaEstadoProjetos() {
 
-    const keys = Object.keys(listaProjetos)
+    let projetosComparados = [listaProjetos, listaProjetosInicialAPI]
 
-    for (const key of keys) if (listaProjetos[key] !== listaProjetosAPI[key]) return false
-
-    return true
+    return isEqual(...projetosComparados)
 
 }

@@ -15,27 +15,73 @@
         padding: 0;
         gap: 3rem 1rem;
 
+        .wrapper-sincronizar {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: darken($cor-texto, 20%);
+            border-radius: 1rem;
+
+            padding:1rem;
+
+            // min-height: 50px;
+            width: 100%;
+            box-sizing:border-box;
+
+            .texto-sincronizar {
+
+                margin: 0;
+                padding: 0;
+
+                font-size: 1rem;
+                font-weight: 600;
+                color: $cor-fundo;
+
+            }
+
+            .botao-sincronizar {
+
+                display: flex;
+
+                .texto-botao-sincronizar {
+
+                    margin: 0;
+                    padding: 0;
+
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: $cor-fundo;
+
+                }
+
+
+            }
+
+        }
+
         .container-aviso {
 
             $cor-aviso: transparentize($cor-texto, 0.5);
-    
+
             pointer-events: none;
             user-select: none;
-    
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-    
+
             // border: 2px dashed $cor-aviso;
             border-radius: 1rem;
-    
+
             margin: 2rem 1rem 0 1rem;
             padding: 4rem 2rem;
             gap: 2rem;
-    
+
             background-color: transparentize($cor-aviso, 0.45);
-            
+
             // height: 150px;
 
             .wrapper-aviso {
@@ -49,36 +95,36 @@
                 width: clamp(200px, 80%, 500px);
 
                 svg {
-        
+
                     min-width: 50px;
                     width: 50px;
 
                     place-self: start start ;
-        
+
                     path {
-        
+
                         fill: $cor-aviso;
-        
+
                     }
-        
+
                 }
-        
+
                 .aviso-texto {
-        
+
                     color: $cor-aviso;
                     max-width: 400px;
-        
+
                     font-weight: 500;
-        
+
                     border-top: 2px solid $cor-aviso;
                     padding-top: 1rem;
-        
+
                     margin: 0;
-        
+
                 }
 
             }
-    
+
 
             .post-novo-aviso {
 
@@ -94,47 +140,47 @@
                 max-height: 45px;
                 width: clamp(200px, 80%, 500px);
 
-                
+
                 button {
 
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    
+
                     background: none;
                     width: 100%;
-                    
+
                     border-radius: 1rem;
                     border: 2px solid $cor-aviso;
-                    
+
                     color: $cor-aviso;
-                    
+
                     padding: 1rem;
                     gap: 0.5rem;
-                    
+
                     cursor: pointer;
 
                     transition: all 500ms;
 
                     &:hover, &:active {
-    
+
                         border-bottom-left-radius: 0;
                         border-top-right-radius: 0;
 
                         background-color: $cor-texto;
-    
-    
+
+
                         img {
                             filter: brightness(0) saturate(100%) invert(91%) sepia(12%) saturate(287%) hue-rotate(15deg) brightness(112%) contrast(88%);
-    
+
                             color: #ffffff80;
-    
+
                         }
-    
+
                         p {
                             color: $cor-fundo;
                         }
-    
+
                     }
 
                     img {
@@ -164,28 +210,28 @@
             height: 20vh;
 
             // margin-top: 2rem;
-            
+
             button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                
+
                 background: none;
                 width: 100%;
-                
+
                 border-radius: 1rem;
                 border: 2px dashed transparentize($cor-texto, 0.5);
-                
+
                 color: $cor-texto;
-                
+
                 gap: 0.5rem;
-                
+
                 cursor: pointer;
 
                 transition: all 500ms;
 
                 &:hover {
-                    
+
                     border: 2px solid $cor-texto;
 
                     border-bottom-left-radius: 0;
@@ -224,7 +270,7 @@
                     }
 
                 }
-                
+
                 img {
                     transition: filter 500ms;
 
@@ -256,7 +302,7 @@
 
             text-align: left;
 
-            transition: 
+            transition:
                         filter 500ms,
                         background-color 500ms,
                         box-shadow 500ms;
@@ -278,11 +324,11 @@
 
                 .opcoes {
                     display: flex;
-                    
+
                     // @include icone-editor();
-                    
+
                     .wrapper-texto {
-                        
+
                         display: flex;
 
                         border-radius: 0.5rem;
@@ -294,7 +340,7 @@
                         h5:first-child {
 
                             margin: 0;
-    
+
                             color: $cor-texto;
                             font-weight: 600;
                             font-style: italic;
@@ -305,7 +351,7 @@
 
                         h5:last-child {
                             margin: 0;
-    
+
                             color: $cor-texto;
                             font-weight: 600;
 
@@ -338,7 +384,7 @@
                 // flex-wrap: wrap;
 
                 display: grid;
-                grid-template-areas: 
+                grid-template-areas:
                 'titulo titulo'
                 'descricao descricao'
                 'linguagem-data x'
@@ -435,23 +481,23 @@
                     .social {
                         display: flex;
                         gap: 1rem;
-    
+
                         // place-self: end start;
-    
+
                         div {
                             display: flex;
                             gap: 0.5rem;
-                            
+
                             p {
                                 font-family: $fonte-base;
                             }
                         }
-    
+
                     }
-    
+
                     .autor {
                         // place-self: end end;
-                        
+
                         div {
 
                             display: flex;
@@ -479,7 +525,7 @@
                 $cor-aviso: transparentize($cor-texto, 0.5);
 
                 .wrapper-aviso {
-        
+
                     flex-direction: row;
 
                     .aviso-texto {
@@ -487,8 +533,8 @@
                         border: none;
                         padding: 0;
 
-                        border-left: 2px solid $cor-aviso;          
-                        padding-left: 1rem;              
+                        border-left: 2px solid $cor-aviso;
+                        padding-left: 1rem;
 
                     }
                 }
@@ -512,7 +558,7 @@
                 min-height: 100px;
 
             }
-    
+
             .post {
                 max-width: 600px;
                 min-height: 500px;
@@ -533,7 +579,7 @@
             }
         }
     }
-    
+
 }
 
 @media (min-width: 1280px) and (max-width: 1440px){
@@ -572,12 +618,12 @@
 
             flex-direction: row;
             align-items: flex-start;
-            justify-content: space-between;
+            // justify-content: space-between;
             // max-width: $tamanho-barra-pesquisa;
-            width: 100%;
-            
+            // width: 100%;
+
             margin: 1rem;
-            
+
             .container-aviso {
                 width: 100%;
             }
@@ -589,7 +635,7 @@
                 margin: 0;
                 // margin-top: 2rem;
             }
-    
+
             .post {
                 max-width: $tamanho-barra-pesquisa;
                 min-height: 500px;
@@ -610,7 +656,7 @@
             }
         }
     }
-    
+
 }
 
 @media (min-width: 1705px) {
@@ -627,7 +673,7 @@
             align-items: flex-start;
             justify-content: space-between;
             max-width: $tamanho-barra-pesquisa;
-            
+
             .container-aviso {
 
                 width: $tamanho-barra-pesquisa;
@@ -635,14 +681,14 @@
                 margin: 0;
                 margin-top: 2rem;
             }
-            
+
             .post-novo {
                 min-width: $tamanho-barra-pesquisa;
                 min-height: 100px;
 
                 margin: 0;
             }
-    
+
             .post {
                 max-width: calc(($tamanho-barra-pesquisa)/2 - 1.5rem);
                 min-height: 500px;
@@ -663,5 +709,5 @@
             }
         }
     }
-    
+
 }

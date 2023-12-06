@@ -168,6 +168,9 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
                     criaNotificacao('sucesso', `O projeto "${projeto.titulo}" foi excluído com sucesso!`)
 
                     localStorage.removeItem(projeto.id)
+                    // State Handlers - atualizam o seus respectivos estados
+                    atualizaLocalStorageKeys()
+                    atualizaListaProjetos()
 
                     if (localStorage.length === 0) {
 

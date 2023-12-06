@@ -18,7 +18,9 @@
 window.onbeforeunload = () => {
 
     if (localStorage['projetosImportados']) localStorage.removeItem('projetosImportados')
-    enviarDadosAPI()
+    localStorageKeys?.forEach( key => localStorage.removeItem(key) )
+    // enviarDadosAPI()
+
     // criaNotificacao('alerta', 'Você possuí conteúdo não salvo. Clique no botão "sincronizar" para salva-lo.', false, document.querySelector('#notificacoes'))
 
     // return ''
@@ -48,7 +50,11 @@ function mostraPaginaProjetos() {
 
     criaHeaderPagina('projetos', null, null, container)
 
+    
     const listaPosts = createNewElement('ul', 'lista-posts')
+
+    if (!checaEstadoProjetos()) criaSincronizarProjetos(listaPosts)
+    
     listaPosts.style.listStyle = 'none'
     container.appendChild(listaPosts)
     //}

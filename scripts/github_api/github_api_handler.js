@@ -120,14 +120,16 @@ async function enviarDadosAPI() {
 
     let text = tratarDadosProjetosParaEnvio()
 
-    // if (!localStorage['api']) {
+    if (!localStorage['token']) {
         
-    //     let token = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
-    //     localStorage['api'] = btoa(token)
+        let tokenPrompt = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
+        localStorage['token'] = btoa(tokenPrompt)
         
-    // }
+    }
+
+    const token = atob(localStorage['token'])
     
-    let token = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
+    // let token = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
 
     // Fetch the current file content to get its SHA
     const existingFileResponse = await fetch(apiUrl, {

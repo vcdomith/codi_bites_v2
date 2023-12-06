@@ -144,3 +144,34 @@ function pageContext() {
     return document.querySelector('.header-editor').classList[0]
 
 }
+
+
+function isEqual(value1, value2) {
+    // Check if the values are of the same type
+    if (typeof value1 !== typeof value2) {
+      return false;
+    }
+  
+    // If the values are objects or arrays, perform a deep comparison
+    if (typeof value1 === 'object' && value1 !== null && typeof value2 === 'object' && value2 !== null) {
+      const keys1 = Object.keys(value1);
+      const keys2 = Object.keys(value2);
+  
+      // Check if the number of keys is the same
+      if (keys1.length !== keys2.length) {
+        return false;
+      }
+  
+      // Recursively compare each property
+      for (const key of keys1) {
+        if (!isEqual(value1[key], value2[key])) {
+          return false;
+        }
+      }
+  
+      return true;
+    }
+  
+    // For primitive values, perform a simple equality check
+    return value1 === value2;
+}
