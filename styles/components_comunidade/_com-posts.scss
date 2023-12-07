@@ -15,7 +15,7 @@
         padding: 0;
         gap: 3rem 1rem;
 
-        .wrapper-sincronizar {
+        .button-sincronizar {
 
             display: flex;
             align-items: center;
@@ -24,11 +24,47 @@
             background-color: darken($cor-texto, 20%);
             border-radius: 1rem;
 
-            padding:1rem;
+            // border: none;
+            border: 2px solid transparent;
+            outline: none;
+
+            padding: 1rem;
+            gap: 1rem;
 
             // min-height: 50px;
             width: 100%;
             box-sizing:border-box;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition: filter 500ms,
+                        border-radius 500ms;
+
+            &:hover {
+
+                // background-color: darken($cor-texto, 10%);
+                filter: brightness(110%);
+
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 0;
+
+            }
+
+            &:active {
+
+                filter: brightness(90%);
+
+            }
+
+            svg {
+
+                max-width: 35px;
+                fill: $cor-fundo;
+
+                transition: transform 500ms ease-in;
+            }
 
             .texto-sincronizar {
 
@@ -38,24 +74,6 @@
                 font-size: 1rem;
                 font-weight: 600;
                 color: $cor-fundo;
-
-            }
-
-            .botao-sincronizar {
-
-                display: flex;
-
-                .texto-botao-sincronizar {
-
-                    margin: 0;
-                    padding: 0;
-
-                    font-size: 1rem;
-                    font-weight: 600;
-                    color: $cor-fundo;
-
-                }
-
 
             }
 

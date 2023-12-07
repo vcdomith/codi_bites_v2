@@ -174,11 +174,17 @@ async function enviarDadosAPI() {
     });
 
     if (response.ok) {
+
         console.log(`Text written to projetos.txt .`);
+        criaNotificacao('sucesso', 'Projetos salvos no repositório com sucesso!')
+        
     } else {
+        
         console.error(`Failed to write text to projetos.txt . Status code: ${response.status}`);
         const errorData = await response.json();
         console.error(errorData);
+        criaNotificacao('erro', 'Não foi possível salvar seus projetos no repositório!')
+        
     }
 }
 
