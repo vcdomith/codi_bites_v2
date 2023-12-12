@@ -30,7 +30,29 @@ function getUrlAPI() {
     }
 
     // GitHub API endpoint to get the contents of a repository's path
+    //     `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=data`;
     return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+}
+
+function tratarDadosProjetosParaEnvio() {
+
+    atualizaListaProjetos()
+    
+    return JSON.stringify(listaProjetos)
+
+}
+
+function getToken() {
+
+    if (!localStorage['token']) {
+        
+        let tokenPrompt = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
+        localStorage['token'] = btoa(tokenPrompt)
+        
+    }
+
+    return atob(localStorage['token'])
 
 }
 
@@ -58,26 +80,6 @@ async function receberDadosAPI() {
 
 }
 
-async function debug() {
-
-    try {
-        
-        const a = await receberDadosAPI()
-        console.log(a.content);
-
-        const decodedContent = decodeURIComponent(atob(a.content))
-        console.log(decodedContent);
-
-        console.log(JSON.parse(decodedContent));
-
-    } catch (error) {
-        
-        console.error(error);
-
-    }
-
-}
-
 async function assignData() {
 
     try {
@@ -99,39 +101,18 @@ async function assignData() {
 
 }
 
-function tratarDadosProjetosParaEnvio() {
-
-    atualizaListaProjetos()
-    
-    return JSON.stringify(listaProjetos)
-
-}
-
-// Lógica para tratar projetos localStorage para serem enviados e escritos no formato correto no repositório!
-/*
-atualizaListaProjetos()
-const dadosEnviados = JSON.stringify(listaProjetos)
-enviarDadosAPI(dadosEnviados)
-*/
-
 async function enviarDadosAPI() {
 
     const apiUrl = getUrlAPI()
+    // Branch onde será escrito os dados novos
+    // const branch = 'branch'
 
     let text = tratarDadosProjetosParaEnvio()
 
-    if (!localStorage['token']) {
-        
-        let tokenPrompt = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
-        localStorage['token'] = btoa(tokenPrompt)
-        
-    }
-
-    const token = atob(localStorage['token'])
+    const token = getToken()
     
-    // let token = prompt('Favor insira seu token para salvar seus projetos no seu repositório')
-
     // Fetch the current file content to get its SHA
+    //                           await fetch(`${apiUrl}?ref=${branch}`
     const existingFileResponse = await fetch(apiUrl, {
         method: 'GET',
         headers: {
@@ -155,6 +136,7 @@ async function enviarDadosAPI() {
         message: 'Update file via API',
         content: content,
         branch: 'main',
+    //  branch: branch
     };
 
     // If the file exists, include the SHA in the payload
@@ -187,6 +169,52 @@ async function enviarDadosAPI() {
         
     }
 }
+
+// Function to create a new branch
+async function createBranch() {
+
+    const token = getToken()
+
+                            //              `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+  try {
+    // Get the SHA of the existing branch
+    const baseBranchResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/refs/heads/${baseBranch}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/vnd.github.v3+json',
+      },
+    });
+
+    const baseBranchData = await baseBranchResponse.json();
+    const baseBranchSha = baseBranchData.object.sha;
+
+    // Create a new branch using the obtained SHA
+    const createBranchResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/refs`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ref: `refs/heads/${newBranch}`,
+        sha: baseBranchSha,
+      }),
+    });
+
+    if (createBranchResponse.ok) {
+      console.log(`Branch '${newBranch}' created successfully.`);
+    } else {
+      console.error('Failed to create branch:', await createBranchResponse.json());
+    }
+  } catch (error) {
+    console.error('Error creating branch:', error.message);
+  }
+}
+
+// Call the function to create the branch
+//createBranch();
 
 // let arquivos = atualizaLocalStorage().then(res => arquivos = res)
 
