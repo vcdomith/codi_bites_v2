@@ -204,7 +204,7 @@ async function branchExists(branch) {
 
 async function doSomething() {
 	
-    if (!(await branchExists("data"))) createEmptyBranch('data')
+    if (!(await branchExists("data"))) removeAllContentFromBranch('data')
 
 	
 
@@ -278,6 +278,126 @@ async function createEmptyBranch(branch) {
         }
     } catch (error) {
         console.error("Error creating empty branch:", error.message);
+    }
+}
+
+async function removeAllContentFromBranch(branch) {
+    const token = getToken();
+    const baseUrl = getUrlAPI('branch');
+    const mainBranch = 'main'; // Change this to your main branch name
+
+    try {
+        // Get the latest commit SHA of the main branch
+        const getMainBranchResponse = await fetch(
+            `${baseUrl}/git/ref/heads/${mainBranch}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github.v3+json",
+                },
+            }
+        );
+
+        if (!getMainBranchResponse.ok) {
+            console.error(
+                "Failed to get the latest commit of the main branch:",
+                await getMainBranchResponse.json()
+            );
+            return;
+        }
+
+        const mainBranchData = await getMainBranchResponse.json();
+        const mainBranchSHA = mainBranchData.object.sha;
+
+        // Create an empty file
+        const createBlobResponse = await fetch(
+            `${baseUrl}/git/blobs`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github.v3+json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    content: "", // Empty content
+                    encoding: "utf-8",
+                }),
+            }
+        );
+
+        if (!createBlobResponse.ok) {
+            console.error(
+                "Failed to create an empty blob:",
+                await createBlobResponse.json()
+            );
+            return;
+        }
+
+        const blobData = await createBlobResponse.json();
+        const emptyBlobSHA = blobData.sha;
+
+        // Create a new tree with the empty file
+        const createTreeResponse = await fetch(
+            `${baseUrl}/git/trees`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github.v3+json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    base_tree: mainBranchSHA,
+                    tree: [
+                        {
+                            path: "empty.txt", // Path to the empty file
+                            mode: "100644",
+                            type: "blob",
+                            sha: emptyBlobSHA,
+                        },
+                    ],
+                }),
+            }
+        );
+
+        if (!createTreeResponse.ok) {
+            console.error(
+                "Failed to create an empty tree:",
+                await createTreeResponse.json()
+            );
+            return;
+        }
+
+        const treeData = await createTreeResponse.json();
+        const newTreeSHA = treeData.sha;
+
+        // Update the new branch to point to the empty tree
+        const updateBranchResponse = await fetch(
+            `${baseUrl}/git/refs/heads/${branch}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github.v3+json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    sha: newTreeSHA,
+                }),
+            }
+        );
+
+        if (updateBranchResponse.ok) {
+            console.log(`Removed all content from branch '${branch}'.`);
+        } else {
+            console.error(
+                "Failed to update branch with empty tree:",
+                await updateBranchResponse.json()
+            );
+        }
+    } catch (error) {
+        console.error("Error removing content from branch:", error.message);
     }
 }
 
