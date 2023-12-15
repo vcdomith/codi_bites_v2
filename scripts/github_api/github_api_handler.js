@@ -26,7 +26,7 @@ function getUrlAPI(modo) {
 
 	if (modo === 'branch') return `https://api.github.com/repos/${owner}/${repo}`
 
-	return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+	// return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
 	return `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=data`
 	
 }
@@ -61,8 +61,11 @@ async function receberDadosAPI() {
         const responseJSON = await response.json();
 
         return responseJSON;
+
     } catch (error) {
+
         console.error(error);
+        
     }
 
 }
@@ -202,83 +205,30 @@ async function branchExists(branch) {
     }
 }
 
-async function doSomething() {
-	
-    if (!(await branchExists("data"))) removeAllContentFromBranch('data')
+async function fileExists() {
 
-	
+    try {
+        
+
+
+    } catch (error) {
+        
+    }
 
 }
 
-// async function createEmptyBranch(branch) {
-//     const token = getToken();
-//     const baseUrl = getUrlAPI('branch');
+async function pathExists() {
+	
+    if (!(await branchExists("data"))) {
 
-//     try {
-//         // Create an empty file
-//         const createFileResponse = await fetch(
-//             `${baseUrl}/contents/projetos.txt`,
-//             {
-//                 method: "PUT",
-//                 headers: {
-//                     Authorization: `Bearer ${token}`,
-//                     Accept: "application/vnd.github.v3+json",
-//                     "Content-Type": "application/json",
-//                 },
-//                 body: JSON.stringify({
-//                     message: "Criando a branch pela primeira vez",
-//                     content: "", 
-//                     branch: branch,
-//                 }),
-//             }
-//         );
+        createBranch('data')
+        return
 
-//         if (createFileResponse.ok) {
-//             console.log(`Empty branch '${branch}' created successfully.`);
-//         } else {
-//             console.error(
-//                 "Failed to create empty branch:",
-//                 await createFileResponse.json()
-//             );
-//         }
-//     } catch (error) {
-//         console.error("Error creating empty branch:", error.message);
-//     }
-// }
+    } 
 
-async function createEmptyBranch(branch) {
-    const token = getToken();
-    const baseUrl = getUrlAPI('branch');
-    const emptyCommitSHA = "4b825dc642cb6eb9a060e54bf8d69288fbee4904";
+    console.log('Branch already exists');
+    return
 
-    try {
-        const createBranchResponse = await fetch(
-            `${baseUrl}/git/refs`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    Accept: "application/vnd.github.v3+json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    ref: `refs/heads/${branch}`,
-                    sha: emptyCommitSHA,
-                }),
-            }
-        );
-
-        if (createBranchResponse.ok) {
-            console.log(`Empty branch '${branch}' created successfully.`);
-        } else {
-            console.error(
-                "Failed to create empty branch:",
-                await createBranchResponse.json()
-            );
-        }
-    } catch (error) {
-        console.error("Error creating empty branch:", error.message);
-    }
 }
 
 async function removeAllContentFromBranch(branch) {
