@@ -74,7 +74,7 @@ function mostraPaginaProjetos() {
     // } 
     // : criaAvisoStorageVazio(listaPosts)
  
-    localStorage.length > 1
+    localStorageKeys.length > 0
     ? (
         
         // rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
@@ -93,8 +93,7 @@ function mostraPaginaProjetos() {
 
 function projetosForamImportados() {
 
-    if (localStorage['projetosImportados'] && localStorage['projetosImportados'] === 'true') return true
-    return false
+    return (localStorage['projetosImportados'] && localStorage['projetosImportados'] === 'true')
 
 }
 
@@ -104,10 +103,13 @@ window.onload = async function() {
 
     if (!projetosForamImportados()) {
 
+        await establishBranch()
+
         try {
             
             await recebeProjetosAPI()
             atualizaLocalStorage()
+            atualizaLocalStorageKeys()
 
         } catch (error) {
             

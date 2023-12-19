@@ -118,8 +118,6 @@ async function enviarDadosAPI() {
 
     let fileSha = null;
 
-    debugger
-
     if (existingFileResponse.ok) {
         const existingFileData = await existingFileResponse.json();
         fileSha = existingFileData.sha;
@@ -132,7 +130,7 @@ async function enviarDadosAPI() {
     const payload = {
         message: "Update file via API",
         content: content,
-        branch: "main",
+        branch: "data",
         //  branch: branch
     };
 
@@ -246,7 +244,7 @@ async function fileExists() {
 
 }
 
-async function establishPath() {
+async function establishBranch() {
 	
     if (!(await branchExists("data"))) {
         
@@ -254,15 +252,15 @@ async function establishPath() {
 
     } 
 
-    if (!(await fileExists())) {
+    // if (!(await fileExists())) {
         
-        await createFilePath()
+    //     await createFilePath()
 
-    }
+    //     console.log('Caminho estabelecido com sucesso!');
+    //     return 
+    // }
 
-    console.log('Caminho estabelecido com sucesso!');
-
-
+    // console.log('Caminho já existe!');
 
 }
 

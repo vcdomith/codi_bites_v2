@@ -173,7 +173,7 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
                     // atualizaListaProjetos()
                     enviarDadosAPI()
 
-                    if (localStorage.length === 0) {
+                    if (localStorageKeys.length === 0) {
 
                         limpaPagina()
                         mostraPaginaProjetos()
