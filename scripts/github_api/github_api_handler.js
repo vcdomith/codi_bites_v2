@@ -141,6 +141,7 @@ async function enviarDadosAPI() {
         payload.sha = fileSha;
     }
 
+    // header de branch para funcionar
     // Make the request to create/update the file
     const response = await fetch(apiUrl, {
         method: "PUT",
