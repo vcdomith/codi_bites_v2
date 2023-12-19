@@ -5,6 +5,7 @@ function atualizaLocalStorage() {
 
     // if (localStorage['projetosImportados'] && localStorage['projetosImportados'] === 'true') return 
 
+    projetosKeys&&
     projetosKeys.forEach(key => localStorage[key] = JSON.stringify(listaProjetos[key]))
     localStorage['projetosImportados'] = 'true'
 

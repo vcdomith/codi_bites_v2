@@ -170,7 +170,8 @@ function criaCardEstadoExcluir(projeto, titulo, parent) {
                     localStorage.removeItem(projeto.id)
                     // State Handlers - atualizam o seus respectivos estados
                     atualizaLocalStorageKeys()
-                    atualizaListaProjetos()
+                    // atualizaListaProjetos()
+                    enviarDadosAPI()
 
                     if (localStorage.length === 0) {
 

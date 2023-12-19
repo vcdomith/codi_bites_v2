@@ -53,7 +53,7 @@ function mostraPaginaProjetos() {
     
     const listaPosts = createNewElement('ul', 'lista-posts')
 
-    if (!checaEstadoProjetos()) criaSincronizarProjetos(listaPosts)
+    // if (!checaEstadoProjetos()) criaSincronizarProjetos(listaPosts)
     
     listaPosts.style.listStyle = 'none'
     container.appendChild(listaPosts)
@@ -63,16 +63,31 @@ function mostraPaginaProjetos() {
 
     // const rangeLocalStorage = range(localStorage.length, startAt = 1).reverse()
 
-    if (localStorage.length > 0) {
+    // localStorageKeys>0
+    // ? () => {
+
+    //     criaPostNovo(listaPosts)
+
+    //     atualizaLocalStorageKeys()
+
+    //     localStorageKeys.forEach((id) => criaPost(JSON.parse(localStorage[id]), listaPosts))
+    // } 
+    // : criaAvisoStorageVazio(listaPosts)
+ 
+    localStorage.length > 1
+    ? (
         
         // rangeLocalStorage.forEach((index) => criaPost(JSON.parse(localStorage[index]), listaPosts))
-        criaPostNovo(listaPosts)
+        criaPostNovo(listaPosts),
 
-        atualizaLocalStorageKeys()
+        atualizaLocalStorageKeys(),
 
         localStorageKeys.forEach((id) => criaPost(JSON.parse(localStorage[id]), listaPosts))
 
-    }
+    )
+    : criaAvisoStorageVazio(listaPosts)
+    
+
 
 }
 
@@ -101,6 +116,8 @@ window.onload = async function() {
         }
 
     }
+
+    const container = document.querySelector('.container')
 
     mostraPaginaProjetos()
     

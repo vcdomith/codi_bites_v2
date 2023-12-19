@@ -103,7 +103,8 @@ function salvaProjeto() {
     // localStorage.setItem(`${localStorage.length} - ${projeto.titulo}`, JSON.stringify(projeto))
     localStorage.setItem(`${projeto.id}`, JSON.stringify(projeto))
     atualizaLocalStorageKeys()
-    atualizaListaProjetos()
+    // atualizaListaProjetos()
+    enviarDadosAPI()
 
     limpaPagina()                             
     mostraPaginaProjetos()
@@ -141,7 +142,8 @@ function atualizaProjeto(projetoSelecionado) {
         // Funcionalidade que atualiza o projeto no localStorage
         localStorage.setItem(projetoSelecionado.id, JSON.stringify(projetoAtualizado))
         atualizaLocalStorageKeys()
-        atualizaListaProjetos()
+        // atualizaListaProjetos()
+        enviarDadosAPI()
 
         // Bloco que transiciona a notificação e remove ela
         apagaNotificacao(notificacaoAlertaSobrescrever) 

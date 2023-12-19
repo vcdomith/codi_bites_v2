@@ -21,12 +21,8 @@ function getUrlAPI(modo) {
         repo = "codi_bites_v2";
     }
 
-    // GitHub API endpoint to get the contents of a repository's path
-    //     `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=data`;
-
 	if (modo === 'branch') return `https://api.github.com/repos/${owner}/${repo}`
 
-	// return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
 	return `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=data`
 	
 }
@@ -49,6 +45,7 @@ function getToken() {
 }
 
 async function receberDadosAPI() {
+
     const apiUrl = getUrlAPI();
 
     try {
@@ -76,6 +73,12 @@ async function assignData() {
 
         const projetosAPI = await receberDadosAPI();
 
+        if (atob(projetosAPI.content) === '/n') {
+            
+            return
+
+        }
+
         const decodedContent = decodeURIComponent(atob(projetosAPI.content));
         // const trimmed = decodedContent.slice(1, decodedContent.length-2);
 
@@ -85,7 +88,9 @@ async function assignData() {
 
     } catch (error) {
 
-        console.error(error);
+        console.error(error)
+        console.log('Erro ao ler os dados...');
+        return
 
     }
 
@@ -112,6 +117,8 @@ async function enviarDadosAPI() {
     });
 
     let fileSha = null;
+
+    debugger
 
     if (existingFileResponse.ok) {
         const existingFileData = await existingFileResponse.json();
@@ -209,146 +216,53 @@ async function fileExists() {
 
     try {
         
+        const baseUrl = getUrlAPI()
+        
+        const resposta = await fetch(baseUrl)
+        
+        if (resposta.ok) {
+            
+            return true
+
+        } else if (resposta.status === 404) {
+
+            console.log('Arquivo não existe');
+            return false
+
+        } else {
+
+            console.log('Falha na checkagem da existência do arquivo');
+            return false
+
+        }
 
 
     } catch (error) {
+
+        console.log(error);
         
     }
 
 }
 
-async function pathExists() {
+async function establishPath() {
 	
     if (!(await branchExists("data"))) {
-
-        createBranch('data')
-        return
+        
+        await createBranch('data')
 
     } 
 
-    console.log('Branch already exists');
-    return
+    if (!(await fileExists())) {
+        
+        await createFilePath()
 
-}
-
-async function removeAllContentFromBranch(branch) {
-    const token = getToken();
-    const baseUrl = getUrlAPI('branch');
-    const mainBranch = 'main'; // Change this to your main branch name
-
-    try {
-        // Get the latest commit SHA of the main branch
-        const getMainBranchResponse = await fetch(
-            `${baseUrl}/git/ref/heads/${mainBranch}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    Accept: "application/vnd.github.v3+json",
-                },
-            }
-        );
-
-        if (!getMainBranchResponse.ok) {
-            console.error(
-                "Failed to get the latest commit of the main branch:",
-                await getMainBranchResponse.json()
-            );
-            return;
-        }
-
-        const mainBranchData = await getMainBranchResponse.json();
-        const mainBranchSHA = mainBranchData.object.sha;
-
-        // Create an empty file
-        const createBlobResponse = await fetch(
-            `${baseUrl}/git/blobs`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    Accept: "application/vnd.github.v3+json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    content: "", // Empty content
-                    encoding: "utf-8",
-                }),
-            }
-        );
-
-        if (!createBlobResponse.ok) {
-            console.error(
-                "Failed to create an empty blob:",
-                await createBlobResponse.json()
-            );
-            return;
-        }
-
-        const blobData = await createBlobResponse.json();
-        const emptyBlobSHA = blobData.sha;
-
-        // Create a new tree with the empty file
-        const createTreeResponse = await fetch(
-            `${baseUrl}/git/trees`,
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    Accept: "application/vnd.github.v3+json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    base_tree: mainBranchSHA,
-                    tree: [
-                        {
-                            path: "empty.txt", // Path to the empty file
-                            mode: "100644",
-                            type: "blob",
-                            sha: emptyBlobSHA,
-                        },
-                    ],
-                }),
-            }
-        );
-
-        if (!createTreeResponse.ok) {
-            console.error(
-                "Failed to create an empty tree:",
-                await createTreeResponse.json()
-            );
-            return;
-        }
-
-        const treeData = await createTreeResponse.json();
-        const newTreeSHA = treeData.sha;
-
-        // Update the new branch to point to the empty tree
-        const updateBranchResponse = await fetch(
-            `${baseUrl}/git/refs/heads/${branch}`,
-            {
-                method: "PATCH",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    Accept: "application/vnd.github.v3+json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    sha: newTreeSHA,
-                }),
-            }
-        );
-
-        if (updateBranchResponse.ok) {
-            console.log(`Removed all content from branch '${branch}'.`);
-        } else {
-            console.error(
-                "Failed to update branch with empty tree:",
-                await updateBranchResponse.json()
-            );
-        }
-    } catch (error) {
-        console.error("Error removing content from branch:", error.message);
     }
+
+    console.log('Caminho estabelecido com sucesso!');
+
+
+
 }
 
 // Function to create a new branch
@@ -409,61 +323,162 @@ async function createBranch(branch) {
     }
 }
 
-// Call the function to create the branch
-//createBranch();
+async function createFilePath() {
 
-// let arquivos = atualizaLocalStorage().then(res => arquivos = res)
+    try {
+        
+        const baseUrl = getUrlAPI('branch')
+        const token = getToken()
 
-// Design pattern IIFE(Instantly Invoked Funcion Expression), comumente utilizada para lidar com retorno de Promises
-// (async () => {
+        const conteudo = btoa('')
 
-//     try {
+        const data = {
+            message: 'Create projetos.txt',
+            data: conteudo,
+            branch: 'data'
+        }
 
-//         return arquivosRepo = await teste()
+        const response = await fetch(
 
-//     } catch (error) {
+            `${baseUrl}/contents/projetos.txt`, 
+            {
 
-//         console.error(error.message)
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
 
-//     }
+        })
+    
 
-// })();
+    } catch (error) {
+        
+        console.error(error);
+        console.log(await response.json());
 
-// let projetosJson = {}
-// Object.keys(localStorage).forEach( (key) => {
+    }    
+    
+}
 
-//     projetosJson[key] = (JSON.parse(localStorage[key]));
+/// lógica para criar caminho válido para os projetos serem lidos e escritos
 
-// })
+async function getLatestCommitSHA() {
 
-// let projetosJson = Object.fromEntries(
-//     Object.keys(localStorage).map((key) => [key, JSON.parse(localStorage[key])])
-//   );
+    const baseUrl = getUrlAPI('branch')    
 
-// const a = JSON.stringify(projetosJson);
+    const url = `${baseUrl}/git/refs/heads/data`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.object.sha;
 
-// function exportToJsonFile(objectData, filename) {
-//     const blob = new Blob([JSON.stringify(objectData, null, 2)], { type: 'application/json' });
-//     const url = URL.createObjectURL(blob);
+}
 
-//     const a = document.createElement('a');
-//     a.href = url;
-//     a.download = filename || 'data.json';
+async function getCommitTreeSHA(commitSHA) {
 
-//     const clickHandler = () => {
-//         setTimeout(() => {
-//             URL.revokeObjectURL(url);
-//             a.removeEventListener('click', clickHandler);
-//         }, 150);
-//     };
+    const baseUrl = getUrlAPI('branch')
 
-//     a.addEventListener('click', clickHandler, false);
-//     a.click();
-// }
+    const url = `${baseUrl}/git/commits/${commitSHA}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.tree.sha;
 
-// let b = {}
-// Object.keys(localStorage).forEach(key => {
+}
 
-//     b[key] = (localStorage[key])
+async function createTree(baseTreeSHA) {
 
-// })
+    const baseUrl = getUrlAPI('branch')
+
+    const content = btoa('Seus projetos serão salvos aqui')
+
+    const tree = {
+        base_tree: baseTreeSHA,
+        tree: [
+        {
+            path: 'projetos.txt',
+            mode: '100644',
+            type: 'blob',
+            content: content,
+        },
+        ],
+    };
+
+    const url = `${baseUrl}/git/trees`;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tree),
+    });
+
+    const data = await response.json();
+    return data.sha;
+}
+
+
+async function createCommit(treeSHA, parentCommitSHA) {
+
+    const baseUrl = getUrlAPI('branch')
+
+    const commit = {
+        message: 'Criando arquivos projetos.txt',
+        tree: treeSHA,
+        parents: [parentCommitSHA],
+    };
+
+    const url = `${baseUrl}/git/commits`;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(commit),
+    });
+
+    const data = await response.json();
+    return data.sha;
+
+}
+
+async function updateBranchReference(newCommitSHA) {
+
+    const baseUrl = getUrlAPI('branch')
+
+    const url = `${baseUrl}/git/refs/heads/data`;
+
+    const response = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sha: newCommitSHA,
+      }),
+    });
+  
+    const data = await response.json();
+    return data.object.sha;
+
+}
+
+async function createTxtFileInBranch() {
+    // Step 1: Get the SHA of the latest commit in the branch
+    const latestCommitSHA = await getLatestCommitSHA();
+  
+    // Step 2: Get the tree SHA of the latest commit
+    const commitTreeSHA = await getCommitTreeSHA(latestCommitSHA);
+  
+    // Step 3: Create a new tree with the additional file
+    const newTreeSHA = await createTree(commitTreeSHA);
+  
+    // Step 4: Create a new commit
+    const newCommitSHA = await createCommit(newTreeSHA, latestCommitSHA);
+  
+    // Step 5: Update the branch reference
+    await updateBranchReference(newCommitSHA);
+  
+    console.log(`.txt file created successfully in data branch.`);
+  }
+
